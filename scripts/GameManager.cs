@@ -4,7 +4,6 @@ using Godot;
 
 public partial class GameManager : Node
 {
-    public double countDown;
     public static GameManager instance;
 
     public override void _Ready()
@@ -14,11 +13,5 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
-        countDown -= delta;
-    }
-
-    public void ApplyCountdownCost(double cost)
-    {
-        countDown -= cost;
     }
 }

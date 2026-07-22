@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/Player.tscn" id="1_iho50"]
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_3wh16"]
+[ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/UI.tscn" id="3_4w0vo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ke0t"]
 size = Vector2(100, 100)
@@ -13,6 +14,7 @@ texture = SubResource("PlaceholderTexture2D_6ke0t")
 
 [node name="Player" parent="." unique_id=1156526680 instance=ExtResource("1_iho50")]
 position = Vector2(311, 258)
-ripTime = 1.0
-attackSpeed = 200.0
 bulletScene = ExtResource("2_3wh16")
+
+[node name="UI" parent="." unique_id=66284215 node_paths=PackedStringArray("player") instance=ExtResource("3_4w0vo")]
+player = NodePath("../Player")

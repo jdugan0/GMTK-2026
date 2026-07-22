@@ -12,8 +12,10 @@ Acceleration = 3500.0
 Friction = 3000.0
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
-ripTime = 3.0
-attackSpeed = 50.0
+ripTime = 1.0
+attackSpeed = 1500.0
+attackCountdownCost = 5.0
+countDown = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=499636303]
 

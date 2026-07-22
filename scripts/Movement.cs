@@ -44,6 +44,11 @@ public partial class Movement : CharacterBody2D
     [Export]
     private PackedScene bulletScene;
 
+    [ExportGroup("Timer")]
+    [Export]
+    public double countDown;
+    private double lostRip = 0;
+
     public override void _Ready()
     {
         ripTimer = ripTime;
@@ -62,16 +67,29 @@ public partial class Movement : CharacterBody2D
 
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
+        if (Velocity.LengthSquared() > 0.05)
+        {
+            countDown -= delta;
+        }
+        if (moveEnabled)
+        {
+            MoveAndSlide();
+        }
 
         // attacking
         Vector2 mouseDir = (GetGlobalMousePosition() - GlobalPosition).Normalized();
+        if (Input.IsActionJustPressed("ATTACK"))
+        {
+            lostRip = 0;
+        }
         if (Input.IsActionPressed("ATTACK"))
         {
             if (ripTimer > 0)
             {
                 // GD.Print(ripTimer);
                 ripTimer -= delta;
-                GameManager.instance.ApplyCountdownCost(attackCountdownCost);
+                countDown -= delta * (attackCountdownCost / ripTime);
+                lostRip += delta * (attackCountdownCost / ripTime);
             }
             else { }
         }
@@ -89,12 +107,11 @@ public partial class Movement : CharacterBody2D
                 );
                 GetTree().Root.AddChild(b);
             }
+            else
+            {
+                countDown += lostRip;
+            }
             ripTimer = ripTime;
-        }
-
-        if (moveEnabled)
-        {
-            MoveAndSlide();
         }
     }
 }
