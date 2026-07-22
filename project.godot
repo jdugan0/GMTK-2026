@@ -37,6 +37,10 @@ window/size/mode.editor=0
 
 project/assembly_name="GMTK-2026"
 
+[global_group]
+
+player=""
+
 [input]
 
 LEFT={

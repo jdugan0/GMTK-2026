@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5q5h1"]
 radius = 100.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera")]
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera") groups=["player"]]
 script = ExtResource("1_p0vlq")
 MaxSpeed = 750.0
 Acceleration = 3500.0

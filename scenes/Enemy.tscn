@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b117vcs0b2j6e"]
+
+[ext_resource type="Script" uid="uid://b80mi7obmn6e4" path="res://scripts/Enemy.cs" id="1_3gvst"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5q5h1"]
+radius = 100.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent")]
+script = ExtResource("1_3gvst")
+losDistance = 1000.0
+MovementSpeed = 1000.0
+_navigationAgent = NodePath("NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=499636303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
+shape = SubResource("CircleShape2D_5q5h1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]

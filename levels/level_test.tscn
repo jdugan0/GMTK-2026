@@ -3,9 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/Player.tscn" id="1_iho50"]
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_3wh16"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/UI.tscn" id="3_4w0vo"]
+[ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="4_eu8vo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ke0t"]
 size = Vector2(100, 100)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6ke0t"]
+vertices = PackedVector2Array(7827.2734, 4485.953, -5699.1406, 4432.0313, -5807.8438, -2730.1563, 7311.672, -2946.8438)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-5818, -2740, 7321, -2957, 7838, 4496, -5709, 4442)])
 
 [node name="LevelTest" type="Node2D" unique_id=160668906]
 
@@ -18,3 +24,9 @@ bulletScene = ExtResource("2_3wh16")
 
 [node name="UI" parent="." unique_id=66284215 node_paths=PackedStringArray("player") instance=ExtResource("3_4w0vo")]
 player = NodePath("../Player")
+
+[node name="Enemy" parent="." unique_id=731686658 instance=ExtResource("4_eu8vo")]
+position = Vector2(861, -124)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1640339992]
+navigation_polygon = SubResource("NavigationPolygon_6ke0t")
