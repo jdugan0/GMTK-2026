@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Sceneswitcher="*res://scenes/_scripts/Sceneswitcher.tscn"
+Sceneswitcher="*res://levels/_scripts/Sceneswitcher.tscn"
 Audiomanager="*res://audio/_scripts/Audiomanager.tscn"
 
 [display]
