@@ -7,6 +7,9 @@ radius = 100.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_p0vlq")
+MaxSpeed = 750.0
+Acceleration = 3500.0
+Friction = 3000.0
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
 
