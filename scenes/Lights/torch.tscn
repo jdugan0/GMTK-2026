@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dkxlygq3q04pn"]
+
+[ext_resource type="Texture2D" uid="uid://b0x4qvqr4evfh" path="res://art/light/circle_light.tres" id="1_pc417"]
+
+[node name="Torch" type="PointLight2D" unique_id=214355063]
+color = Color(0.7571321, 0.34118432, 0.13465679, 1)
+energy = 3.14
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 1.0
+texture = ExtResource("1_pc417")
+texture_scale = 23.51

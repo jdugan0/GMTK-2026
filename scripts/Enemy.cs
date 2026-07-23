@@ -215,6 +215,7 @@ public partial class Enemy : CharacterBody2D
     public void BulletStun(float stunTime)
     {
         stunTimer += stunTime;
+        spotted = false;
         GD.Print($"[{Name}] BULLET_STUN +{stunTime:F2}s -> stunTimer={stunTimer:F2}");
     }
 }

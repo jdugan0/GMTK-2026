@@ -44,11 +44,14 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)])
 agent_radius = 0.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s5inv"]
+polygon = PackedVector2Array(-27.588005, -26.62001, -14.036003, -28.556, 100, -29.524002, 100, -23.716011, -19.84401, -21.780006, -20.811996, 100, -30.492004, 100)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x47dy"]
-polygon = PackedVector2Array(-30.491997, -100, 29.524002, -100, 28.556, 100, -27.588013, 100)
+polygon = PackedVector2Array(-30.491997, -100, -21.779999, -100, -21.779999, 100, -28.556, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h6rjb"]
-polygon = PackedVector2Array(-100, -27.588013, 70.18001, -28.556, 66.308, 28.556007, 65.34, 29.523994, -100, 29.523994)
+polygon = PackedVector2Array(-100, -29.5, 70, -29.5, 67.276, -28.556, -100, -25.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x47dy"]
 texture = ExtResource("1_h6rjb")
@@ -147,7 +150,9 @@ texture_region_size = Vector2i(200, 200)
 1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_8482b")
 2:2/next_alternative_id = 2
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -85.668, 100, -81.796, 100, 81.79599, -100, 80.82801)
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -53.724, -62.436, -46.948006, -60.500008, 79.86001, -100, 83.732)
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
@@ -157,6 +162,7 @@ texture_region_size = Vector2i(200, 200)
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
+2:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_s5inv")
 3:3/0 = 0
 3:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_h6rjb")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -29.524002, 69.212006, -29.524002, 66.308, 30.492004, -100, 31.460007)

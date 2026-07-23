@@ -14,6 +14,7 @@ radius = 41.0
 height = 300.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight") groups=["player", "player_col"]]
+y_sort_enabled = true
 collision_layer = 257
 script = ExtResource("1_p0vlq")
 MaxSpeed = 700.0
@@ -21,8 +22,8 @@ Acceleration = 3500.0
 Friction = 3000.0
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
-ripTime = 1.0
-attackDamage = 1.5
+ripTime = 0.5
+attackDamage = 3.0
 attackSpeed = 1500.0
 attackCountdownCost = 5.0
 safetyTime = 0.1
@@ -34,10 +35,13 @@ flashlight = NodePath("Flashlight")
 countDown = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
+y_sort_enabled = true
+position = Vector2(0, 145)
 zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=687405642]
+light_mask = 2
 sprite_frames = ExtResource("3_3li8b")
 animation = &"BACKD"
 
@@ -46,6 +50,11 @@ position = Vector2(-9, 92)
 shape = SubResource("CapsuleShape2D_iwav8")
 
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("5_70d11")]
+y_sort_enabled = true
+position = Vector2(-6.715, 92)
+range_item_cull_mask = 1
+shadow_filter = 0
+shadow_filter_smooth = 0.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=799271190 groups=["player_col"]]
 collision_layer = 256
