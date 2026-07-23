@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tc4iox0mpime"
+path="res://.godot/imported/Dash 3.wav-7a8b4c39e0f3b5421f390e67e5fa3d4e.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Dash 3.wav"
+dest_files=["res://.godot/imported/Dash 3.wav-7a8b4c39e0f3b5421f390e67e5fa3d4e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
