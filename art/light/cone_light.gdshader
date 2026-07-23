@@ -5,7 +5,7 @@ render_mode unshaded;
 // Half-angle of the beam in degrees (50 deg full cone = 25 here)
 uniform float cone_half_angle_deg : hint_range(1.0, 90.0) = 25.0;
 // Higher = light dies off faster with distance
-uniform float distance_falloff : hint_range(0.1, 4.0) = 1.5;
+uniform float distance_falloff : hint_range(0.1, 8.0) = 1.5;
 // 0 = razor-sharp beam edges, 1 = fully feathered
 uniform float edge_softness : hint_range(0.01, 1.0) = 0.6;
 // Beam reach as a fraction of texture width (apex is centered, so 0.5 = edge)

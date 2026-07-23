@@ -33,4 +33,4 @@ losDistance = 1000.0
 position = Vector2(311, 258)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1015651402]
-color = Color(0.044391274, 0.001016356, 0.07480074, 1)
+color = Color(0.02646624, 1.3577384e-05, 0.051751576, 1)
