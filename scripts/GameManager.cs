@@ -56,9 +56,11 @@ public partial class GameManager : Node
             else
             {
                 GD.Print("IN COMBAT");
-                time = AudioManager
-                    .instance.CancelSFX("outOfCombatBackground")
-                    .p.GetPlaybackPosition();
+                AudioStreamPlayer p = AudioManager.instance.CancelSFX("outOfCombatBackground").p;
+                if (p != null)
+                {
+                    time = p.GetPlaybackPosition();
+                }
                 AudioManager.instance.PlaySFX("combat");
             }
         }

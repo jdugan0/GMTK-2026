@@ -182,6 +182,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_sobix"]
 script = ExtResource("2_0au01")
 stream = ExtResource("44_as7ec")
+name = "levelWin"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
 [node name="Audiomanager" type="Node" unique_id=2066337262]
