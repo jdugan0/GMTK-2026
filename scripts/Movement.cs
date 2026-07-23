@@ -55,6 +55,9 @@ public partial class Movement : CharacterBody2D
     [Export]
     private PackedScene bulletScene;
 
+    [Export]
+    private AnimatedSprite2D sprite2D;
+
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
@@ -78,6 +81,35 @@ public partial class Movement : CharacterBody2D
             moveEnabled = false;
             stunTimer = stunTime;
         }
+    }
+
+    private void UpdateAnimation(Vector2 lookDir)
+    {
+        // 0 = right, 90 = down, -90 = up, +/-180 = left
+        float angle = Mathf.RadToDeg(lookDir.Angle());
+
+        if (angle > 67.5f && angle < 112.5f) // down
+            Play("FRONT", flip: false);
+        else if (angle >= 22.5f && angle <= 67.5f) // down-right
+            Play("FRONTD", flip: false);
+        else if (angle >= 112.5f && angle <= 157.5f) // down-left
+            Play("FRONTD", flip: true);
+        else if (angle >= -22.5f && angle <= 22.5f) // right
+            Play("SIDE", flip: false);
+        else if (angle > 157.5f || angle < -157.5f) // left
+            Play("SIDE", flip: true);
+        else if (angle < -22.5f && angle >= -67.5f) // up-right
+            Play("BACKD", flip: true);
+        else if (angle <= -112.5f && angle > -157.5f) // up-left
+            Play("BACKD", flip: false);
+        else // up
+            Play("BACK", flip: false);
+    }
+
+    private void Play(string anim, bool flip)
+    {
+        sprite2D.FlipH = flip;
+        sprite2D.Play(anim);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -116,6 +148,7 @@ public partial class Movement : CharacterBody2D
 
         // attacking
         Vector2 mouseDir = (GetGlobalMousePosition() - GlobalPosition).Normalized();
+        UpdateAnimation(mouseDir);
         if (Input.IsActionJustPressed("ATTACK"))
         {
             lostRip = 0;
