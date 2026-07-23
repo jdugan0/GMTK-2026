@@ -39,6 +39,7 @@ public partial class GameManager : Node
         {
             if (InCombat)
             {
+                randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
                 GD.Print("OUT COMBAT");
                 AudioManager.instance.CancelSFXFadeOut("combat", 4.0f).p.Finished += () =>
                     AudioManager.instance.PlaySFX("outOfCombatBackground", time);
