@@ -11,6 +11,12 @@ public partial class Enemy : CharacterBody2D
     private float losDistance;
 
     [Export]
+    private float leashDistance;
+
+    [Export]
+    private float knockbackFriction = 2000f;
+
+    [Export]
     private float MovementSpeed { get; set; } = 4.0f;
 
     [Export]
@@ -46,6 +52,9 @@ public partial class Enemy : CharacterBody2D
     private float stunTimer = 0;
     private bool spotted;
 
+    private Vector2 homePosition;
+    private Vector2 knockbackVelocity;
+
     private string _lastDebugState = "";
 
     private void DebugState(string state)
@@ -64,6 +73,7 @@ public partial class Enemy : CharacterBody2D
     {
         player = (Movement)GetTree().GetFirstNodeInGroup("player");
         _navigationAgent.VelocityComputed += OnVelocityComputed;
+        homePosition = GlobalPosition;
     }
 
     private void SetMovementTarget(Vector2 movementTarget)
@@ -74,12 +84,22 @@ public partial class Enemy : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
+
+        if (knockbackVelocity.LengthSquared() > 25f)
+        {
+            Velocity = knockbackVelocity;
+            knockbackVelocity = knockbackVelocity.MoveToward(Vector2.Zero, knockbackFriction * dt);
+            MoveAndSlide();
+            DebugState("KNOCKED_BACK");
+            return;
+        }
+
         bool seesPlayer = CanSeePlayer();
         if (seesPlayer)
         {
             spotted = true;
         }
-        if (spotted && player.GlobalPosition.DistanceTo(GlobalPosition) > losDistance)
+        if (spotted && GlobalPosition.DistanceTo(homePosition) > leashDistance)
         {
             spotted = false;
         }
@@ -124,6 +144,21 @@ public partial class Enemy : CharacterBody2D
         }
         if (!spotted)
         {
+            if (GlobalPosition.DistanceTo(homePosition) > 20f)
+            {
+                SetMovementTarget(homePosition);
+                if (!_navigationAgent.IsNavigationFinished())
+                {
+                    DebugState("RETURNING_HOME");
+                    Vector2 homeStep = _navigationAgent.GetNextPathPosition();
+                    Vector2 homeVel = GlobalPosition.DirectionTo(homeStep) * MovementSpeed;
+                    if (_navigationAgent.AvoidanceEnabled)
+                        _navigationAgent.Velocity = homeVel;
+                    else
+                        OnVelocityComputed(homeVel);
+                    return;
+                }
+            }
             DebugState("IDLE (not spotted)");
             return;
         }
@@ -179,8 +214,15 @@ public partial class Enemy : CharacterBody2D
     private void UpdateAnimation(Vector2 lookDir)
     {
         flashlight.Rotation = lookDir.Angle();
+        sprite2D.FlipH = false;
         if (Mathf.Abs(lookDir.X) > Mathf.Abs(lookDir.Y))
-            sprite2D.Play(lookDir.X > 0 ? "RIGHT" : "LEFT");
+        {
+            sprite2D.Play("RIGHT");
+            if (lookDir.X < 0)
+            {
+                sprite2D.FlipH = true;
+            }
+        }
         else
             sprite2D.Play(lookDir.Y > 0 ? "DOWN" : "UP");
     }
@@ -202,17 +244,22 @@ public partial class Enemy : CharacterBody2D
             GlobalPosition,
             player.GlobalPosition
         );
-        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+        query.Exclude = new Godot.Collections.Array<Rid> { GetRid(), GetChild<Area2D>(4).GetRid() };
+        query.CollisionMask = 1 << 8;
+        query.CollideWithAreas = true;
 
         Godot.Collections.Dictionary result = spaceState.IntersectRay(query);
         if (result.Count == 0)
             return false;
-        return (Node)result["collider"] == player;
+        return ((Node)result["collider"]).IsInGroup("player_col");
     }
 
-    public void BulletStun(float stunTime)
+    public void Shove(Vector2 dir, float knockback, float stunTime)
     {
-        stunTimer += stunTime;
-        GD.Print($"[{Name}] BULLET_STUN +{stunTime:F2}s -> stunTimer={stunTimer:F2}");
+        knockbackVelocity = dir.Normalized() * knockback;
+        stunTimer = Mathf.Max(stunTimer, stunTime);
+        attacking = false;
+        spotted = false;
+        GD.Print($"[{Name}] SHOVE knockback={knockback:F0} stun={stunTime:F2}");
     }
 }

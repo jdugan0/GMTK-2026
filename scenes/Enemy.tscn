@@ -4,15 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4dwpsj6ighei" path="res://art/Townsfolk180x315.png" id="2_55jtl"]
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="3_mpr68"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
-radius = 76.0
-height = 300.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
-atlas = ExtResource("2_55jtl")
-region = Rect2(0, 945, 180, 315)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft8do"]
 atlas = ExtResource("2_55jtl")
 region = Rect2(0, 630, 180, 315)
 
@@ -36,14 +28,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ft8do")
-}],
-"loop": 1,
-"name": &"LEFT",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5wwv6")
 }],
 "loop": 1,
@@ -59,23 +43,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpr68"]
+radius = 28.0
+height = 106.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ft8do"]
+radius = 53.0
+height = 308.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
 script = ExtResource("1_3gvst")
-losDistance = 2000.0
-MovementSpeed = 650.0
+losDistance = 1000.0
+leashDistance = 1100.0
+knockbackFriction = 2000.0
+MovementSpeed = 550.0
 _navigationAgent = NodePath("NavigationAgent2D")
-attackDistance = 300.0
+attackDistance = 250.0
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
 attackDamage = 5.0
-attackCooldown = 0.4
-attackDelay = 0.1
+attackCooldown = 0.8
+attackDelay = 0.3
 attackStun = 0.2
-attackRange = 400.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
-position = Vector2(10, -1)
-shape = SubResource("CapsuleShape2D_3li8b")
+attackRange = 200.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
 
@@ -84,3 +74,15 @@ sprite_frames = SubResource("SpriteFrames_3gvst")
 animation = &"DOWN"
 
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("3_mpr68")]
+position = Vector2(12.335, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=372871662]
+position = Vector2(13, 97)
+shape = SubResource("CapsuleShape2D_mpr68")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=592296351]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1732201781]
+position = Vector2(13, 0)
+shape = SubResource("CapsuleShape2D_ft8do")

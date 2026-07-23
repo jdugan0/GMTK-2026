@@ -6,6 +6,11 @@ public partial class Flashlight : PointLight2D
 	{
 		Bake();
 	}
+    public override void _Process(double delta)
+    {
+        // Bake();
+    }
+
 
 	private async void Bake()
 	{
