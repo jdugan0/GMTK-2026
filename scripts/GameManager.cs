@@ -19,8 +19,10 @@ public partial class GameManager : Node
         randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
     }
 
-    public void Die()
+    public void Die(Movement player)
     {
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
+        player.QueueFree();
         if (InCombat)
         {
             AudioManager.instance.CancelSFXFadeOut("combat", 4.0f).p.Finished += () =>

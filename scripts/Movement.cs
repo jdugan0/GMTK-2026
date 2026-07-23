@@ -71,6 +71,7 @@ public partial class Movement : CharacterBody2D
     public override void _Ready()
     {
         ripTimer = ripTime;
+        
     }
 
     public void Attack(float damage, Node2D attacker)
@@ -169,8 +170,7 @@ public partial class Movement : CharacterBody2D
         }
         if (countDown <= 0)
         {
-            _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
-            GameManager.instance.Die();
+            GameManager.instance.Die(this);
             return;
         }
         MoveAndSlide();

@@ -22,8 +22,8 @@ Acceleration = 3500.0
 Friction = 3000.0
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
-ripTime = 1.0
-attackDamage = 1.5
+ripTime = 0.5
+attackDamage = 3.0
 attackSpeed = 1500.0
 attackCountdownCost = 5.0
 safetyTime = 0.1
@@ -52,6 +52,9 @@ shape = SubResource("CapsuleShape2D_iwav8")
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("5_70d11")]
 y_sort_enabled = true
 position = Vector2(-6.715, 92)
+range_item_cull_mask = 1
+shadow_filter = 0
+shadow_filter_smooth = 0.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=799271190 groups=["player_col"]]
 collision_layer = 256

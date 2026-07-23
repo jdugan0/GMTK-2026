@@ -41,6 +41,7 @@ project/assembly_name="GMTK-2026"
 player=""
 wall=""
 player_col=""
+exit=""
 
 [input]
 
