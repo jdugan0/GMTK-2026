@@ -10,7 +10,9 @@ public partial class Movement : CharacterBody2D
     [Export]
     public float SprintSpeed = 800f;
 
-    // countdown lost per second = speed^2 * this, so faster movement is disproportionately expensive
+    [Export]
+    public float BulletSpeed = 300f;
+
     [Export]
     public float MoveCostFactor = 5e-6f;
 
@@ -28,6 +30,17 @@ public partial class Movement : CharacterBody2D
 
     [Export]
     private float mouseCameraWeight;
+
+    [Export]
+    private float shakeStrength = 30f;
+
+    [Export]
+    private float shakeDecay = 4f;
+
+    [Export]
+    private float shakePerHit = 0.7f;
+
+    private float shakeTrauma = 0f;
 
     [ExportGroup("Combat")]
     [Export]
@@ -78,19 +91,20 @@ public partial class Movement : CharacterBody2D
     public override void _Ready()
     {
         ripTimer = ripTime;
-        
     }
 
     public void Attack(float damage, Node2D attacker)
     {
         if (safetyTimer <= 0)
         {
+            AudioManager.instance.PlaySFX("playerHurt");
             safetyTimer = safetyTime;
             countDown -= damage;
             Vector2 dir = attacker.GlobalPosition - GlobalPosition;
             Velocity -= dir.Normalized() * enemyKnockback;
             moveEnabled = false;
             stunTimer = stunTime;
+            shakeTrauma = Mathf.Min(shakeTrauma + shakePerHit, 1f);
         }
     }
 
@@ -98,6 +112,18 @@ public partial class Movement : CharacterBody2D
     {
         // 0 = right, 90 = down, -90 = up, +/-180 = left
         float angle = Mathf.RadToDeg(lookDir.Angle());
+
+        if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
+        {
+            int ripFrame = ripTimer > ripTime / 2 ? 0 : 1;
+            if (angle > 45f && angle < 135f) // down
+                PlayRip("DOWN_RIP", flip: false, frame: ripFrame);
+            else if (angle >= -90f && angle <= 45f) // up through down-right
+                PlayRip("RIGHT_RIP", flip: false, frame: ripFrame);
+            else // up through down-left
+                PlayRip("RIGHT_RIP", flip: true, frame: ripFrame);
+            return;
+        }
 
         if (angle > 67.5f && angle < 112.5f) // down
             Play("FRONT", flip: false);
@@ -146,6 +172,14 @@ public partial class Movement : CharacterBody2D
         sprite2D.Play(anim);
     }
 
+    private void PlayRip(string anim, bool flip, int frame)
+    {
+        sprite2D.FlipH = flip;
+        sprite2D.Animation = anim;
+        sprite2D.Frame = frame;
+        sprite2D.Pause();
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
@@ -161,11 +195,32 @@ public partial class Movement : CharacterBody2D
             input = Vector2.Zero;
         }
         float maxSpeed = Input.IsActionPressed("SPRINT") ? SprintSpeed : WalkSpeed;
+        if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
+        {
+            maxSpeed = 0;
+        }
+        else if (Input.IsActionPressed("ATTACK"))
+        {
+            maxSpeed = BulletSpeed;
+        }
         Vector2 targetVelocity = input * maxSpeed;
 
         camera.GlobalPosition =
             (GlobalPosition + mouseCameraWeight * GetGlobalMousePosition())
             / (1 + mouseCameraWeight);
+        if (shakeTrauma > 0f)
+        {
+            shakeTrauma = Mathf.Max(shakeTrauma - shakeDecay * dt, 0f);
+            float amount = shakeTrauma * shakeTrauma;
+            camera.Offset =
+                new Vector2((float)GD.RandRange(-1.0, 1.0), (float)GD.RandRange(-1.0, 1.0))
+                * shakeStrength
+                * amount;
+        }
+        else
+        {
+            camera.Offset = Vector2.Zero;
+        }
         if (input != Vector2.Zero)
         {
             PlayFootstep();

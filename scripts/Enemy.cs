@@ -51,6 +51,8 @@ public partial class Enemy : CharacterBody2D
     private float attackTimer = 0;
     private float stunTimer = 0;
     private bool spotted;
+    private bool returningHome;
+    private bool stunFromHit;
 
     private Vector2 homePosition;
     private Vector2 knockbackVelocity;
@@ -90,23 +92,33 @@ public partial class Enemy : CharacterBody2D
             Velocity = knockbackVelocity;
             knockbackVelocity = knockbackVelocity.MoveToward(Vector2.Zero, knockbackFriction * dt);
             MoveAndSlide();
+            UpdateAnimation(GlobalPosition.DirectionTo(player.GlobalPosition), true);
             DebugState("KNOCKED_BACK");
             return;
         }
 
-        bool seesPlayer = CanSeePlayer();
-        if (seesPlayer)
+        if (returningHome)
         {
-            spotted = true;
+            if (GlobalPosition.DistanceTo(homePosition) <= 30f)
+                returningHome = false;
         }
-        if (spotted && GlobalPosition.DistanceTo(homePosition) > leashDistance)
+        else
         {
-            spotted = false;
+            bool playerInZone = player.GlobalPosition.DistanceTo(homePosition) <= leashDistance;
+            if (CanSeePlayer() && playerInZone)
+            {
+                spotted = true;
+            }
+            if (spotted && GlobalPosition.DistanceTo(homePosition) > leashDistance)
+            {
+                spotted = false;
+                returningHome = true;
+            }
         }
         if (spotted || attacking)
         {
             GameManager.instance.ReportCombat();
-            UpdateAnimation(GlobalPosition.DirectionTo(player.GlobalPosition));
+            UpdateAnimation(GlobalPosition.DirectionTo(player.GlobalPosition), false);
         }
         if (attackTimer > 0)
         {
@@ -124,6 +136,7 @@ public partial class Enemy : CharacterBody2D
                     player.Attack(attackDamage, this);
                     attackTimer = attackCooldown;
                     stunTimer = attackStun;
+                    stunFromHit = false;
                 }
                 else
                 {
@@ -139,6 +152,7 @@ public partial class Enemy : CharacterBody2D
         if (stunTimer > 0)
         {
             stunTimer -= dt;
+            UpdateAnimation(GlobalPosition.DirectionTo(player.GlobalPosition), stunFromHit);
             DebugState("STUNNED");
             return;
         }
@@ -211,20 +225,26 @@ public partial class Enemy : CharacterBody2D
         }
     }
 
-    private void UpdateAnimation(Vector2 lookDir)
+    private void UpdateAnimation(Vector2 lookDir, bool flinch)
     {
         flashlight.Rotation = lookDir.Angle();
-        sprite2D.FlipH = false;
+
+        string anim;
+        bool flip = false;
         if (Mathf.Abs(lookDir.X) > Mathf.Abs(lookDir.Y))
         {
-            sprite2D.Play("RIGHT");
-            if (lookDir.X < 0)
-            {
-                sprite2D.FlipH = true;
-            }
+            anim = "RIGHT";
+            flip = lookDir.X < 0;
         }
         else
-            sprite2D.Play(lookDir.Y > 0 ? "DOWN" : "UP");
+        {
+            anim = lookDir.Y > 0 ? "DOWN" : "UP";
+        }
+
+        sprite2D.Animation = anim;
+        sprite2D.FlipH = flip;
+        sprite2D.Frame = flinch ? 1 : 0;
+        sprite2D.Pause();
     }
 
     private void OnVelocityComputed(Vector2 safeVelocity)
@@ -258,6 +278,7 @@ public partial class Enemy : CharacterBody2D
     {
         knockbackVelocity = dir.Normalized() * knockback;
         stunTimer = Mathf.Max(stunTimer, stunTime);
+        stunFromHit = true;
         attacking = false;
         spotted = false;
         GD.Print($"[{Name}] SHOVE knockback={knockback:F0} stun={stunTime:F2}");

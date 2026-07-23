@@ -17,7 +17,7 @@ shader_parameter/circle_intensity = 0.44800002128
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="Flashlight" type="PointLight2D" unique_id=445911353]
-range_item_cull_mask = 3
+range_item_cull_mask = 13
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 1.0
