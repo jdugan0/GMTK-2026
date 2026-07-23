@@ -17,9 +17,6 @@ height = 300.0
 y_sort_enabled = true
 collision_layer = 257
 script = ExtResource("1_p0vlq")
-WalkSpeed = 475.0
-SprintSpeed = 800.0
-MoveCostFactor = 5e-06
 Acceleration = 3500.0
 Friction = 3000.0
 camera = NodePath("Camera2D")
@@ -46,7 +43,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=687405642]
 light_mask = 2
 sprite_frames = ExtResource("3_3li8b")
-animation = &"BACKD"
+animation = &"RIGHT_RIP"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
 position = Vector2(-9, 92)
