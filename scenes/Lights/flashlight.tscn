@@ -5,14 +5,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cone"]
 shader = ExtResource("1_wb5tr")
-shader_parameter/cone_half_angle_deg = 40.0000018525
-shader_parameter/distance_falloff = 5.00000023424012
-shader_parameter/edge_softness = 0.50700002338398
+shader_parameter/cone_half_angle_deg = 52.2590024348025
+shader_parameter/distance_falloff = 4.3000002009901195
+shader_parameter/edge_softness = 0.63000002922648
 shader_parameter/beam_length = 0.7190000325225601
-shader_parameter/intensity = 0.6000000285
+shader_parameter/intensity = 0.52400002489
+shader_parameter/cone_offset_x = -0.0389999781025
 shader_parameter/circle_radius = 0.06500000169047
-shader_parameter/circle_falloff = 1.0
-shader_parameter/circle_intensity = 0.74000003515
+shader_parameter/circle_falloff = 1.15200005146012
+shader_parameter/circle_intensity = 0.370000017575
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="Flashlight" type="PointLight2D" unique_id=445911353]

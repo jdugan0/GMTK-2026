@@ -44,8 +44,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)])
 agent_radius = 0.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x47dy"]
+polygon = PackedVector2Array(-30.491997, -100, 29.524002, -100, 28.556, 100, -27.588013, 100)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h6rjb"]
-polygon = PackedVector2Array(-100, -30.492004, 69.212006, -30.492004, 69.212006, 29.524002, -100, 33.395996)
+polygon = PackedVector2Array(-100, -27.588013, 70.18001, -28.556, 66.308, 28.556007, 65.34, 29.523994, -100, 29.523994)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x47dy"]
 texture = ExtResource("1_h6rjb")
@@ -166,6 +169,8 @@ texture_region_size = Vector2i(200, 200)
 0:4/0 = 0
 1:4/0 = 0
 2:4/0 = 0
+2:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_x47dy")
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.524002, -100, 29.524002, -100, 30.492004, 100, -29.524017, 100)
 3:4/0 = 0
 4:4/0 = 0
 5:4/0 = 0

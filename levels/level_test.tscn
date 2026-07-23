@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/Player.tscn" id="1_iho50"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/UI.tscn" id="3_4w0vo"]
 [ext_resource type="TileSet" uid="uid://dmfa00grh15om" path="res://art/tilesets/Tileset.tres" id="4_5yd65"]
-[ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="4_eu8vo"]
 [ext_resource type="PackedScene" uid="uid://b3tplxsxqgq86" path="res://scenes/GameManager.tscn" id="5_5yd65"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5yd65"]
@@ -39,9 +38,6 @@ tile_set = ExtResource("4_5yd65")
 navigation_enabled = false
 
 [node name="Enemies" type="Node2D" parent="." unique_id=214454458]
-
-[node name="Enemy" parent="Enemies" unique_id=1156526680 instance=ExtResource("4_eu8vo")]
-position = Vector2(978, -936)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1015651402]
 color = Color(0.02646624, 1.3577384e-05, 0.051751576, 1)
