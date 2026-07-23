@@ -33,10 +33,15 @@ public partial class Bullet() : Area2D
     {
         GetChild<AnimatedSprite2D>(0).Play();
         BodyEntered += OnCollide;
+        AreaEntered += OnCollide;
     }
 
     public void OnCollide(Node2D body)
     {
+        if (body is Area2D)
+        {
+            OnCollide(body.GetParent<Node2D>());
+        }
         if (body is Enemy e)
         {
             AudioManager.instance.PlaySFX("limbHit");

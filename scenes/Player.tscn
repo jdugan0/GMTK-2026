@@ -6,10 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="5_70d11"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
-radius = 56.0
-height = 306.0
+radius = 28.0
+height = 106.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight") groups=["player"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdl7e"]
+radius = 41.0
+height = 300.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight") groups=["player", "player_col"]]
+collision_layer = 257
 script = ExtResource("1_p0vlq")
 MaxSpeed = 700.0
 Acceleration = 3500.0
@@ -28,10 +33,6 @@ sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
 countDown = 100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
-position = Vector2(-11, 0)
-shape = SubResource("CapsuleShape2D_iwav8")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
 zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = true
@@ -40,4 +41,15 @@ position_smoothing_enabled = true
 sprite_frames = ExtResource("3_3li8b")
 animation = &"BACKD"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
+position = Vector2(-9, 92)
+shape = SubResource("CapsuleShape2D_iwav8")
+
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("5_70d11")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=799271190 groups=["player_col"]]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=43917651]
+position = Vector2(-11, -1)
+shape = SubResource("CapsuleShape2D_mdl7e")

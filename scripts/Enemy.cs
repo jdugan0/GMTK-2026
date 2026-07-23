@@ -202,12 +202,14 @@ public partial class Enemy : CharacterBody2D
             GlobalPosition,
             player.GlobalPosition
         );
-        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+        query.Exclude = new Godot.Collections.Array<Rid> { GetRid(), GetChild<Area2D>(4).GetRid() };
+        query.CollisionMask = 1 << 8;
+        query.CollideWithAreas = true;
 
         Godot.Collections.Dictionary result = spaceState.IntersectRay(query);
         if (result.Count == 0)
             return false;
-        return (Node)result["collider"] == player;
+        return ((Node)result["collider"]).IsInGroup("player_col");
     }
 
     public void BulletStun(float stunTime)
