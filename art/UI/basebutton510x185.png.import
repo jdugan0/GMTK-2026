@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x5bd4m3mfwak"
-path="res://.godot/imported/homescreenMA.png-f94b61a98b0841899e563d1a1cadb15b.ctex"
+uid="uid://cnbxqohnqtl3g"
+path="res://.godot/imported/basebutton510x185.png-fbfb137cee1bc17959205ac982c9b2f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/homescreenMA.png"
-dest_files=["res://.godot/imported/homescreenMA.png-f94b61a98b0841899e563d1a1cadb15b.ctex"]
+source_file="res://art/UI/basebutton510x185.png"
+dest_files=["res://.godot/imported/basebutton510x185.png-fbfb137cee1bc17959205ac982c9b2f1.ctex"]
 
 [params]
 
