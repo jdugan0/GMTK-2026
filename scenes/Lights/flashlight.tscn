@@ -10,13 +10,14 @@ shader_parameter/distance_falloff = 2.6470001224726203
 shader_parameter/edge_softness = 0.63000002922648
 shader_parameter/beam_length = 0.7190000325225601
 shader_parameter/intensity = 0.4030000191425
-shader_parameter/cone_offset_x = -0.041999978245000014
+shader_parameter/cone_offset_x = -0.04199997824500001
 shader_parameter/circle_radius = 0.09100000292547
 shader_parameter/circle_falloff = 1.15200005146012
 shader_parameter/circle_intensity = 0.44800002128
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="Flashlight" type="PointLight2D" unique_id=445911353]
+color = Color(0.82, 0.9, 1, 1)
 range_item_cull_mask = 13
 shadow_enabled = true
 shadow_filter = 2

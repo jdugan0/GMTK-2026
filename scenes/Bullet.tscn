@@ -49,5 +49,6 @@ shape = SubResource("CircleShape2D_2ropf")
 
 [node name="EntityLight" parent="." unique_id=1084933953 instance=ExtResource("3_4utqk")]
 color = Color(1, 0.07058824, 0.08627451, 1)
-range_item_cull_mask = 139
+energy = 0.45
+range_item_cull_mask = 15
 shadow_enabled = true
