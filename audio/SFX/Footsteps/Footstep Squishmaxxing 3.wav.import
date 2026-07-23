@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1cdmkba2onrg"
+path="res://.godot/imported/Footstep Squishmaxxing 3.wav-fe8a1b9bb05bc3334cb90f1283907351.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Footsteps/Footstep Squishmaxxing 3.wav"
+dest_files=["res://.godot/imported/Footstep Squishmaxxing 3.wav-fe8a1b9bb05bc3334cb90f1283907351.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
