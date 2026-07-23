@@ -19,6 +19,9 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private float attackDistance;
 
+    [Export]
+    private AnimatedSprite2D sprite2D;
+
     [ExportGroup("Attacking")]
     [Export]
     private float attackDamage;
@@ -80,6 +83,7 @@ public partial class Enemy : CharacterBody2D
         if (spotted || attacking)
         {
             GameManager.instance.ReportCombat();
+            UpdateAnimation(GlobalPosition.DirectionTo(player.GlobalPosition));
         }
         if (attackTimer > 0)
         {
@@ -167,6 +171,14 @@ public partial class Enemy : CharacterBody2D
         {
             OnVelocityComputed(newVelocity);
         }
+    }
+
+    private void UpdateAnimation(Vector2 lookDir)
+    {
+        if (Mathf.Abs(lookDir.X) > Mathf.Abs(lookDir.Y))
+            sprite2D.Play(lookDir.X > 0 ? "RIGHT" : "LEFT");
+        else
+            sprite2D.Play(lookDir.Y > 0 ? "DOWN" : "UP");
     }
 
     private void OnVelocityComputed(Vector2 safeVelocity)

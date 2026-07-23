@@ -1,18 +1,47 @@
 [gd_scene format=3 uid="uid://co543ea3t5oux"]
 
 [ext_resource type="Script" uid="uid://ykpdbgeyhgoi" path="res://scripts/Bullet.cs" id="1_hf8mt"]
+[ext_resource type="Texture2D" uid="uid://ct2qyp7eqt66" path="res://art/meat 100x100.png" id="2_p1sfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4utqk"]
+atlas = ExtResource("2_p1sfj")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51h0o"]
+atlas = ExtResource("2_p1sfj")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m4t0"]
+atlas = ExtResource("2_p1sfj")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1sfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4utqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51h0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m4t0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ropf"]
 radius = 30.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4w0vo"]
-size = Vector2(40, 30)
-
 [node name="Bullet" type="Area2D" unique_id=93922470]
 script = ExtResource("1_hf8mt")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1814573370]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_p1sfj")
+frame_progress = 0.35501513
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046323349]
 shape = SubResource("CircleShape2D_2ropf")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1135790459]
-texture = SubResource("PlaceholderTexture2D_4w0vo")

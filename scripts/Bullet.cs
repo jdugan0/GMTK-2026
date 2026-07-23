@@ -31,6 +31,7 @@ public partial class Bullet() : Area2D
 
     public override void _Ready()
     {
+		GetChild<AnimatedSprite2D>(0).Play();
         BodyEntered += OnCollide;
     }
 

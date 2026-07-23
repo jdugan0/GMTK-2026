@@ -1,25 +1,82 @@
 [gd_scene format=3 uid="uid://b117vcs0b2j6e"]
 
 [ext_resource type="Script" uid="uid://b80mi7obmn6e4" path="res://scripts/Enemy.cs" id="1_3gvst"]
+[ext_resource type="Texture2D" uid="uid://b4dwpsj6ighei" path="res://art/Townsfolk180x315.png" id="2_55jtl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5q5h1"]
-radius = 100.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
+radius = 76.0
+height = 300.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(0, 945, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8do"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(0, 630, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwv6"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(0, 315, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vja8"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(0, 0, 180, 315)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gvst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpr68")
+}],
+"loop": 1,
+"name": &"DOWN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8do")
+}],
+"loop": 1,
+"name": &"LEFT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwv6")
+}],
+"loop": 1,
+"name": &"RIGHT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vja8")
+}],
+"loop": 1,
+"name": &"UP",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D")]
 script = ExtResource("1_3gvst")
 losDistance = 2000.0
 MovementSpeed = 700.0
 _navigationAgent = NodePath("NavigationAgent2D")
 attackDistance = 300.0
+sprite2D = NodePath("AnimatedSprite2D")
 attackDamage = 5.0
 attackCooldown = 0.4
 attackDelay = 0.1
 attackStun = 0.2
 attackRange = 400.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=499636303]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
-shape = SubResource("CircleShape2D_5q5h1")
+position = Vector2(10, -1)
+shape = SubResource("CapsuleShape2D_3li8b")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1860509061]
+sprite_frames = SubResource("SpriteFrames_3gvst")
+animation = &"DOWN"

@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_v6fml"]
 [ext_resource type="SpriteFrames" uid="uid://d3qoosvwaw66l" path="res://art/sprite_frames/Player_frames.tres" id="3_3li8b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5q5h1"]
-radius = 100.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
+radius = 56.0
+height = 306.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D") groups=["player"]]
 script = ExtResource("1_p0vlq")
@@ -26,10 +27,11 @@ sprite2D = NodePath("AnimatedSprite2D")
 countDown = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
-shape = SubResource("CircleShape2D_5q5h1")
+position = Vector2(-11, 0)
+shape = SubResource("CapsuleShape2D_iwav8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.65, 0.65)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=687405642]
