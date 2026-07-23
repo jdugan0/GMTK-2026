@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://d3qoosvwaw66l"]
 
-[ext_resource type="Texture2D" uid="uid://dtb2ba265c8ud" path="res://art/Player180x315.png" id="1_f42nb"]
+[ext_resource type="Texture2D" uid="uid://dnq8es0oanw1c" path="res://art/PlayerHealthy180x135.png" id="1_f42nb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkqm0"]
 atlas = ExtResource("1_f42nb")
@@ -18,7 +18,7 @@ region = Rect2(0, 630, 180, 315)
 atlas = ExtResource("1_f42nb")
 region = Rect2(0, 945, 180, 315)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxn8n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f42nb"]
 atlas = ExtResource("1_f42nb")
 region = Rect2(0, 315, 180, 315)
 
@@ -58,7 +58,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dxn8n")
+"texture": SubResource("AtlasTexture_f42nb")
 }],
 "loop": 1,
 "name": &"SIDE",
