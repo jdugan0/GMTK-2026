@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4c2nhm45a53j"
+path="res://.godot/imported/Warble 1.wav-df4dbe79a0f3dd550c34801d0ecd9090.sample"
+
+[deps]
+
+source_file="res://audio/Music/RandomizedAmbience/Warble 1.wav"
+dest_files=["res://.godot/imported/Warble 1.wav-df4dbe79a0f3dd550c34801d0ecd9090.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddsi5no8xrmsx"
+path="res://.godot/imported/Howl 2.wav-82ea5f46631b064159260148055024b0.sample"
+
+[deps]
+
+source_file="res://audio/Music/RandomizedAmbience/Howl 2.wav"
+dest_files=["res://.godot/imported/Howl 2.wav-82ea5f46631b064159260148055024b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
