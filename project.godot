@@ -43,6 +43,13 @@ wall=""
 player_col=""
 exit=""
 
+[layer_names]
+
+2d_render/layer_1="Floor"
+2d_render/layer_2="Walls"
+2d_render/layer_3="Player"
+2d_render/layer_4="Enemies"
+
 [input]
 
 LEFT={

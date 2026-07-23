@@ -73,6 +73,7 @@ radius = 53.0
 height = 308.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
+light_mask = 8
 script = ExtResource("1_3gvst")
 losDistance = 1000.0
 leashDistance = 1100.0
@@ -90,6 +91,7 @@ attackRange = 325.0
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1860509061]
+light_mask = 8
 sprite_frames = SubResource("SpriteFrames_3gvst")
 animation = &"DOWN"
 
