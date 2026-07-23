@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5uvotbwyw12g"
+path="res://.godot/imported/Footstep Goop 4.wav-67bf43ea78ee792b5b648134b882ccff.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Footsteps/Footstep Goop 4.wav"
+dest_files=["res://.godot/imported/Footstep Goop 4.wav-67bf43ea78ee792b5b648134b882ccff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
