@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c6guir5jma5c7"]
+
+[ext_resource type="Script" uid="uid://5kh68k823ora" path="res://scripts/Movement.cs" id="1_p0vlq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5q5h1"]
+radius = 100.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera") groups=["player"]]
+script = ExtResource("1_p0vlq")
+MaxSpeed = 700.0
+Acceleration = 3500.0
+Friction = 3000.0
+camera = NodePath("Camera2D")
+mouseCameraWeight = 0.175
+ripTime = 1.0
+attackDamage = 3.0
+attackSpeed = 1500.0
+attackCountdownCost = 5.0
+safetyTime = 1.5
+enemyKnockback = 1500.0
+stunTime = 0.3
+countDown = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=499636303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
+shape = SubResource("CircleShape2D_5q5h1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
