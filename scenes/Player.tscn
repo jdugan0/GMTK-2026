@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_v6fml"]
 [ext_resource type="SpriteFrames" uid="uid://d3qoosvwaw66l" path="res://art/sprite_frames/Player_frames.tres" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="5_70d11"]
+[ext_resource type="Texture2D" uid="uid://bthdbvmp4yvi4" path="res://art/arrow.png" id="5_qu4a1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
 radius = 28.0
@@ -13,7 +14,7 @@ height = 106.0
 radius = 41.0
 height = 300.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight") groups=["player", "player_col"]]
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight", "arrow") groups=["player", "player_col"]]
 light_mask = 4
 y_sort_enabled = true
 collision_layer = 257
@@ -34,6 +35,7 @@ stunTime = 0.6
 bulletScene = ExtResource("2_v6fml")
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
+arrow = NodePath("ArrowLayer/Arrow")
 countDown = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
@@ -65,3 +67,10 @@ collision_layer = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=43917651]
 position = Vector2(-11, -1)
 shape = SubResource("CapsuleShape2D_mdl7e")
+
+[node name="ArrowLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Arrow" type="Sprite2D" parent="ArrowLayer" unique_id=1929614909]
+texture = ExtResource("5_qu4a1")
+offset = Vector2(271.395, 0)

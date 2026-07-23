@@ -81,6 +81,11 @@ public partial class Movement : CharacterBody2D
     [Export]
     Node2D flashlight;
 
+    [Export]
+    Sprite2D arrow;
+
+    Node2D exit;
+
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
@@ -91,6 +96,7 @@ public partial class Movement : CharacterBody2D
     public override void _Ready()
     {
         ripTimer = ripTime;
+        exit = (Node2D)GetTree().GetFirstNodeInGroup("exit");
     }
 
     public void Attack(float damage, Node2D attacker)
@@ -183,6 +189,9 @@ public partial class Movement : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
+        float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
+        arrow.GlobalPosition = GlobalPosition;
+        arrow.Rotation = angleToExit;
         safetyTimer -= dt;
         stunTimer -= dt;
         if (stunTimer <= 0)
