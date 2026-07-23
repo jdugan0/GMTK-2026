@@ -29,8 +29,18 @@ public partial class Bullet() : Area2D
         GlobalPosition += direction * attackSpeed * (float)delta;
     }
 
+    public override void _Ready()
+    {
+        BodyEntered += OnCollide;
+    }
+
     public void OnCollide(Node2D body)
     {
+        if (body is Enemy e)
+        {
+            QueueFree();
+            e.BulletStun(attackDamage);
+        }
         if (body.IsInGroup("destroy_bullet"))
         {
             QueueFree();

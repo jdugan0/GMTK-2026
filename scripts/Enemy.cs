@@ -144,4 +144,8 @@ public partial class Enemy : CharacterBody2D
 
         return (Node)result["collider"] == player;
     }
+    public void BulletStun(float stunTime)
+    {
+        stunTimer += stunTime;
+    }
 }

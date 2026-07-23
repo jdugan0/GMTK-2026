@@ -128,13 +128,7 @@ public partial class Movement : CharacterBody2D
             if (ripTimer <= 0)
             {
                 Bullet b = bulletScene.Instantiate<Bullet>();
-                b.Construct(
-                    attackDamage,
-                    attackRange,
-                    attackSpeed,
-                    mouseDir,
-                    GlobalPosition + new Vector2(50, 50)
-                );
+                b.Construct(attackDamage, attackRange, attackSpeed, mouseDir, GlobalPosition);
                 GetTree().Root.AddChild(b);
             }
             else
