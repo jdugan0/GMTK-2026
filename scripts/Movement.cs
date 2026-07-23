@@ -37,8 +37,18 @@ public partial class Movement : CharacterBody2D
     [Export]
     private float attackCountdownCost;
 
+    [Export]
+    private float safetyTime;
+
+    [Export]
+    private float enemyKnockback;
+
+    [Export]
+    private float stunTime;
+
     // timers
     private double ripTimer;
+    private double safetyTimer;
 
     [ExportGroup("Scenes")]
     [Export]
@@ -48,17 +58,40 @@ public partial class Movement : CharacterBody2D
     [Export]
     public double countDown;
     private double lostRip = 0;
+    private float stunTimer = 0;
 
     public override void _Ready()
     {
         ripTimer = ripTime;
     }
 
+    public void Attack(float damage, Node2D attacker)
+    {
+        if (safetyTimer <= 0)
+        {
+            safetyTimer = safetyTime;
+            countDown -= damage;
+            Vector2 dir = attacker.GlobalPosition - GlobalPosition;
+            Velocity -= dir.Normalized() * enemyKnockback;
+            moveEnabled = false;
+            stunTimer = stunTime;
+        }
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
-
+        safetyTimer -= dt;
+        stunTimer -= dt;
+        if (stunTimer <= 0)
+        {
+            moveEnabled = true;
+        }
         Vector2 input = Input.GetVector("LEFT", "RIGHT", "UP", "DOWN");
+        if (!moveEnabled)
+        {
+            input = Vector2.Zero;
+        }
         Vector2 targetVelocity = input * MaxSpeed;
 
         camera.GlobalPosition =
@@ -71,10 +104,7 @@ public partial class Movement : CharacterBody2D
         {
             countDown -= delta;
         }
-        if (moveEnabled)
-        {
-            MoveAndSlide();
-        }
+        MoveAndSlide();
 
         // attacking
         Vector2 mouseDir = (GetGlobalMousePosition() - GlobalPosition).Normalized();

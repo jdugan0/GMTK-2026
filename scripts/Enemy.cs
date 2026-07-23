@@ -16,6 +16,29 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private NavigationAgent2D _navigationAgent;
 
+    [Export]
+    private float attackDistance;
+
+    [ExportGroup("Attacking")]
+    [Export]
+    private float attackDamage;
+
+    [Export]
+    private float attackCooldown;
+
+    [Export]
+    private float attackDelay;
+
+    [Export]
+    private float attackStun;
+
+    [Export]
+    private float attackRange;
+
+    private bool attacking = false;
+    private float attackTimer = 0;
+    private float stunTimer = 0;
+
     public override void _Ready()
     {
         player = (Movement)GetTree().GetFirstNodeInGroup("player");
@@ -29,14 +52,47 @@ public partial class Enemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        float dt = (float)delta;
+        if (attackTimer > 0)
+        {
+            attackTimer -= dt;
+        }
+
+        if (attacking)
+        {
+            if (attackTimer <= 0)
+            {
+                if (player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
+                {
+                    player.Attack(attackDamage, this);
+                    attacking = false;
+                    attackTimer = attackCooldown;
+                    stunTimer = attackStun;
+                }
+            }
+            return;
+        }
+        if (stunTimer > 0)
+        {
+            stunTimer -= dt;
+            return;
+        }
         if (!CanSeePlayer())
         {
-            GD.Print("No plater");
             return;
         }
         if (NavigationServer2D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
         {
-            GD.Print("no map");
+            return;
+        }
+        GD.Print(player.GlobalPosition.DistanceTo(GlobalPosition));
+        if (player.GlobalPosition.DistanceTo(GlobalPosition) < attackDistance)
+        {
+            if (attackTimer <= 0)
+            {
+                attackTimer = attackDelay;
+                attacking = true;
+            }
             return;
         }
 
@@ -44,9 +100,13 @@ public partial class Enemy : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
+            if (attackTimer <= 0)
+            {
+                attackTimer = attackDelay;
+                attacking = true;
+            }
             return;
         }
-        GD.Print("RAHH");
         Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
         Vector2 newVelocity = GlobalPosition.DirectionTo(nextPathPosition) * MovementSpeed;
         if (_navigationAgent.AvoidanceEnabled)
