@@ -97,6 +97,7 @@ public partial class Movement : CharacterBody2D
     {
         if (safetyTimer <= 0)
         {
+            AudioManager.instance.PlaySFX("playerHurt");
             safetyTimer = safetyTime;
             countDown -= damage;
             Vector2 dir = attacker.GlobalPosition - GlobalPosition;

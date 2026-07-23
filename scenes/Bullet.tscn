@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ykpdbgeyhgoi" path="res://scripts/Bullet.cs" id="1_hf8mt"]
 [ext_resource type="Texture2D" uid="uid://ct2qyp7eqt66" path="res://art/meat 100x100.png" id="2_p1sfj"]
+[ext_resource type="PackedScene" uid="uid://b160yf82cnr8o" path="res://scenes/Lights/entity_light.tscn" id="3_4utqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4utqk"]
 atlas = ExtResource("2_p1sfj")
@@ -45,3 +46,8 @@ frame_progress = 0.35501513
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046323349]
 shape = SubResource("CircleShape2D_2ropf")
+
+[node name="EntityLight" parent="." unique_id=1084933953 instance=ExtResource("3_4utqk")]
+color = Color(1, 0.07058824, 0.08627451, 1)
+range_item_cull_mask = 139
+shadow_enabled = true
