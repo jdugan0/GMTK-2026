@@ -3,30 +3,29 @@ using Godot;
 
 public partial class Bullet() : Area2D
 {
-    float attackDamage,
-        attackRange,
-        attackSpeed;
+    float knockback,
+        stun,
+        speed;
     Vector2 direction;
 
     public void Construct(
-        float attackDamage,
-        float attackRange,
-        float attackSpeed,
+        float knockback,
+        float stun,
+        float speed,
         Vector2 direction,
         Vector2 position
     )
     {
-        this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
-        this.attackRange = attackRange;
-        this.direction = direction;
+        this.knockback = knockback;
+        this.stun = stun;
+        this.speed = speed;
+        this.direction = direction.Normalized();
         GlobalPosition = position;
     }
 
     public override void _Process(double delta)
     {
-        var d = direction.Normalized();
-        GlobalPosition += direction * attackSpeed * (float)delta;
+        GlobalPosition += direction * speed * (float)delta;
     }
 
     public override void _Ready()
@@ -41,12 +40,13 @@ public partial class Bullet() : Area2D
         if (body is Area2D)
         {
             OnCollide(body.GetParent<Node2D>());
+            return;
         }
         if (body is Enemy e)
         {
             AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
-            e.BulletStun(attackDamage);
+            e.Shove(direction, knockback, stun);
         }
         if (body.IsInGroup("destroy_bullet"))
         {

@@ -5,7 +5,14 @@ public partial class Movement : CharacterBody2D
 {
     [ExportGroup("Movement")]
     [Export]
-    public float MaxSpeed = 1200f;
+    public float WalkSpeed = 475f;
+
+    [Export]
+    public float SprintSpeed = 800f;
+
+    // countdown lost per second = speed^2 * this, so faster movement is disproportionately expensive
+    [Export]
+    public float MoveCostFactor = 5e-6f;
 
     [Export]
     public float Acceleration = 7500f;
@@ -27,13 +34,13 @@ public partial class Movement : CharacterBody2D
     private float ripTime;
 
     [Export]
-    private float attackRange;
-
-    [Export]
-    private float attackDamage;
-
-    [Export]
     private float attackSpeed;
+
+    [Export]
+    private float throwKnockback;
+
+    [Export]
+    private float throwStun;
 
     [Export]
     private float attackCountdownCost;
@@ -153,7 +160,8 @@ public partial class Movement : CharacterBody2D
         {
             input = Vector2.Zero;
         }
-        Vector2 targetVelocity = input * MaxSpeed;
+        float maxSpeed = Input.IsActionPressed("SPRINT") ? SprintSpeed : WalkSpeed;
+        Vector2 targetVelocity = input * maxSpeed;
 
         camera.GlobalPosition =
             (GlobalPosition + mouseCameraWeight * GetGlobalMousePosition())
@@ -164,9 +172,10 @@ public partial class Movement : CharacterBody2D
         }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
-        if (Velocity.LengthSquared() > 0.05)
+        float speed = Velocity.Length();
+        if (speed > 0.05f)
         {
-            countDown -= delta;
+            countDown -= speed * speed * MoveCostFactor * delta;
         }
         if (countDown <= 0)
         {
@@ -218,7 +227,7 @@ public partial class Movement : CharacterBody2D
             if (ripTimer <= 0)
             {
                 Bullet b = bulletScene.Instantiate<Bullet>();
-                b.Construct(attackDamage, attackRange, attackSpeed, mouseDir, GlobalPosition);
+                b.Construct(throwKnockback, throwStun, attackSpeed, mouseDir, GlobalPosition);
                 GetTree().Root.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
             }

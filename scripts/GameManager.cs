@@ -22,7 +22,7 @@ public partial class GameManager : Node
     public void Die(Movement player)
     {
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
-        player.QueueFree();
+        player.Visible = false;
         if (InCombat)
         {
             AudioManager.instance.CancelSFXFadeOut("combat", 4.0f).p.Finished += () =>

@@ -6,10 +6,6 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
 atlas = ExtResource("2_55jtl")
-region = Rect2(0, 945, 180, 315)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft8do"]
-atlas = ExtResource("2_55jtl")
 region = Rect2(0, 630, 180, 315)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wwv6"]
@@ -28,14 +24,6 @@ animations = [{
 }],
 "loop": 1,
 "name": &"DOWN",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft8do")
-}],
-"loop": 1,
-"name": &"LEFT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,17 +53,19 @@ height = 308.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
 script = ExtResource("1_3gvst")
-losDistance = 1500.0
+losDistance = 1000.0
+leashDistance = 1100.0
+knockbackFriction = 2000.0
 MovementSpeed = 550.0
 _navigationAgent = NodePath("NavigationAgent2D")
-attackDistance = 300.0
+attackDistance = 250.0
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
 attackDamage = 5.0
-attackCooldown = 0.4
-attackDelay = 0.1
+attackCooldown = 0.8
+attackDelay = 0.3
 attackStun = 0.2
-attackRange = 400.0
+attackRange = 200.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
 
