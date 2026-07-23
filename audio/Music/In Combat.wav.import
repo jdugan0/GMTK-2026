@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lqu6ehyg86wk"
+path="res://.godot/imported/In Combat.wav-7ac65f42dcd3a860fcd695fca827642f.sample"
+
+[deps]
+
+source_file="res://audio/Music/In Combat.wav"
+dest_files=["res://.godot/imported/In Combat.wav-7ac65f42dcd3a860fcd695fca827642f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
