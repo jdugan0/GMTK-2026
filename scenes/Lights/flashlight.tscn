@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c14qnv4t2rwvp"]
+
+[ext_resource type="Script" uid="uid://nhjxj8nqn3om" path="res://scripts/Flashlight.cs" id="1_my8o0"]
+[ext_resource type="Shader" uid="uid://c0grxdmd0boy2" path="res://art/light/cone_light.gdshader" id="1_wb5tr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cone"]
+shader = ExtResource("1_wb5tr")
+shader_parameter/cone_half_angle_deg = 40.0000018525
+shader_parameter/distance_falloff = 3.0000001392401203
+shader_parameter/edge_softness = 0.6
+shader_parameter/beam_length = 0.7190000325225601
+shader_parameter/intensity = 0.45200002147
+shader_parameter/circle_radius = 0.12200000439797001
+shader_parameter/circle_falloff = 1.0
+shader_parameter/circle_intensity = 0.74000003515
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[node name="Flashlight" type="PointLight2D" unique_id=445911353]
+texture_scale = 2.0
+script = ExtResource("1_my8o0")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=830574029]
+disable_3d = true
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1283790499]
+material = SubResource("ShaderMaterial_cone")
+offset_right = 1024.0
+offset_bottom = 1024.0

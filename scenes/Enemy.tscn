@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b80mi7obmn6e4" path="res://scripts/Enemy.cs" id="1_3gvst"]
 [ext_resource type="Texture2D" uid="uid://b4dwpsj6ighei" path="res://art/Townsfolk180x315.png" id="2_55jtl"]
+[ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="3_mpr68"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
 radius = 76.0
@@ -58,13 +59,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
 script = ExtResource("1_3gvst")
 losDistance = 2000.0
-MovementSpeed = 700.0
+MovementSpeed = 500.0
 _navigationAgent = NodePath("NavigationAgent2D")
 attackDistance = 300.0
 sprite2D = NodePath("AnimatedSprite2D")
+flashlight = NodePath("Flashlight")
 attackDamage = 5.0
 attackCooldown = 0.4
 attackDelay = 0.1
@@ -80,3 +82,5 @@ shape = SubResource("CapsuleShape2D_3li8b")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1860509061]
 sprite_frames = SubResource("SpriteFrames_3gvst")
 animation = &"DOWN"
+
+[node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("3_mpr68")]

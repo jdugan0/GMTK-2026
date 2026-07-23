@@ -58,6 +58,9 @@ public partial class Movement : CharacterBody2D
     [Export]
     private AnimatedSprite2D sprite2D;
 
+    [Export]
+    Node2D flashlight;
+
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
@@ -174,6 +177,7 @@ public partial class Movement : CharacterBody2D
 
         // attacking
         Vector2 mouseDir = (GetGlobalMousePosition() - GlobalPosition).Normalized();
+        flashlight.Rotation = mouseDir.Angle();
         UpdateAnimation(mouseDir);
         if (Input.IsActionJustPressed("ATTACK"))
         {

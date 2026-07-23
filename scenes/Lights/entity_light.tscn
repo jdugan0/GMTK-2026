@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b160yf82cnr8o"]
+
+[ext_resource type="Texture2D" uid="uid://b0x4qvqr4evfh" path="res://art/light/circle_light.tres" id="1_pw0d1"]
+
+[node name="EntityLight" type="PointLight2D" unique_id=1084933953]
+texture = ExtResource("1_pw0d1")
+texture_scale = 7.85

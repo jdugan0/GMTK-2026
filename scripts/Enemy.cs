@@ -22,6 +22,9 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private AnimatedSprite2D sprite2D;
 
+    [Export]
+    Node2D flashlight;
+
     [ExportGroup("Attacking")]
     [Export]
     private float attackDamage;
@@ -175,6 +178,7 @@ public partial class Enemy : CharacterBody2D
 
     private void UpdateAnimation(Vector2 lookDir)
     {
+        flashlight.Rotation = lookDir.Angle();
         if (Mathf.Abs(lookDir.X) > Mathf.Abs(lookDir.Y))
             sprite2D.Play(lookDir.X > 0 ? "RIGHT" : "LEFT");
         else
