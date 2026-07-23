@@ -49,23 +49,20 @@ y_sort_origin = -47
 navigation_enabled = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1015651402]
-color = Color(0.02646624, 1.3577384e-05, 0.051751576, 1)
+color = Color(0.03137255, 0.011764706, 0, 1)
 
 [node name="Exit" parent="." unique_id=1379763701 instance=ExtResource("5_tt56a")]
 position = Vector2(5296, 824)
 
 [node name="Torch" parent="." unique_id=214355063 instance=ExtResource("5_y0s4v")]
+visible = false
 position = Vector2(613, 898)
-range_item_cull_mask = 1
 
 [node name="Torch2" parent="." unique_id=1385633738 instance=ExtResource("5_y0s4v")]
 position = Vector2(3056, 74)
-range_item_cull_mask = 1
 
 [node name="Torch3" parent="." unique_id=1543704905 instance=ExtResource("5_y0s4v")]
 position = Vector2(3579, 1285)
-range_item_cull_mask = 1
 
 [node name="Enemy" parent="." unique_id=1156526680 instance=ExtResource("4_y0s4v")]
-light_mask = 1
 position = Vector2(2496, 878)
