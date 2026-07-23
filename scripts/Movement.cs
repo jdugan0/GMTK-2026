@@ -106,6 +106,29 @@ public partial class Movement : CharacterBody2D
             Play("BACK", flip: false);
     }
 
+    private void PlayFootstep()
+    {
+        if (
+            AudioManager.instance.GetPlaying("footsteps").Count == 0
+            && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
+            && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
+        )
+        {
+            if (countDown <= 33)
+            {
+                AudioManager.instance.PlaySFX("footstepsGoopMore");
+            }
+            else if (countDown <= 66)
+            {
+                AudioManager.instance.PlaySFX("footstepsGoop");
+            }
+            else
+            {
+                AudioManager.instance.PlaySFX("footsteps");
+            }
+        }
+    }
+
     private void Play(string anim, bool flip)
     {
         sprite2D.FlipH = flip;
@@ -131,7 +154,10 @@ public partial class Movement : CharacterBody2D
         camera.GlobalPosition =
             (GlobalPosition + mouseCameraWeight * GetGlobalMousePosition())
             / (1 + mouseCameraWeight);
-
+        if (input != Vector2.Zero)
+        {
+            PlayFootstep();
+        }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
         if (Velocity.LengthSquared() > 0.05)

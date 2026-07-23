@@ -31,7 +31,7 @@ public partial class Bullet() : Area2D
 
     public override void _Ready()
     {
-		GetChild<AnimatedSprite2D>(0).Play();
+        GetChild<AnimatedSprite2D>(0).Play();
         BodyEntered += OnCollide;
     }
 
@@ -39,11 +39,13 @@ public partial class Bullet() : Area2D
     {
         if (body is Enemy e)
         {
+            AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
             e.BulletStun(attackDamage);
         }
         if (body.IsInGroup("destroy_bullet"))
         {
+            AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
         }
     }
