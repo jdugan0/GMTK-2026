@@ -7,7 +7,7 @@
 shader = ExtResource("1_wb5tr")
 shader_parameter/cone_half_angle_deg = 40.0000018525
 shader_parameter/distance_falloff = 5.00000023424012
-shader_parameter/edge_softness = 0.6
+shader_parameter/edge_softness = 0.50700002338398
 shader_parameter/beam_length = 0.7190000325225601
 shader_parameter/intensity = 0.6000000285
 shader_parameter/circle_radius = 0.06500000169047
@@ -16,6 +16,7 @@ shader_parameter/circle_intensity = 0.74000003515
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="Flashlight" type="PointLight2D" unique_id=445911353]
+shadow_enabled = true
 texture_scale = 2.0
 script = ExtResource("1_my8o0")
 

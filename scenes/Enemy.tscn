@@ -62,7 +62,7 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
 script = ExtResource("1_3gvst")
 losDistance = 2000.0
-MovementSpeed = 500.0
+MovementSpeed = 650.0
 _navigationAgent = NodePath("NavigationAgent2D")
 attackDistance = 300.0
 sprite2D = NodePath("AnimatedSprite2D")
