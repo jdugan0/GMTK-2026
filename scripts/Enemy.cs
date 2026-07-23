@@ -38,6 +38,7 @@ public partial class Enemy : CharacterBody2D
     private bool attacking = false;
     private float attackTimer = 0;
     private float stunTimer = 0;
+    private bool spotted;
 
     public override void _Ready()
     {
@@ -53,6 +54,19 @@ public partial class Enemy : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
+        bool seesPlayer = CanSeePlayer();
+        if (seesPlayer)
+        {
+            spotted = true;
+        }
+        if (spotted && player.GlobalPosition.DistanceTo(GlobalPosition) > losDistance)
+        {
+            spotted = false;
+        }
+        if (spotted || attacking)
+        {
+            GameManager.instance.ReportCombat();
+        }
         if (attackTimer > 0)
         {
             attackTimer -= dt;
@@ -77,7 +91,7 @@ public partial class Enemy : CharacterBody2D
             stunTimer -= dt;
             return;
         }
-        if (!CanSeePlayer())
+        if (!spotted)
         {
             return;
         }
@@ -141,9 +155,9 @@ public partial class Enemy : CharacterBody2D
         Godot.Collections.Dictionary result = spaceState.IntersectRay(query);
         if (result.Count == 0)
             return false;
-
         return (Node)result["collider"] == player;
     }
+
     public void BulletStun(float stunTime)
     {
         stunTimer += stunTime;

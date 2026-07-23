@@ -59,6 +59,7 @@ public partial class Movement : CharacterBody2D
     public double countDown;
     private double lostRip = 0;
     private float stunTimer = 0;
+    private bool playedRip = false;
 
     public override void _Ready()
     {
@@ -111,6 +112,15 @@ public partial class Movement : CharacterBody2D
         if (Input.IsActionJustPressed("ATTACK"))
         {
             lostRip = 0;
+            playedRip = false;
+            var x = AudioManager.instance.PlaySFX("ripStart");
+            x.p.Finished += () =>
+            {
+                if (!playedRip && Input.IsActionPressed("ATTACK"))
+                {
+                    AudioManager.instance.PlaySFX("ripLoop");
+                }
+            };
         }
         if (Input.IsActionPressed("ATTACK"))
         {
@@ -120,8 +130,18 @@ public partial class Movement : CharacterBody2D
                 ripTimer -= delta;
                 countDown -= delta * (attackCountdownCost / ripTime);
                 lostRip += delta * (attackCountdownCost / ripTime);
+                playedRip = false;
             }
-            else { }
+            else
+            {
+                if (!playedRip)
+                {
+                    AudioManager.instance.CancelSFX("ripStart");
+                    AudioManager.instance.CancelSFX("ripLoop");
+                    AudioManager.instance.PlaySFX("ripEnd");
+                    playedRip = true;
+                }
+            }
         }
         if (Input.IsActionJustReleased("ATTACK"))
         {
@@ -130,10 +150,14 @@ public partial class Movement : CharacterBody2D
                 Bullet b = bulletScene.Instantiate<Bullet>();
                 b.Construct(attackDamage, attackRange, attackSpeed, mouseDir, GlobalPosition);
                 GetTree().Root.AddChild(b);
+                AudioManager.instance.PlaySFX("throw");
             }
             else
             {
                 countDown += lostRip;
+                AudioManager.instance.CancelSFX("ripStart");
+                AudioManager.instance.CancelSFX("ripLoop");
+                playedRip = true;
             }
             ripTimer = ripTime;
         }

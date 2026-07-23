@@ -38,6 +38,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_ffa7b"]
 script = ExtResource("2_0au01")
 stream = ExtResource("4_4j618")
+volume = 10.0
 name = "ripLoop"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
@@ -56,12 +57,13 @@ stream_2/stream = ExtResource("8_0x8y0")
 [sub_resource type="Resource" id="Resource_l6xtm"]
 script = ExtResource("2_0au01")
 stream = SubResource("AudioStreamRandomizer_0gm4k")
-name = "limbThrow"
+name = "throw"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
 [sub_resource type="Resource" id="Resource_druqg"]
 script = ExtResource("2_0au01")
 stream = ExtResource("9_qgn6y")
+volume = 10.0
 name = "outOfCombatBackground"
 metadata/_custom_type_script = "uid://007myadtw53h"
 

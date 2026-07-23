@@ -25,8 +25,9 @@ bulletScene = ExtResource("2_3wh16")
 [node name="UI" parent="." unique_id=66284215 node_paths=PackedStringArray("player") instance=ExtResource("3_4w0vo")]
 player = NodePath("../Player")
 
-[node name="Enemy" parent="." unique_id=731686658 instance=ExtResource("4_eu8vo")]
-position = Vector2(861, -124)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1640339992]
 navigation_polygon = SubResource("NavigationPolygon_6ke0t")
+
+[node name="Enemy" parent="." unique_id=413399882 instance=ExtResource("4_eu8vo")]
+position = Vector2(110, -1582)
+losDistance = 1000.0

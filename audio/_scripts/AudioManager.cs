@@ -39,10 +39,13 @@ public partial class AudioManager : Node
         player.VolumeDb = s.volume;
         // playing.Add(s, player);
         Guid id = Guid.NewGuid();
-        player.Finished += () => playing.Remove(id);
-        player.Finished += () => playingByName.Remove(sound);
-        player.Finished += () => names.Remove(id);
-        player.Finished += () => player.QueueFree();
+        player.Finished += () =>
+        {
+            playing.Remove(id);
+            RemoveByName(sound, id);
+            names.Remove(id);
+            player.QueueFree();
+        };
         // player.Finished += ()=>playing.Remove(s);
         from.AddChild(player);
         playing.Add(id, player);
@@ -61,7 +64,7 @@ public partial class AudioManager : Node
         return PlaySFX(from, sound, 0);
     }
 
-    public (AudioStreamPlayer, Guid) PlaySFX(string sound)
+    public (AudioStreamPlayer p, Guid id) PlaySFX(string sound)
     {
         return PlaySFX(this, sound, 0);
     }
@@ -71,31 +74,93 @@ public partial class AudioManager : Node
         return PlaySFX(this, sound, time);
     }
 
+    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(Node from, string sound, float fadeDuration, float time)
+    {
+        var (player, id) = PlaySFX(from, sound, time);
+        float targetDb = dict[sound].volume;
+        player.VolumeDb = -80f;
+        Tween tween = player.CreateTween();
+        tween.TweenProperty(player, "volume_db", targetDb, fadeDuration);
+        return (player, id);
+    }
+
+    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(Node from, string sound, float fadeDuration)
+    {
+        return PlaySFXFadeIn(from, sound, fadeDuration, 0);
+    }
+
+    public (AudioStreamPlayer p, Guid id) PlaySFXFadeIn(string sound, float fadeDuration)
+    {
+        return PlaySFXFadeIn(this, sound, fadeDuration, 0);
+    }
+
+    public (bool, AudioStreamPlayer) CancelSFXFadeOut(Guid id, float fadeDuration)
+    {
+        if (!IsPlaying(id))
+        {
+            return (false, null);
+        }
+        var p = playing[id];
+        Tween tween = p.CreateTween();
+        tween.TweenProperty(p, "volume_db", -80f, fadeDuration);
+        tween.Finished += () => CancelSFX(id);
+        return (true, p);
+    }
+
+    public (bool, AudioStreamPlayer p) CancelSFXFadeOut(string sound, float fadeDuration)
+    {
+        AudioStreamPlayer last = null;
+        foreach (var s in GetPlaying(sound).ToList())
+        {
+            var (cancelled, p) = CancelSFXFadeOut(s.id, fadeDuration);
+            if (cancelled)
+            {
+                last = p;
+            }
+        }
+        return (last != null, last);
+    }
+
     public (bool, AudioStreamPlayer) CancelSFX(Guid id)
     {
         if (IsPlaying(id))
         {
             var p = playing[id];
             playing.Remove(id);
-            playingByName.Remove(names[id]);
+            RemoveByName(names[id], id);
             names.Remove(id);
+            p.Stop();
             p.QueueFree();
             return (true, p);
         }
         return (false, null);
     }
 
-    public (bool, AudioStreamPlayer) CancelSFX(string sound)
+    public (bool cancel, AudioStreamPlayer p) CancelSFX(string sound)
     {
-        foreach (var s in GetPlaying(sound))
+        AudioStreamPlayer last = null;
+        foreach (var s in GetPlaying(sound).ToList())
         {
-            playingByName.Remove(sound);
             playing.Remove(s.id);
             names.Remove(s.id);
+            s.p.Stop();
             s.p.QueueFree();
-            return (true, s.p);
+            last = s.p;
         }
-        return (false, null);
+        playingByName.Remove(sound);
+        return (last != null, last);
+    }
+
+    private void RemoveByName(string sound, Guid id)
+    {
+        if (playingByName.TryGetValue(sound, out var list))
+        {
+            list.RemoveAll(e => e.id == id);
+            if (list.Count == 0)
+            {
+                playingByName.Remove(sound);
+            }
+        }
     }
 
     public List<(AudioStreamPlayer p, Guid id)> GetPlaying(string sound)
