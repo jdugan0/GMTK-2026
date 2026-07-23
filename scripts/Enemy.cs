@@ -40,6 +40,20 @@ public partial class Enemy : CharacterBody2D
     private float stunTimer = 0;
     private bool spotted;
 
+    private string _lastDebugState = "";
+
+    private void DebugState(string state)
+    {
+        if (state == _lastDebugState)
+            return;
+        _lastDebugState = state;
+        GD.Print(
+            $"[{Name}] {state} | dist={player.GlobalPosition.DistanceTo(GlobalPosition):F0} "
+                + $"attackTimer={attackTimer:F2} stunTimer={stunTimer:F2} "
+                + $"attacking={attacking} spotted={spotted}"
+        );
+    }
+
     public override void _Ready()
     {
         player = (Movement)GetTree().GetFirstNodeInGroup("player");
@@ -79,33 +93,49 @@ public partial class Enemy : CharacterBody2D
                 attacking = false;
                 if (player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
                 {
+                    DebugState("ATTACK_HIT");
                     player.Attack(attackDamage, this);
                     attackTimer = attackCooldown;
                     stunTimer = attackStun;
                 }
+                else
+                {
+                    DebugState("ATTACK_WHIFF (player left attackRange during windup)");
+                }
+            }
+            else
+            {
+                DebugState("ATTACK_WINDUP");
             }
             return;
         }
         if (stunTimer > 0)
         {
             stunTimer -= dt;
+            DebugState("STUNNED");
             return;
         }
         if (!spotted)
         {
+            DebugState("IDLE (not spotted)");
             return;
         }
         if (NavigationServer2D.MapGetIterationId(_navigationAgent.GetNavigationMap()) == 0)
         {
+            DebugState("WAITING_FOR_NAVMAP");
             return;
         }
-        GD.Print(player.GlobalPosition.DistanceTo(GlobalPosition));
         if (player.GlobalPosition.DistanceTo(GlobalPosition) < attackDistance)
         {
             if (attackTimer <= 0)
             {
+                DebugState("ATTACK_START (in attackDistance)");
                 attackTimer = attackDelay;
                 attacking = true;
+            }
+            else
+            {
+                DebugState("COOLDOWN_WAIT (in attackDistance, attackTimer running)");
             }
             return;
         }
@@ -116,11 +146,17 @@ public partial class Enemy : CharacterBody2D
         {
             if (attackTimer <= 0 && player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
             {
+                DebugState("ATTACK_START (nav finished)");
                 attackTimer = attackDelay;
                 attacking = true;
             }
+            else
+            {
+                DebugState("NAV_FINISHED_STUCK (path ended, player out of reach)");
+            }
             return;
         }
+        DebugState("CHASING");
         Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
         Vector2 newVelocity = GlobalPosition.DirectionTo(nextPathPosition) * MovementSpeed;
         if (_navigationAgent.AvoidanceEnabled)
@@ -161,5 +197,6 @@ public partial class Enemy : CharacterBody2D
     public void BulletStun(float stunTime)
     {
         stunTimer += stunTime;
+        GD.Print($"[{Name}] BULLET_STUN +{stunTime:F2}s -> stunTimer={stunTimer:F2}");
     }
 }

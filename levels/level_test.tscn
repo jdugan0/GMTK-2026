@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dkqwtr4rnmqrm"]
 
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/Player.tscn" id="1_iho50"]
-[ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_3wh16"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/UI.tscn" id="3_4w0vo"]
 [ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="4_eu8vo"]
 [ext_resource type="PackedScene" uid="uid://b3tplxsxqgq86" path="res://scenes/GameManager.tscn" id="5_5yd65"]
@@ -21,7 +20,6 @@ texture = SubResource("PlaceholderTexture2D_6ke0t")
 
 [node name="Player" parent="." unique_id=1156526680 instance=ExtResource("1_iho50")]
 position = Vector2(311, 258)
-bulletScene = ExtResource("2_3wh16")
 
 [node name="UI" parent="." unique_id=66284215 node_paths=PackedStringArray("player") instance=ExtResource("3_4w0vo")]
 player = NodePath("../Player")
