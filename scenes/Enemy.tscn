@@ -11,10 +11,10 @@ losDistance = 2000.0
 MovementSpeed = 700.0
 _navigationAgent = NodePath("NavigationAgent2D")
 attackDistance = 300.0
-attackDamage = 5.0
-attackCooldown = 1.0
+attackDamage = 100.0
+attackCooldown = 0.4
 attackDelay = 0.1
-attackStun = 0.5
+attackStun = 0.2
 attackRange = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=499636303]

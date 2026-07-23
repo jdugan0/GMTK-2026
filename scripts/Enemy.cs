@@ -76,10 +76,10 @@ public partial class Enemy : CharacterBody2D
         {
             if (attackTimer <= 0)
             {
+                attacking = false;
                 if (player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
                 {
                     player.Attack(attackDamage, this);
-                    attacking = false;
                     attackTimer = attackCooldown;
                     stunTimer = attackStun;
                 }
@@ -114,7 +114,7 @@ public partial class Enemy : CharacterBody2D
 
         if (_navigationAgent.IsNavigationFinished())
         {
-            if (attackTimer <= 0)
+            if (attackTimer <= 0 && player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
             {
                 attackTimer = attackDelay;
                 attacking = true;

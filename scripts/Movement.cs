@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 public partial class Movement : CharacterBody2D
@@ -104,6 +105,12 @@ public partial class Movement : CharacterBody2D
         if (Velocity.LengthSquared() > 0.05)
         {
             countDown -= delta;
+        }
+        if (countDown <= 0)
+        {
+            _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
+            GameManager.instance.Die();
+            return;
         }
         MoveAndSlide();
 

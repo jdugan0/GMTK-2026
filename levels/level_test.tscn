@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_3wh16"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/UI.tscn" id="3_4w0vo"]
 [ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="4_eu8vo"]
+[ext_resource type="PackedScene" uid="uid://b3tplxsxqgq86" path="res://scenes/GameManager.tscn" id="5_5yd65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ke0t"]
 size = Vector2(100, 100)
@@ -31,3 +32,5 @@ navigation_polygon = SubResource("NavigationPolygon_6ke0t")
 [node name="Enemy" parent="." unique_id=413399882 instance=ExtResource("4_eu8vo")]
 position = Vector2(110, -1582)
 losDistance = 1000.0
+
+[node name="GameManager" parent="." unique_id=2018085936 instance=ExtResource("5_5yd65")]

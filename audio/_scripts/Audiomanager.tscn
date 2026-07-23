@@ -101,5 +101,6 @@ name = "combat"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
 [node name="Audiomanager" type="Node" unique_id=2066337262]
+process_mode = 3
 script = ExtResource("1_ulbmk")
 sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep")])
