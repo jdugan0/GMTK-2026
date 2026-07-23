@@ -45,16 +45,25 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-100, -100, 100, -100, 
 agent_radius = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s5inv"]
-polygon = PackedVector2Array(-15.972, -14.036003, -6.292, -18.876, 100, -16.939995, 100, -9.195999, -6.292, -8.228004, -7.260002, 100, -17.908012, 100)
+polygon = PackedVector2Array(-25.965797, -49.447914, -16.934216, -50.80265, 100, -51.787994, 100, -42.108006, -18.740532, -40.416332, -17.908012, 100, -25.652, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x47dy"]
-polygon = PackedVector2Array(-16.939995, -100, -8.228012, -100, -9.195999, 100, -15.972008, 100)
+polygon = PackedVector2Array(-26.62001, -100, -17.908005, -100, -14.036011, 100, -24.683998, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cxckp"]
-polygon = PackedVector2Array(-14.0359955, -100, -3.3880005, -100, -5.3239975, 59.531998, -15.003998, 60.500008)
+polygon = PackedVector2Array(-24.683998, -100, -14.0359955, -100, -13.068001, 61.46801, -24.684006, 61.46801)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h6rjb"]
-polygon = PackedVector2Array(-100, -17.908012, 100, -19.844002, 100, -14.036003, -100, -14.036011)
+polygon = PackedVector2Array(-100, -54.692, 100, -55.660004, 100, -46.94801, -100, -45.98001)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kv4hr"]
+polygon = PackedVector2Array(-100, -57.576324, -29.126846, -59.38265, -27.320534, -75.18792, -26.619995, -100, 20.546844, -100, 20.095268, -92.34792, 1.5805283, -94.60582, -18.740532, -94.15424, -23.707901, -52.608963, -34.5458, -50.802647, -100, -50.351074)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8482b"]
+polygon = PackedVector2Array(-100, -53.928253, 46.464127, -53.928246, 47.956947, -46.464127, -100, -49.07657)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rxhxk"]
+polygon = PackedVector2Array(-100, -54.692, 21.382492, -54.667557, 21.171825, -43.923645, 22.748009, 100, 14.036018, 100, 9.195999, -42.108, -100, -44.044006)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x47dy"]
 texture = ExtResource("1_h6rjb")
@@ -166,11 +175,13 @@ texture_region_size = Vector2i(200, 200)
 1:3/0 = 0
 2:3/0 = 0
 2:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_s5inv")
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-27.587997, -26.619995, 100, -28.556, 100, 100, -27.588013, 100)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.556007, -49.852005, 100, -52.756004, 100, 54.692, 27.587997, 59.532005, 23.716011, 100, -27.588013, 100)
 3:3/0 = 0
 3:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_h6rjb")
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -15.972008, 100, -18.876, 100, 34.364014, 100, 87.604004, -100, 89.54)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -49.852005, 100, -50.82001, 100, 34.364014, 100, 49.85199, -100, 53.72401)
 4:3/0 = 0
+4:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_8482b")
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -52.756012, 48.88401, -53.724007, 55.659996, -8.228004, 37.268005, 51.788002, -100, 54.692)
 5:3/0 = 0
 6:3/0 = 0
 7:3/0 = 0
@@ -182,7 +193,11 @@ texture_region_size = Vector2i(200, 200)
 2:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_x47dy")
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.939995, -100, 31.460007, -100, 29.524002, 100, -15.004005, 100)
 3:4/0 = 0
+3:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_kv4hr")
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -55.660004, -28.556007, -53.724, -22.748009, -100, 18.876007, -100, 15.972, -2.4199982, -4.356003, 55.66001, -100, 58.564003)
 4:4/0 = 0
+4:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_rxhxk")
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -54.691986, 19.844002, -52.755997, 20.811996, 100, -20.811996, 100, -26.620003, 55.660004, -100, 54.692005)
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
@@ -193,7 +208,7 @@ texture_region_size = Vector2i(200, 200)
 1:5/0 = 0
 2:5/0 = 0
 2:5/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_cxckp")
-2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.067993, -100, 30.492004, -100, 30.492004, 62.435997, -13.068001, 60.5)
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24.684006, -100, 30.492004, -100, 30.492004, 62.435997, -23.716003, 62.435997)
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
