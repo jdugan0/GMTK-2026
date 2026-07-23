@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bik35qk2f4cht"
+path="res://.godot/imported/Game Over Loopable.wav-9c0e63e766b66779b48cb2a1f391bb4d.sample"
+
+[deps]
+
+source_file="res://audio/Music/Game Over Loopable.wav"
+dest_files=["res://.godot/imported/Game Over Loopable.wav-9c0e63e766b66779b48cb2a1f391bb4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
