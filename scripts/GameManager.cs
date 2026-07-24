@@ -27,7 +27,7 @@ public partial class GameManager : Node
     {
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
         AudioManager.instance.PlaySFX("playerDies");
-        player.Visible = false;
+        // player.Visible = false;
         if (InCombat)
         {
             AudioManager.instance.CancelSFXFadeOut("combat", 4.0f).p.Finished += () =>
