@@ -166,11 +166,11 @@ public partial class Movement : CharacterBody2D
             && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
         )
         {
-            if (countDown <= initalCountdown * (1f/3f))
+            if (countDown <= initalCountdown * (1f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoopMore");
             }
-            else if (countDown <= initalCountdown * (2f/3f))
+            else if (countDown <= initalCountdown * (2f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoop");
             }
@@ -213,14 +213,6 @@ public partial class Movement : CharacterBody2D
             input = Vector2.Zero;
         }
         float maxSpeed = Input.IsActionPressed("SPRINT") ? SprintSpeed : WalkSpeed;
-        if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
-        {
-            maxSpeed = 0;
-        }
-        else if (Input.IsActionPressed("ATTACK"))
-        {
-            maxSpeed = BulletSpeed;
-        }
         Vector2 targetVelocity = input * maxSpeed;
 
         camera.GlobalPosition =
@@ -263,6 +255,7 @@ public partial class Movement : CharacterBody2D
         UpdateAnimation(mouseDir);
         if (Input.IsActionJustPressed("ATTACK"))
         {
+            maxSpeed = BulletSpeed;
             lostRip = 0;
             playedRip = false;
             var x = AudioManager.instance.PlaySFX("ripStart");
