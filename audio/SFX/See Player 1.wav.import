@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cpkslkm6ctxmt"
+path="res://.godot/imported/See Player 1.wav-6d86a32f7c2a95a5b2a378c3459cf225.sample"
+
+[deps]
+
+source_file="res://audio/SFX/See Player 1.wav"
+dest_files=["res://.godot/imported/See Player 1.wav-6d86a32f7c2a95a5b2a378c3459cf225.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

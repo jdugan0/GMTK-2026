@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyjqcdudq6j4y"
+path="res://.godot/imported/Enemy Swing 2.wav-482428d3f5fe57be3a95676ad8bcbc2e.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Enemy Swing 2.wav"
+dest_files=["res://.godot/imported/Enemy Swing 2.wav-482428d3f5fe57be3a95676ad8bcbc2e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

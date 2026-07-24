@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2vsfim8tbdq2"
+path="res://.godot/imported/Low Health Clock.wav-12f64809fd61ee4223e39093f992c79d.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Low Health Clock.wav"
+dest_files=["res://.godot/imported/Low Health Clock.wav-12f64809fd61ee4223e39093f992c79d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
