@@ -9,8 +9,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]
 shader = ExtResource("3_3wlde")
-shader_parameter/vignette_color = Color(0.078431375, 0, 0, 1)
-shader_parameter/radius = 0.4470000212325
+shader_parameter/vignette_color = Color(0.09803922, 0, 0, 1)
+shader_parameter/radius = 0.38800001843
 shader_parameter/softness = 0.45
 shader_parameter/intensity = 0.0
 
