@@ -4,4 +4,4 @@
 
 [node name="GameManager" type="Node" unique_id=2018085936]
 script = ExtResource("1_34tde")
-countDown = 100.0
+combatExitDelay = 2.0
