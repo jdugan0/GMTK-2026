@@ -4,4 +4,4 @@
 
 [node name="Levels" type="Node2D" unique_id=1816279681]
 script = ExtResource("1_eb86q")
-levels = PackedStringArray("level_1", "level_2", "level_3", "level_4")
+levels = PackedStringArray("level_1", "level_2", "level_3", "end_scene")

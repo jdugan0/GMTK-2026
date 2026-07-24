@@ -72,6 +72,7 @@ public partial class UI : CanvasLayer
         IsPaused = value;
         pauseMenu.Visible = value;
         GetTree().Paused = value;
+        UpdateTutorialVisibility();
     }
 
     public void ShowWin()
@@ -80,6 +81,7 @@ public partial class UI : CanvasLayer
         pauseMenu.Visible = false;
         levelWon.Visible = true;
         GetTree().Paused = true;
+        UpdateTutorialVisibility();
     }
 
     public void Restart()
@@ -101,6 +103,13 @@ public partial class UI : CanvasLayer
         pauseMenu.Visible = false;
         levelWon.Visible = false;
         GetTree().Paused = true;
+        UpdateTutorialVisibility();
+    }
+
+    private void UpdateTutorialVisibility()
+    {
+        if (TutorialManager.instance != null)
+            TutorialManager.instance.Visible = !(pauseMenu.Visible || levelWon.Visible);
     }
 
     public void Reset()

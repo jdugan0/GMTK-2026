@@ -45,6 +45,7 @@ wall=""
 player_col=""
 exit=""
 destroy_bullet=""
+crate=""
 
 [input]
 

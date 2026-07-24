@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cgn8i3o6fi7um"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ylpgx"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylpgx"]
+size = Vector2(200, 200)
+
+[node name="Crate" type="StaticBody2D" unique_id=1579771569 groups=["crate"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1468515886]
+texture = SubResource("PlaceholderTexture2D_ylpgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353436734]
+shape = SubResource("RectangleShape2D_ylpgx")

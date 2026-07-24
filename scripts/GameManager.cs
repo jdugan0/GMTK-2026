@@ -30,7 +30,7 @@ public partial class GameManager : Node
     {
         ui.Reset();
         player.Reset();
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest", 1f);
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide(LevelManager.instance.GetCurrLevel(), 1f);
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;
         MusicManager.instance.CancelSong();

@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61r5c")
-levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3"), NodePath("HBoxContainer/4")]
+levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3")]
 back = NodePath("Button3")
 
 [node name="Button3" type="Button" parent="." unique_id=1768709924]
@@ -55,9 +55,5 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
 [node name="3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_byrvo")
-
-[node name="4" type="TextureButton" parent="HBoxContainer" unique_id=917072]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")

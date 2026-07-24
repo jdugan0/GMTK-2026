@@ -52,6 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Heart" type="TextureRect" parent="Control" unique_id=1046527933]
 layout_mode = 1
@@ -109,6 +110,7 @@ pivot_offset = Vector2(0, 0)
 [node name="LevelPause" parent="Control" unique_id=712056074 instance=ExtResource("8_24e4x")]
 visible = false
 layout_mode = 1
+mouse_filter = 1
 
 [editable path="Control/LevelWon"]
 [editable path="Control/LevelPause"]

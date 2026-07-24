@@ -14,6 +14,11 @@ public partial class LevelManager : Node
         instance = this;
     }
 
+	public string GetCurrLevel()
+	{
+		return levels[currLevel];
+	}
+
     public void LoadLevel(int level)
     {
 		GD.Print(level);
