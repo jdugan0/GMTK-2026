@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm5vep0nrdmnt"
+path="res://.godot/imported/Third Health Remaining.wav-3cd13252af56b4ec8ab12d6699330094.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Third Health Remaining.wav"
+dest_files=["res://.godot/imported/Third Health Remaining.wav-3cd13252af56b4ec8ab12d6699330094.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
