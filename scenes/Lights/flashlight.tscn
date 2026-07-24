@@ -20,6 +20,7 @@ shader_parameter/tint = Color(1, 1, 1, 1)
 color = Color(0.82, 0.9, 1, 1)
 range_item_cull_mask = 13
 shadow_enabled = true
+shadow_item_cull_mask = 13
 shadow_filter = 2
 shadow_filter_smooth = 1.0
 texture_scale = 2.0
