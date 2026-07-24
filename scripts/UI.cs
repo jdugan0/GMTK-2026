@@ -15,9 +15,14 @@ public partial class UI : CanvasLayer
     [Export]
     PackedScene lossText;
 
+    [Export]
+    ColorRect vignette;
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        double z = player.countDown / player.initalCountdown;
+        ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 1 - z);
         countDownLabel.Text = $"{Math.Round(player.countDown)}";
 
         if (player.countDown <= player.initalCountdown * (1f / 3f))

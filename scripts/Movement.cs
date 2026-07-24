@@ -34,7 +34,10 @@ public partial class Movement : CharacterBody2D
 
     [ExportGroup("Camera")]
     [Export]
-    float zoomed;
+    float zoomedMeat;
+
+    [Export]
+    float zoomHealth;
 
     [Export]
     private Camera2D camera;
@@ -176,6 +179,7 @@ public partial class Movement : CharacterBody2D
         cursorMeatHotspot *= cursorScale;
         cursorIsMeat = true;
         SetCursor(false);
+        cameraZoomInital = camera.Zoom.X;
     }
 
     private Texture2D ScaleCursorTexture(Texture2D texture)
@@ -347,12 +351,21 @@ public partial class Movement : CharacterBody2D
         SwapSheet(Mathf.RoundToInt((initalCountdown - countDown) / initalCountdown * 4));
     }
 
+    float cameraZoomInital;
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
         footstepTimer -= delta;
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
+        if (!Input.IsActionPressed("ATTACK"))
+        {
+            double z = countDown / initalCountdown;
+            float x = (float)(z * cameraZoomInital + (1 - z) * zoomHealth); 
+            cameraZoomDefault = x;
+            camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
+        }
         arrow.GlobalPosition = GlobalPosition;
         arrow.Rotation = angleToExit;
         safetyTimer -= dt;
@@ -439,7 +452,7 @@ public partial class Movement : CharacterBody2D
                 // GD.Print(ripTimer);
                 ripTimer -= delta;
                 playedRip = false;
-                float deltaZoom = ((zoomed - cameraZoomDefault) / ripTime) * dt;
+                float deltaZoom = ((zoomedMeat - cameraZoomDefault) / ripTime) * dt;
                 camera.Zoom += new Vector2(deltaZoom, deltaZoom);
             }
             else
