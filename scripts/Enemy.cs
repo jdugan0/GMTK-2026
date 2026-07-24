@@ -165,14 +165,12 @@ public partial class Enemy : CharacterBody2D
                 {
                     DebugState("RETURNING_HOME");
                     Vector2 homeStep = _navigationAgent.GetNextPathPosition();
-                    Vector2 homeVel = GlobalPosition.DirectionTo(homeStep) * MovementSpeed;
-                    if (_navigationAgent.AvoidanceEnabled)
-                        _navigationAgent.Velocity = homeVel;
-                    else
-                        OnVelocityComputed(homeVel);
+                    UpdateAnimation(GlobalPosition.DirectionTo(homeStep), false);
+                    MoveTowardStep(homeStep);
                     return;
                 }
             }
+            sprite2D.Frame = 0;
             DebugState("IDLE (not spotted)");
             return;
         }
@@ -213,16 +211,16 @@ public partial class Enemy : CharacterBody2D
             return;
         }
         DebugState("CHASING");
-        Vector2 nextPathPosition = _navigationAgent.GetNextPathPosition();
-        Vector2 newVelocity = GlobalPosition.DirectionTo(nextPathPosition) * MovementSpeed;
+        MoveTowardStep(_navigationAgent.GetNextPathPosition());
+    }
+
+    private void MoveTowardStep(Vector2 step)
+    {
+        Vector2 velocity = GlobalPosition.DirectionTo(step) * MovementSpeed;
         if (_navigationAgent.AvoidanceEnabled)
-        {
-            _navigationAgent.Velocity = newVelocity;
-        }
+            _navigationAgent.Velocity = velocity;
         else
-        {
-            OnVelocityComputed(newVelocity);
-        }
+            OnVelocityComputed(velocity);
     }
 
     private void UpdateAnimation(Vector2 lookDir, bool flinch)
