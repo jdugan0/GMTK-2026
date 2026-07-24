@@ -25,14 +25,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 605.0
-offset_top = 873.0
-offset_right = -605.0
-offset_bottom = -145.0
+offset_left = 48.0
+offset_top = 868.0
+offset_right = -1183.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_g0tyt")
-text = "EXIT"
+text = "BACK"
 
 [node name="HSlider" type="HSlider" parent="." unique_id=773456792]
 layout_mode = 1
@@ -46,3 +46,17 @@ offset_bottom = -542.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_g0tyt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1989769779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 159.0
+offset_bottom = -711.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g0tyt")
+text = "
+VOLUME"
+horizontal_alignment = 1

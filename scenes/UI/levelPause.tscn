@@ -40,15 +40,20 @@ anchors_preset = -1
 anchor_right = 0.98800004
 anchor_bottom = 1.0
 offset_left = 90.0
-offset_top = 460.0
+offset_top = 344.0
 offset_right = -911.9601
-offset_bottom = -191.0
+offset_bottom = -236.0
 theme = ExtResource("2_3lbja")
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=670184510]
 layout_mode = 2
 theme = ExtResource("2_3lbja")
-text = "TRY AGAIN"
+text = "RESUME"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=650586492]
+layout_mode = 2
+theme = ExtResource("2_3lbja")
+text = "RESTART"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1153251299]
 layout_mode = 2
