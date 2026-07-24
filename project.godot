@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 Sceneswitcher="*res://levels/_scripts/Sceneswitcher.tscn"
 Audiomanager="*res://audio/_scripts/Audiomanager.tscn"
 MusicManager="*uid://rr3u3l3l67oa"
+LevelManager="*uid://b1mdvwpy5y2a0"
 
 [display]
 
@@ -44,6 +45,7 @@ wall=""
 player_col=""
 exit=""
 destroy_bullet=""
+crate=""
 
 [input]
 
@@ -95,3 +97,4 @@ PAUSE={
 2d_render/layer_3="Player"
 2d_render/layer_4="Enemies"
 2d_render/layer_5="Exit"
+2d_render/layer_6="Top_Decor"

@@ -36,6 +36,9 @@ public partial class UI : CanvasLayer
     [Export]
     Control pauseMenu;
 
+    [Export]
+    Button nextLevel;
+
     public bool IsPaused { get; private set; }
 
     public override void _Ready()
@@ -46,6 +49,7 @@ public partial class UI : CanvasLayer
         pauseMainMenu.Pressed += MainMenu;
         restart.Pressed += Restart;
         resume.Pressed += () => SetPaused(false);
+        nextLevel.Pressed += LevelManager.instance.NextLevel;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -68,6 +72,7 @@ public partial class UI : CanvasLayer
         IsPaused = value;
         pauseMenu.Visible = value;
         GetTree().Paused = value;
+        UpdateTutorialVisibility();
     }
 
     public void ShowWin()
@@ -76,6 +81,7 @@ public partial class UI : CanvasLayer
         pauseMenu.Visible = false;
         levelWon.Visible = true;
         GetTree().Paused = true;
+        UpdateTutorialVisibility();
     }
 
     public void Restart()
@@ -86,7 +92,6 @@ public partial class UI : CanvasLayer
 
     public void MainMenu()
     {
-        CloseMenus();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
         MusicManager.instance.CancelSong(1f);
         AudioManager.instance.CancelAllSFX();
@@ -98,6 +103,13 @@ public partial class UI : CanvasLayer
         pauseMenu.Visible = false;
         levelWon.Visible = false;
         GetTree().Paused = true;
+        UpdateTutorialVisibility();
+    }
+
+    private void UpdateTutorialVisibility()
+    {
+        if (TutorialManager.instance != null)
+            TutorialManager.instance.Visible = !(pauseMenu.Visible || levelWon.Visible);
     }
 
     public void Reset()

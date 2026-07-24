@@ -53,5 +53,10 @@ public partial class Bullet() : Area2D
             AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
         }
+        if (body.IsInGroup("crate"))
+        {
+            QueueFree();
+            body.QueueFree();
+        }
     }
 }

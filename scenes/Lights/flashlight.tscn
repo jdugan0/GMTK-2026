@@ -18,7 +18,7 @@ shader_parameter/tint = Color(1, 1, 1, 1)
 
 [node name="Flashlight" type="PointLight2D" unique_id=445911353]
 color = Color(0.82, 0.9, 1, 1)
-range_item_cull_mask = 31
+range_item_cull_mask = 63
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 1.0
