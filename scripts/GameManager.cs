@@ -30,7 +30,7 @@ public partial class GameManager : Node
     {
         ui.Reset();
         player.Reset();
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest");
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest", 1f);
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;
         MusicManager.instance.CancelSong();
@@ -41,8 +41,7 @@ public partial class GameManager : Node
         MusicManager.instance.CancelSong();
         AudioManager.instance.CancelSFX("gameOver");
         MusicManager.instance.PlaySong("levelWin");
-        GetTree().Paused = true;
-        ui.levelWon.Visible = true;
+        ui.ShowWin();
         player.arrow.Visible = false;
     }
 
@@ -90,8 +89,10 @@ public partial class GameManager : Node
                 combatExitTimer = 0f;
                 randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
                 GD.Print("OUT COMBAT");
-                MusicManager.instance.CancelSong(4.0f).p.Finished += () =>
-                    MusicManager.instance.PlaySong("outOfCombatBackground", time);
+                AudioStreamPlayer p = MusicManager.instance.CancelSong(4.0f).p;
+                if (p != null)
+                    p.Finished += () =>
+                        MusicManager.instance.PlaySong("outOfCombatBackground", time);
             }
         }
     }

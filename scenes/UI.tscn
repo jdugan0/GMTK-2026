@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dtsauj2uslf8p" path="res://art/UI/heartUI-217x291.png" id="4_75u2n"]
 [ext_resource type="PackedScene" uid="uid://bl4qjjl7wfagm" path="res://scenes/loss_text.tscn" id="5_75u2n"]
 [ext_resource type="PackedScene" uid="uid://xq40okbuq68y" path="res://scenes/UI/levelWon.tscn" id="7_xpksx"]
+[ext_resource type="PackedScene" uid="uid://bsyy3fupxoxn0" path="res://scenes/UI/levelPause.tscn" id="8_24e4x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]
 shader = ExtResource("3_3wlde")
@@ -19,7 +20,7 @@ shader_parameter/intensity = 0.0
 atlas = ExtResource("4_75u2n")
 region = Rect2(0, 1, 217, 277)
 
-[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu")]
+[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu")]
 process_mode = 3
 layer = 2
 script = ExtResource("1_dj8aq")
@@ -29,6 +30,10 @@ lossText = ExtResource("5_75u2n")
 vignette = NodePath("Control/Vignette")
 levelWon = NodePath("Control/LevelWon")
 winMainMenu = NodePath("Control/LevelWon/VBoxContainer/Button2")
+pauseMainMenu = NodePath("Control/LevelPause/VBoxContainer/Button2")
+resume = NodePath("Control/LevelPause/VBoxContainer/Button")
+restart = NodePath("Control/LevelPause/VBoxContainer/Button3")
+pauseMenu = NodePath("Control/LevelPause")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3
@@ -100,4 +105,9 @@ offset_right = -831.9601
 offset_bottom = -220.0
 pivot_offset = Vector2(0, 0)
 
+[node name="LevelPause" parent="Control" unique_id=712056074 instance=ExtResource("8_24e4x")]
+visible = false
+layout_mode = 1
+
 [editable path="Control/LevelWon"]
+[editable path="Control/LevelPause"]

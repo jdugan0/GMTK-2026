@@ -19,30 +19,93 @@ public partial class UI : CanvasLayer
     ColorRect vignette;
 
     [Export]
-    public Control levelWon;
+    Control levelWon;
 
     [Export]
     Button winMainMenu;
 
+    [Export]
+    Button pauseMainMenu;
+
+    [Export]
+    Button resume;
+
+    [Export]
+    Button restart;
+
+    [Export]
+    Control pauseMenu;
+
+    public bool IsPaused { get; private set; }
+
     public override void _Ready()
     {
+        pauseMenu.Visible = false;
+        levelWon.Visible = false;
         winMainMenu.Pressed += MainMenu;
+        pauseMainMenu.Pressed += MainMenu;
+        restart.Pressed += Restart;
+        resume.Pressed += () => SetPaused(false);
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (!@event.IsActionPressed("PAUSE"))
+            return;
+        if (!IsPaused && levelWon.Visible)
+            return;
+        SetPaused(!IsPaused);
+        GetViewport().SetInputAsHandled();
+    }
+
+    public void Pause()
+    {
+        SetPaused(true);
+    }
+
+    private void SetPaused(bool value)
+    {
+        IsPaused = value;
+        pauseMenu.Visible = value;
+        GetTree().Paused = value;
+    }
+
+    public void ShowWin()
+    {
+        IsPaused = false;
+        pauseMenu.Visible = false;
+        levelWon.Visible = true;
+        GetTree().Paused = true;
+    }
+
+    public void Restart()
+    {
+        CloseMenus();
+        GameManager.instance.Die(player);
     }
 
     public void MainMenu()
     {
+        CloseMenus();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
         MusicManager.instance.CancelSong(1f);
         AudioManager.instance.CancelAllSFX();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    private void CloseMenus()
+    {
+        IsPaused = false;
+        pauseMenu.Visible = false;
+        levelWon.Visible = false;
+        GetTree().Paused = true;
+    }
+
     public void Reset()
     {
         ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 0);
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         double z = player.countDown / player.initalCountdown;
         ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 1 - z);
