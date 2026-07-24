@@ -57,7 +57,25 @@
 [ext_resource type="AudioStream" uid="uid://nnrrlq61h2xi" path="res://audio/SFX/Box Smash 2.wav" id="55_tpk4g"]
 [ext_resource type="AudioStream" uid="uid://b285sw8ne4uk1" path="res://audio/SFX/Keys.wav" id="56_b41jb"]
 [ext_resource type="AudioStream" uid="uid://cpr057dft4bgy" path="res://audio/SFX/Gate Open.wav" id="57_onaff"]
+[ext_resource type="AudioStream" uid="uid://nf13r564fy5q" path="res://audio/SFX/Third Health Lost.wav" id="59_onaff"]
 [ext_resource type="AudioStream" uid="uid://bik35qk2f4cht" path="res://audio/Music/Game Over Loopable.wav" id="59_tpk4g"]
+[ext_resource type="AudioStream" uid="uid://bm5vep0nrdmnt" path="res://audio/SFX/Third Health Remaining.wav" id="60_flsf5"]
+[ext_resource type="AudioStream" uid="uid://b2vsfim8tbdq2" path="res://audio/SFX/Low Health Clock.wav" id="61_arbte"]
+[ext_resource type="AudioStream" uid="uid://cs84s7c6shto5" path="res://audio/SFX/Text Typing 1.wav" id="62_e83ie"]
+[ext_resource type="AudioStream" uid="uid://co2cye6y1tjqh" path="res://audio/SFX/Text Typing 2.wav" id="63_df4ol"]
+[ext_resource type="AudioStream" uid="uid://b5lqt2suqiwq4" path="res://audio/SFX/Text Typing 3.wav" id="64_j3c47"]
+[ext_resource type="AudioStream" uid="uid://cpkslkm6ctxmt" path="res://audio/SFX/See Player 1.wav" id="65_dn6md"]
+[ext_resource type="AudioStream" uid="uid://cwcu3nlgxym4n" path="res://audio/SFX/See Player 2.wav" id="66_pu1ph"]
+[ext_resource type="AudioStream" uid="uid://coi7bnnuaftbf" path="res://audio/SFX/See Player 3.wav" id="67_kxau5"]
+[ext_resource type="AudioStream" uid="uid://2jicw38h0lgx" path="res://audio/SFX/Ready To Throw.wav" id="68_pu1ph"]
+[ext_resource type="AudioStream" uid="uid://bwv4vk8krjslw" path="res://audio/SFX/Enemy Swing 1.wav" id="69_1glry"]
+[ext_resource type="AudioStream" uid="uid://dyjqcdudq6j4y" path="res://audio/SFX/Enemy Swing 2.wav" id="70_rrol0"]
+[ext_resource type="AudioStream" uid="uid://bn6hboop64ahy" path="res://audio/SFX/Exit Hum.wav" id="71_rrol0"]
+[ext_resource type="AudioStream" uid="uid://cs03ja737ue0j" path="res://audio/SFX/Gore/Heart Explode.wav" id="72_rxsmk"]
+[ext_resource type="AudioStream" uid="uid://k2gg3h2hsypw" path="res://audio/SFX/Enemy Hurt 1.wav" id="73_y8cre"]
+[ext_resource type="AudioStream" uid="uid://0md0tnrml6gc" path="res://audio/SFX/Enemy Hurt 2.wav" id="74_o73ty"]
+[ext_resource type="AudioStream" uid="uid://6ycbllp1twrj" path="res://audio/SFX/Enemy Hurt 3.wav" id="75_7nbdl"]
+[ext_resource type="AudioStream" uid="uid://pmajlk1hipap" path="res://audio/SFX/Enemy Hurt 4.wav" id="76_lsl45"]
 
 [sub_resource type="Resource" id="Resource_oh4ff"]
 script = ExtResource("2_0au01")
@@ -263,7 +281,95 @@ volume = -10.0
 name = "gameOver"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
+[sub_resource type="Resource" id="Resource_e83ie"]
+script = ExtResource("2_0au01")
+stream = ExtResource("59_onaff")
+volume = -2.0
+name = "thirdHealthLost"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_tpk4g"]
+script = ExtResource("2_0au01")
+stream = ExtResource("60_flsf5")
+volume = -2.0
+name = "thirdHealthRemaining"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_onaff"]
+script = ExtResource("2_0au01")
+stream = ExtResource("61_arbte")
+name = "lowHealthClock"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqyg0"]
+random_pitch = 1.0145453
+streams_count = 3
+stream_0/stream = ExtResource("62_e83ie")
+stream_1/stream = ExtResource("63_df4ol")
+stream_2/stream = ExtResource("64_j3c47")
+
+[sub_resource type="Resource" id="Resource_04hbw"]
+script = ExtResource("2_0au01")
+stream = SubResource("AudioStreamRandomizer_iqyg0")
+volume = -5.0
+name = "textBox"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pu1ph"]
+streams_count = 3
+stream_0/stream = ExtResource("65_dn6md")
+stream_1/stream = ExtResource("66_pu1ph")
+stream_2/stream = ExtResource("67_kxau5")
+
+[sub_resource type="Resource" id="Resource_dn6md"]
+script = ExtResource("2_0au01")
+stream = SubResource("AudioStreamRandomizer_pu1ph")
+name = "enemySeePlayer"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_kxau5"]
+script = ExtResource("2_0au01")
+stream = ExtResource("68_pu1ph")
+name = "throwReady"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rrol0"]
+streams_count = 2
+stream_0/stream = ExtResource("69_1glry")
+stream_1/stream = ExtResource("70_rrol0")
+
+[sub_resource type="Resource" id="Resource_1glry"]
+script = ExtResource("2_0au01")
+stream = SubResource("AudioStreamRandomizer_rrol0")
+name = "enemyAttack"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_gmijl"]
+script = ExtResource("2_0au01")
+stream = ExtResource("71_rrol0")
+name = "exitHum"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_apoj4"]
+script = ExtResource("2_0au01")
+stream = ExtResource("72_rxsmk")
+name = "heartExplode"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cf8oo"]
+streams_count = 4
+stream_0/stream = ExtResource("73_y8cre")
+stream_1/stream = ExtResource("74_o73ty")
+stream_2/stream = ExtResource("75_7nbdl")
+stream_3/stream = ExtResource("76_lsl45")
+
+[sub_resource type="Resource" id="Resource_c1o87"]
+script = ExtResource("2_0au01")
+stream = SubResource("AudioStreamRandomizer_cf8oo")
+name = "enemyHurt"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
 [node name="Audiomanager" type="Node" unique_id=2066337262]
 process_mode = 3
 script = ExtResource("1_ulbmk")
-sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn")])
+sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87")])
