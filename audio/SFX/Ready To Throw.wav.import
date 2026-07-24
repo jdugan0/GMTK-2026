@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2jicw38h0lgx"
+path="res://.godot/imported/Ready To Throw.wav-6289c8a9cbbe63734438c19f3b60c2c7.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Ready To Throw.wav"
+dest_files=["res://.godot/imported/Ready To Throw.wav-6289c8a9cbbe63734438c19f3b60c2c7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co2cye6y1tjqh"
+path="res://.godot/imported/Text Typing 2.wav-f3f3a783cf6b7295289d4e8fe3174bdf.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Text Typing 2.wav"
+dest_files=["res://.godot/imported/Text Typing 2.wav-f3f3a783cf6b7295289d4e8fe3174bdf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
