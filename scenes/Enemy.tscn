@@ -96,6 +96,7 @@ sprite_frames = SubResource("SpriteFrames_3gvst")
 animation = &"DOWN"
 
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("3_mpr68")]
+visible = false
 position = Vector2(12.335, 92)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=372871662]
