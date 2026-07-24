@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.InteropServices.Marshalling;
 using Godot;
 
@@ -55,6 +56,15 @@ public partial class Enemy : CharacterBody2D
     private Node2D finalAlertPos;
 
     [Export]
+    float flashHzStart = 14f;
+
+    [Export]
+    float flashHzEnd = 4f;
+
+    [Export]
+    Color flashColor;
+
+    [Export]
     private float alertDur;
     Vector2 alertInitalPos;
 
@@ -71,6 +81,9 @@ public partial class Enemy : CharacterBody2D
     private string _lastDebugState = "";
     bool lastSpotted = false;
     Tween _alertTween = null;
+
+    float flashPhase;
+    float stunDuration;
 
     private void DebugState(string state)
     {
@@ -100,6 +113,18 @@ public partial class Enemy : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         float dt = (float)delta;
+
+        if (stunTimer > 0 && stunFromHit)
+        {
+            float remaining = stunTimer / stunDuration;
+            flashPhase += Mathf.Lerp(flashHzEnd, flashHzStart, remaining) * dt;
+            bool flashOn = Mathf.PosMod(flashPhase, 1f) < 0.5f;
+            Modulate = flashOn ? flashColor : Colors.White;
+        }
+        else
+        {
+            Modulate = Colors.White;
+        }
 
         if (knockbackVelocity.LengthSquared() > 25f)
         {
@@ -150,8 +175,7 @@ public partial class Enemy : CharacterBody2D
                     DebugState("ATTACK_HIT");
                     player.Hit(attackDamage, this);
                     attackTimer = attackCooldown;
-                    stunTimer = attackStun;
-                    stunFromHit = false;
+                    BeginStun(attackStun, false);
                 }
                 else
                 {
@@ -241,13 +265,17 @@ public partial class Enemy : CharacterBody2D
             _alertTween = GetTree().CreateTween().SetParallel();
             _alertTween.TweenProperty(alert, "position", finalAlertPos.Position, alertDur);
             _alertTween.TweenProperty(alert, "modulate:a", 0f, alertDur);
-            _alertTween.Chain().TweenCallback(Callable.From(() =>
-            {
-                alert.Visible = false;
-                alert.Position = alertInitalPos;
-                alert.Modulate = new Color(alert.Modulate, 1f);
-                _alertTween = null;
-            }));
+            _alertTween
+                .Chain()
+                .TweenCallback(
+                    Callable.From(() =>
+                    {
+                        alert.Visible = false;
+                        alert.Position = alertInitalPos;
+                        alert.Modulate = new Color(alert.Modulate, 1f);
+                        _alertTween = null;
+                    })
+                );
         }
         lastSpotted = spotted;
     }
@@ -310,11 +338,18 @@ public partial class Enemy : CharacterBody2D
         return ((Node)result["collider"]).IsInGroup("player_col");
     }
 
+    private void BeginStun(float stunTime, bool fromHit)
+    {
+        stunTimer = Mathf.Max(stunTimer, stunTime);
+        stunDuration = Mathf.Max(stunTimer, 0.001f);
+        stunFromHit = fromHit;
+        flashPhase = 0;
+    }
+
     public void Shove(Vector2 dir, float knockback, float stunTime)
     {
         knockbackVelocity = dir.Normalized() * knockback;
-        stunTimer = Mathf.Max(stunTimer, stunTime);
-        stunFromHit = true;
+        BeginStun(stunTime, true);
         attacking = false;
         spotted = false;
         GD.Print($"[{Name}] SHOVE knockback={knockback:F0} stun={stunTime:F2}");
