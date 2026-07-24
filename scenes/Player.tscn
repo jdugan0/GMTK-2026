@@ -24,6 +24,7 @@ script = ExtResource("1_p0vlq")
 BulletSpeed = 400.0
 Acceleration = 3500.0
 Friction = 3000.0
+footstepSoundDelayWalk = 0.5
 zoomed = 0.8
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
