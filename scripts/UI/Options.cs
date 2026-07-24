@@ -1,15 +1,21 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class Options : Node
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    [Export]
+    Slider volume;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    [Export]
+    Button back;
+
+    public override void _Ready()
+    {
+        back.Pressed += MainMenu;
+    }
+
+    public void MainMenu()
+    {
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
+    }
 }

@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://bkeiaiqattc2n"]
 
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_g0tyt"]
+[ext_resource type="Script" uid="uid://coubw8u3omdw6" path="res://scripts/UI/Options.cs" id="1_ydmms"]
 
-[node name="Settings" type="Control" unique_id=218620108]
+[node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ydmms")
+volume = NodePath("HSlider")
+back = NodePath("Button3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=940420352]
 visible = false
