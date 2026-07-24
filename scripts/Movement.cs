@@ -372,7 +372,7 @@ public partial class Movement : CharacterBody2D
             {
                 Bullet b = bulletScene.Instantiate<Bullet>();
                 b.Construct(throwKnockback, throwStun, attackSpeed, mouseDir, GlobalPosition);
-                GetTree().Root.AddChild(b);
+                GetTree().CurrentScene.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
                 countDown -= attackCountdownCost;
