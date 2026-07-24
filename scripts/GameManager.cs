@@ -22,7 +22,7 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         instance = this;
-        AudioManager.instance.PlaySFX("outOfCombatBackground");
+        MusicManager.instance.PlaySong("outOfCombatBackground");
         randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
     }
 
@@ -33,16 +33,14 @@ public partial class GameManager : Node
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest");
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;
-        AudioManager.instance.CancelSFX("combat");
-        AudioManager.instance.CancelSFX("gameOver");
+        MusicManager.instance.CancelSong();
     }
 
     public void Win(Movement player)
     {
-        AudioManager.instance.CancelSFX("combat");
+        MusicManager.instance.CancelSong();
         AudioManager.instance.CancelSFX("gameOver");
-        AudioManager.instance.CancelSFX("outOfCombatBackground");
-        AudioManager.instance.PlaySFX("levelWin");
+        MusicManager.instance.PlaySong("levelWin");
         GetTree().Paused = true;
         ui.levelWon.Visible = true;
         player.arrow.Visible = false;
@@ -75,12 +73,12 @@ public partial class GameManager : Node
             {
                 InCombat = true;
                 GD.Print("IN COMBAT");
-                AudioStreamPlayer p = AudioManager.instance.CancelSFX("outOfCombatBackground").p;
+                AudioStreamPlayer p = MusicManager.instance.CancelSong().p;
                 if (p != null)
                 {
                     time = p.GetPlaybackPosition();
                 }
-                AudioManager.instance.PlaySFX("combat");
+                MusicManager.instance.PlaySong("combat");
             }
         }
         else if (InCombat)
@@ -92,8 +90,8 @@ public partial class GameManager : Node
                 combatExitTimer = 0f;
                 randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
                 GD.Print("OUT COMBAT");
-                AudioManager.instance.CancelSFXFadeOut("combat", 4.0f).p.Finished += () =>
-                    AudioManager.instance.PlaySFX("outOfCombatBackground", time);
+                MusicManager.instance.CancelSong(4.0f).p.Finished += () =>
+                    MusicManager.instance.PlaySong("outOfCombatBackground", time);
             }
         }
     }

@@ -21,6 +21,21 @@ public partial class UI : CanvasLayer
     [Export]
     public Control levelWon;
 
+    [Export]
+    Button winMainMenu;
+
+    public override void _Ready()
+    {
+        winMainMenu.Pressed += MainMenu;
+    }
+
+    public void MainMenu()
+    {
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
+        MusicManager.instance.CancelSong(1f);
+        AudioManager.instance.CancelAllSFX();
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public void Reset()
     {

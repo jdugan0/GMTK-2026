@@ -92,7 +92,7 @@ alert = NodePath("enemy_alert")
 finalAlertPos = NodePath("enemy_alert_final_pos")
 flashHzStart = 2.0
 flashHzEnd = 10.0
-flashColor = Color(1, 1, 1, 0.14117648)
+flashColor = Color(1, 1, 1, 0.41960785)
 alertDur = 0.5
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
