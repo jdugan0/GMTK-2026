@@ -43,6 +43,9 @@ flashlight = NodePath("Flashlight")
 arrow = NodePath("ArrowLayer/Arrow")
 cursorNormal = ExtResource("6_cur0n")
 cursorMeat = ExtResource("7_curm1")
+flashScale = 1.1
+flashDuration = 0.6
+flashTint = Color(0.83874494, 0.5081489, 0.03855177, 1)
 countDown = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]

@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Godot;
 
@@ -115,6 +116,16 @@ public partial class Movement : CharacterBody2D
     [Export]
     private float cursorScale = 0.5f;
 
+    [ExportGroup("Flash")]
+    [Export]
+    private float flashScale = 1.6f;
+
+    [Export]
+    private float flashDuration = 0.4f;
+
+    [Export]
+    private Color flashTint;
+
     private bool cursorIsMeat;
 
     [ExportGroup("Timer")]
@@ -162,11 +173,37 @@ public partial class Movement : CharacterBody2D
             return;
         }
         cursorIsMeat = meat;
+        if (meat)
+        {
+            SpawnReadyFlash();
+        }
         Input.SetCustomMouseCursor(
             meat ? cursorMeat : cursorNormal,
             Input.CursorShape.Arrow,
             meat ? cursorMeatHotspot : cursorNormalHotspot
         );
+    }
+
+    private void SpawnReadyFlash()
+    {
+        var ghost = new Sprite2D
+        {
+            Texture = sprite2D.SpriteFrames.GetFrameTexture(sprite2D.Animation, sprite2D.Frame),
+            FlipH = sprite2D.FlipH,
+            Centered = sprite2D.Centered,
+            Offset = sprite2D.Offset,
+            Modulate = flashTint,
+        };
+        GetTree().CurrentScene.AddChild(ghost);
+        ghost.GlobalTransform = sprite2D.GlobalTransform;
+
+        var tween = ghost.CreateTween().SetParallel();
+        tween
+            .TweenProperty(ghost, "scale", ghost.Scale * flashScale, flashDuration)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(ghost, "modulate:a", 0f, flashDuration);
+        tween.Chain().TweenCallback(Callable.From(ghost.QueueFree));
     }
 
     public void Hit(float damage, Node2D attacker)
