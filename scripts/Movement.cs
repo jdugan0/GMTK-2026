@@ -134,6 +134,7 @@ public partial class Movement : CharacterBody2D
     public double countDown;
     private float stunTimer = 0;
     private bool playedRip = false;
+    private int walkFrame;
 
     float cameraZoomDefault;
 
@@ -285,15 +286,17 @@ public partial class Movement : CharacterBody2D
     private void PlayFootstep()
     {
         if (
-            AudioManager.instance.GetPlaying("footsteps").Count == 0
-            && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
-            && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
-            && footstepTimer <= 0
+            // AudioManager.instance.GetPlaying("footsteps").Count == 0
+            // && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
+            // && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
+            // &&
+            footstepTimer <= 0
         )
         {
             footstepTimer = Input.IsActionPressed("SPRINT")
                 ? footstepSoundDelaySprint
                 : footstepSoundDelayWalk;
+            walkFrame ^= 1;
             if (countDown <= initalCountdown * (1f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoopMore");
@@ -312,6 +315,14 @@ public partial class Movement : CharacterBody2D
     private void Play(string anim, bool flip)
     {
         sprite2D.FlipH = flip;
+        if (Velocity.LengthSquared() > 25f)
+        {
+            anim += "_WALK";
+            sprite2D.Animation = anim;
+            sprite2D.Frame = walkFrame % sprite2D.SpriteFrames.GetFrameCount(anim);
+            sprite2D.Pause();
+            return;
+        }
         sprite2D.Play(anim);
     }
 
