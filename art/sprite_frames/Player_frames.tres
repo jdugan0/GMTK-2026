@@ -70,6 +70,58 @@ region = Rect2(720, 1575, 180, 315)
 atlas = ExtResource("1_dkqm0")
 region = Rect2(540, 315, 180, 315)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_backm0"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(0, 0, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backm1"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(180, 0, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backm2"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(360, 0, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backdm0"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(0, 1260, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backdm1"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(180, 1260, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backdm2"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(360, 1260, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontm0"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(0, 630, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontm1"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(180, 630, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontm2"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(360, 630, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontdm0"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(0, 945, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontdm1"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(180, 945, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frontdm2"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(360, 945, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sidem0"]
+atlas = ExtResource("1_dkqm0")
+region = Rect2(0, 315, 180, 315)
+
 [resource]
 animations = [{
 "frames": [{
@@ -82,10 +134,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_backm0")
+}],
+"loop": 1,
+"name": &"BACK_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pnxtv")
 }],
 "loop": 1,
 "name": &"BACKD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_backdm0")
+}],
+"loop": 1,
+"name": &"BACKD_MEAT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -101,6 +169,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_backdm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_backdm2")
+}],
+"loop": 1,
+"name": &"BACKD_WALK_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_p5fid")
 }, {
 "duration": 1.0,
@@ -108,6 +187,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"BACK_WALK",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_backm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_backm2")
+}],
+"loop": 1,
+"name": &"BACK_WALK_MEAT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -131,10 +221,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_frontm0")
+}],
+"loop": 1,
+"name": &"FRONT_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uvipj")
 }],
 "loop": 1,
 "name": &"FRONTD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frontdm0")
+}],
+"loop": 1,
+"name": &"FRONTD_MEAT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -150,6 +256,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_frontdm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frontdm2")
+}],
+"loop": 1,
+"name": &"FRONTD_WALK_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_c684n")
 }, {
 "duration": 1.0,
@@ -157,6 +274,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"FRONT_WALK",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frontm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frontm2")
+}],
+"loop": 1,
+"name": &"FRONT_WALK_MEAT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -180,9 +308,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sidem0")
+}],
+"loop": 1,
+"name": &"SIDE_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f42nb")
 }],
 "loop": 1,
 "name": &"SIDE_WALK",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sidem0")
+}],
+"loop": 1,
+"name": &"SIDE_WALK_MEAT",
 "speed": 5.0
 }]

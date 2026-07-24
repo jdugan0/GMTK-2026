@@ -315,9 +315,17 @@ public partial class Movement : CharacterBody2D
     private void Play(string anim, bool flip)
     {
         sprite2D.FlipH = flip;
-        if (Velocity.LengthSquared() > 25f)
+        bool walking = Velocity.LengthSquared() > 25f;
+        if (walking)
         {
             anim += "_WALK";
+        }
+        if (cursorIsMeat)
+        {
+            anim += "_MEAT";
+        }
+        if (walking)
+        {
             sprite2D.Animation = anim;
             sprite2D.Frame = walkFrame % sprite2D.SpriteFrames.GetFrameCount(anim);
             sprite2D.Pause();
