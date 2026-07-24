@@ -24,16 +24,21 @@ public partial class SceneSwitcher : Node
         }
     }
 
-    public async Task SwitchSceneAsyncSlide(string sceneName)
+    public async Task SwitchSceneAsyncSlide(string sceneName, float duration)
     {
         await WaitOneFrame();
         GetTree().Paused = true;
-        await SlideIn(0.35);
+        await SlideIn(duration / 2);
         GetTree().ChangeSceneToPacked(sceneDict[sceneName]);
         await WaitOneFrame();
-        await SlideOut(0.35);
+        await SlideOut(duration / 2);
         fadeRect.Visible = false;
         GetTree().Paused = false;
+    }
+
+    public async Task SwitchSceneAsyncSlide(string sceneName)
+    {
+        await SwitchSceneAsyncSlide(sceneName, 0.35f);
     }
 
     public void SwitchScene(int loadOrder)

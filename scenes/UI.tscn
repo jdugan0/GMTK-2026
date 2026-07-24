@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bt55rtkql526s"]
 
-[ext_resource type="Script" uid="uid://d0y5dtcod0sa6" path="res://scripts/UI.cs" id="1_dj8aq"]
+[ext_resource type="Script" uid="uid://d0y5dtcod0sa6" path="res://scripts/UI/UI.cs" id="1_dj8aq"]
 [ext_resource type="FontFile" uid="uid://bxffaxf7j5rga" path="res://art/UI/RIKY2vamp.ttf" id="2_ro3t7"]
 [ext_resource type="Shader" uid="uid://ciecfraxeg4ix" path="res://scripts/vignette.gdshader" id="3_3wlde"]
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]

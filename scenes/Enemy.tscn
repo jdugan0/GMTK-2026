@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b80mi7obmn6e4" path="res://scripts/Enemy.cs" id="1_3gvst"]
 [ext_resource type="Texture2D" uid="uid://b4dwpsj6ighei" path="res://art/Townsfolk180x315.png" id="2_55jtl"]
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="3_mpr68"]
+[ext_resource type="Texture2D" uid="uid://bndcgkveidgep" path="res://art/enemyExclaimation.png" id="4_ft8do"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
 atlas = ExtResource("2_55jtl")
@@ -72,7 +73,7 @@ height = 106.0
 radius = 53.0
 height = 308.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("_navigationAgent", "sprite2D", "flashlight", "alert", "finalAlertPos")]
 light_mask = 8
 script = ExtResource("1_3gvst")
 losDistance = 1000.0
@@ -87,6 +88,9 @@ attackCooldown = 0.5
 attackDelay = 0.2
 attackStun = 0.2
 attackRange = 325.0
+alert = NodePath("enemy_alert")
+finalAlertPos = NodePath("enemy_alert_final_pos")
+alertDur = 0.5
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]
 
@@ -110,3 +114,11 @@ y_sort_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1732201781]
 position = Vector2(13, 0)
 shape = SubResource("CapsuleShape2D_ft8do")
+
+[node name="enemy_alert" type="Sprite2D" parent="." unique_id=1471906093]
+visible = false
+position = Vector2(-35, -156)
+texture = ExtResource("4_ft8do")
+
+[node name="enemy_alert_final_pos" type="Node2D" parent="." unique_id=40845321]
+position = Vector2(-82, -194)

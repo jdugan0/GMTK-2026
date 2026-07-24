@@ -47,6 +47,17 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private float attackRange;
 
+    [ExportGroup("Art")]
+    [Export]
+    private Sprite2D alert;
+
+    [Export]
+    private Node2D finalAlertPos;
+
+    [Export]
+    private float alertDur;
+    Vector2 alertInitalPos;
+
     private bool attacking = false;
     private float attackTimer = 0;
     private float stunTimer = 0;
@@ -58,6 +69,8 @@ public partial class Enemy : CharacterBody2D
     private Vector2 knockbackVelocity;
 
     private string _lastDebugState = "";
+    bool lastSpotted = false;
+    Tween _alertTween = null;
 
     private void DebugState(string state)
     {
@@ -76,6 +89,7 @@ public partial class Enemy : CharacterBody2D
         player = (Movement)GetTree().GetFirstNodeInGroup("player");
         _navigationAgent.VelocityComputed += OnVelocityComputed;
         homePosition = GlobalPosition;
+        alertInitalPos = alert.Position;
     }
 
     private void SetMovementTarget(Vector2 movementTarget)
@@ -115,6 +129,7 @@ public partial class Enemy : CharacterBody2D
                 returningHome = true;
             }
         }
+        UpdateAlert();
         if (spotted || attacking)
         {
             GameManager.instance.ReportCombat();
@@ -212,6 +227,29 @@ public partial class Enemy : CharacterBody2D
         }
         DebugState("CHASING");
         MoveTowardStep(_navigationAgent.GetNextPathPosition());
+    }
+
+    private void UpdateAlert()
+    {
+        if (spotted && !lastSpotted)
+        {
+            _alertTween?.Kill();
+            alert.Visible = true;
+            alert.Position = alertInitalPos;
+            alert.Modulate = new Color(alert.Modulate, 1f);
+
+            _alertTween = GetTree().CreateTween().SetParallel();
+            _alertTween.TweenProperty(alert, "position", finalAlertPos.Position, alertDur);
+            _alertTween.TweenProperty(alert, "modulate:a", 0f, alertDur);
+            _alertTween.Chain().TweenCallback(Callable.From(() =>
+            {
+                alert.Visible = false;
+                alert.Position = alertInitalPos;
+                alert.Modulate = new Color(alert.Modulate, 1f);
+                _alertTween = null;
+            }));
+        }
+        lastSpotted = spotted;
     }
 
     private void MoveTowardStep(Vector2 step)

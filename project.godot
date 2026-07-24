@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GMTK-2026"
-run/main_scene="uid://dkqwtr4rnmqrm"
+run/main_scene="uid://cujpfgw721otk"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
