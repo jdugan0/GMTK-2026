@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 Sceneswitcher="*res://levels/_scripts/Sceneswitcher.tscn"
 Audiomanager="*res://audio/_scripts/Audiomanager.tscn"
+MusicManager="*uid://rr3u3l3l67oa"
 
 [display]
 

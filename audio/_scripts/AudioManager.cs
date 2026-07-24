@@ -74,7 +74,12 @@ public partial class AudioManager : Node
         return PlaySFX(this, sound, time);
     }
 
-    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(Node from, string sound, float fadeDuration, float time)
+    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(
+        Node from,
+        string sound,
+        float fadeDuration,
+        float time
+    )
     {
         var (player, id) = PlaySFX(from, sound, time);
         float targetDb = dict[sound].volume;
@@ -102,9 +107,27 @@ public partial class AudioManager : Node
         }
         var p = playing[id];
         Tween tween = p.CreateTween();
+        CancelSFXNoFree(id);
         tween.TweenProperty(p, "volume_db", -80f, fadeDuration);
-        tween.Finished += () => CancelSFX(id);
+        tween.Finished += () =>
+        {
+            p.Stop();
+            p.QueueFree();
+        };
         return (true, p);
+    }
+
+    private (bool, AudioStreamPlayer p) CancelSFXNoFree(Guid id)
+    {
+        if (IsPlaying(id))
+        {
+            var p = playing[id];
+            playing.Remove(id);
+            RemoveByName(names[id], id);
+            names.Remove(id);
+            return (true, p);
+        }
+        return (false, null);
     }
 
     public (bool, AudioStreamPlayer p) CancelSFXFadeOut(string sound, float fadeDuration)
@@ -175,5 +198,13 @@ public partial class AudioManager : Node
     public bool IsPlaying(Guid id)
     {
         return playing.ContainsKey(id);
+    }
+
+    public void CancelAllSFX()
+    {
+        foreach (var s in playing.Keys.ToList())
+        {
+            CancelSFX(s);
+        }
     }
 }

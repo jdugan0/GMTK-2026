@@ -14,7 +14,7 @@ public partial class MainMenu : Node
 
     public override void _Ready()
     {
-        AudioManager.instance.PlaySFX("titleScreen");
+        MusicManager.instance.PlaySong("titleScreen");
         playButton.Pressed += Play;
         optionsButton.Pressed += Options;
         quitButton.Pressed += Quit;
@@ -27,12 +27,12 @@ public partial class MainMenu : Node
 
     public void Play()
     {
-        AudioManager.instance.CancelSFXFadeOut("titleScreen", 2f);
+        MusicManager.instance.CancelSong(2f);
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest", 1f);
     }
 
     public void Options()
     {
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("options");
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("options", 1f);
     }
 }

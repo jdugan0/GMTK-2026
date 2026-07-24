@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rr3u3l3l67oa"]
+
+[ext_resource type="Script" uid="uid://bxyncnj278c0f" path="res://scripts/MusicManager.cs" id="1_k17rw"]
+
+[node name="MusicManager" type="Node" unique_id=646001029]
+script = ExtResource("1_k17rw")
