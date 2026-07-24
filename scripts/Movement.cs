@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Godot;
@@ -137,6 +138,30 @@ public partial class Movement : CharacterBody2D
     float cameraZoomDefault;
 
     public float initalCountdown;
+
+    [ExportGroup("Art")]
+    [Export]
+    private Texture2D[] damageSheets;
+    int prevId = -1;
+
+    private void SwapSheet(int id)
+    {
+        if (id == prevId)
+            return;
+        if (id < 0 || id >= damageSheets.Length)
+            return;
+        Texture2D sheet = damageSheets[id];
+        var frames = sprite2D.SpriteFrames;
+        foreach (string anim in frames.GetAnimationNames())
+        {
+            for (int i = 0; i < frames.GetFrameCount(anim); i++)
+            {
+                if (frames.GetFrameTexture(anim, i) is AtlasTexture at)
+                    at.Atlas = sheet;
+            }
+        }
+        prevId = id;
+    }
 
     public override void _Ready()
     {
@@ -298,8 +323,14 @@ public partial class Movement : CharacterBody2D
         sprite2D.Pause();
     }
 
+    private void UpdateSprite()
+    {
+        SwapSheet(Mathf.RoundToInt((initalCountdown - countDown) / initalCountdown * 4));
+    }
+
     public override void _PhysicsProcess(double delta)
     {
+        UpdateSprite();
         footstepTimer -= delta;
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();

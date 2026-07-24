@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://co543ea3t5oux" path="res://scenes/Bullet.tscn" id="2_v6fml"]
 [ext_resource type="SpriteFrames" uid="uid://d3qoosvwaw66l" path="res://art/sprite_frames/Player_frames.tres" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="5_70d11"]
+[ext_resource type="Texture2D" uid="uid://dnq8es0oanw1c" path="res://art/PlayerHealthy180x135.png" id="5_d3wef"]
 [ext_resource type="Texture2D" uid="uid://bthdbvmp4yvi4" path="res://art/arrow.png" id="5_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://bpj0etyq1lmkw" path="res://art/Atlas/mice_normal.tres" id="6_cur0n"]
+[ext_resource type="Texture2D" uid="uid://clduitnnr2e2u" path="res://art/PlayerDamage1-180x135.png" id="6_o4126"]
 [ext_resource type="Texture2D" uid="uid://c04tcu21ufafr" path="res://art/Atlas/mice_meat.tres" id="7_curm1"]
+[ext_resource type="Texture2D" uid="uid://pu2futdtrgl" path="res://art/PlayerDamage2-180x135.png" id="7_lkdrv"]
+[ext_resource type="Texture2D" uid="uid://b0r8p65l5rnbu" path="res://art/PlayerDamage3-180x135.png" id="8_p7iby"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
 radius = 28.0
@@ -47,6 +51,7 @@ flashScale = 1.1
 flashDuration = 0.6
 flashTint = Color(0.83874494, 0.5081489, 0.03855177, 1)
 countDown = 50.0
+damageSheets = Array[Texture2D]([ExtResource("5_d3wef"), ExtResource("6_o4126"), ExtResource("7_lkdrv"), ExtResource("8_p7iby")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
 y_sort_enabled = true
@@ -57,7 +62,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=687405642]
 light_mask = 4
 sprite_frames = ExtResource("3_3li8b")
-animation = &"RIGHT_RIP"
+animation = &"BACK"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
 position = Vector2(-9, 92)
