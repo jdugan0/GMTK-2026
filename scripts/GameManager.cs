@@ -30,7 +30,7 @@ public partial class GameManager : Node
     {
         ui.Reset();
         player.Reset();
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest");
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;
         AudioManager.instance.CancelSFX("combat");
