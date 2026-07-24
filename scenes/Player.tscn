@@ -5,6 +5,8 @@
 [ext_resource type="SpriteFrames" uid="uid://d3qoosvwaw66l" path="res://art/sprite_frames/Player_frames.tres" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://c14qnv4t2rwvp" path="res://scenes/Lights/flashlight.tscn" id="5_70d11"]
 [ext_resource type="Texture2D" uid="uid://bthdbvmp4yvi4" path="res://art/arrow.png" id="5_qu4a1"]
+[ext_resource type="Texture2D" uid="uid://bpj0etyq1lmkw" path="res://art/Atlas/mice_normal.tres" id="6_cur0n"]
+[ext_resource type="Texture2D" uid="uid://c04tcu21ufafr" path="res://art/Atlas/mice_meat.tres" id="7_curm1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
 radius = 28.0
@@ -38,6 +40,8 @@ bulletScene = ExtResource("2_v6fml")
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
 arrow = NodePath("ArrowLayer/Arrow")
+cursorNormal = ExtResource("6_cur0n")
+cursorMeat = ExtResource("7_curm1")
 countDown = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]

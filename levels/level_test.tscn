@@ -49,7 +49,6 @@ position = Vector2(2657, 857)
 
 [node name="Player" parent="NavigationRegion2D" unique_id=327615574 instance=ExtResource("1_iho50")]
 position = Vector2(729, 687)
-shakeStrength = 30.0
 
 [node name="Walls" type="TileMapLayer" parent="NavigationRegion2D" unique_id=908533846 groups=["destroy_bullet", "wall"]]
 light_mask = 2

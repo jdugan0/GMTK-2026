@@ -89,6 +89,24 @@ public partial class Movement : CharacterBody2D
 
     Node2D exit;
 
+    [ExportGroup("Cursor")]
+    [Export]
+    private Texture2D cursorNormal;
+
+    [Export]
+    private Texture2D cursorMeat;
+
+    [Export]
+    private Vector2 cursorNormalHotspot = new Vector2(5, 0);
+
+    [Export]
+    private Vector2 cursorMeatHotspot = new Vector2(68, 42);
+
+    [Export]
+    private float cursorScale = 0.5f;
+
+    private bool cursorIsMeat;
+
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
@@ -106,6 +124,40 @@ public partial class Movement : CharacterBody2D
         exit = (Node2D)GetTree().GetFirstNodeInGroup("exit");
         cameraZoomDefault = camera.Zoom.X;
         initalCountdown = 50;
+        cursorNormal = ScaleCursorTexture(cursorNormal);
+        cursorMeat = ScaleCursorTexture(cursorMeat);
+        cursorNormalHotspot *= cursorScale;
+        cursorMeatHotspot *= cursorScale;
+        cursorIsMeat = true;
+        SetCursor(false);
+    }
+
+    private Texture2D ScaleCursorTexture(Texture2D texture)
+    {
+        Image image = texture.GetImage();
+        if (image.IsCompressed())
+        {
+            image.Decompress();
+        }
+        image.Resize(
+            Mathf.Max(1, Mathf.RoundToInt(image.GetWidth() * cursorScale)),
+            Mathf.Max(1, Mathf.RoundToInt(image.GetHeight() * cursorScale))
+        );
+        return ImageTexture.CreateFromImage(image);
+    }
+
+    private void SetCursor(bool meat)
+    {
+        if (meat == cursorIsMeat)
+        {
+            return;
+        }
+        cursorIsMeat = meat;
+        Input.SetCustomMouseCursor(
+            meat ? cursorMeat : cursorNormal,
+            Input.CursorShape.Arrow,
+            meat ? cursorMeatHotspot : cursorNormalHotspot
+        );
     }
 
     public void Attack(float damage, Node2D attacker)
@@ -309,5 +361,7 @@ public partial class Movement : CharacterBody2D
             }
             ripTimer = ripTime;
         }
+
+        SetCursor(ripTimer <= 0);
     }
 }
