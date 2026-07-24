@@ -2,18 +2,29 @@
 
 [ext_resource type="Script" uid="uid://d0y5dtcod0sa6" path="res://scripts/UI.cs" id="1_dj8aq"]
 [ext_resource type="FontFile" uid="uid://bxffaxf7j5rga" path="res://art/UI/RIKY2vamp.ttf" id="2_ro3t7"]
+[ext_resource type="Shader" uid="uid://ciecfraxeg4ix" path="res://scripts/vignette.gdshader" id="3_3wlde"]
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://dtsauj2uslf8p" path="res://art/UI/heartUI-217x291.png" id="4_75u2n"]
+[ext_resource type="PackedScene" uid="uid://bl4qjjl7wfagm" path="res://scenes/loss_text.tscn" id="5_75u2n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]
+shader = ExtResource("3_3wlde")
+shader_parameter/vignette_color = Color(0.15686275, 0, 0, 1)
+shader_parameter/radius = 0.6090000289275
+shader_parameter/softness = 0.28400001349
+shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua6yw"]
 atlas = ExtResource("4_75u2n")
 region = Rect2(0, 1, 217, 277)
 
-[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay")]
+[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette")]
 layer = 2
 script = ExtResource("1_dj8aq")
 countDownLabel = NodePath("Control/Label")
-heartDisplay = NodePath("Control/TextureRect")
+heartDisplay = NodePath("Control/Heart")
+lossText = ExtResource("5_75u2n")
+vignette = NodePath("Control/Vignette")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3
@@ -23,7 +34,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1046527933]
+[node name="Vignette" type="ColorRect" parent="Control" unique_id=494082309]
+material = SubResource("ShaderMaterial_75u2n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heart" type="TextureRect" parent="Control" unique_id=1046527933]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,6 +55,10 @@ grow_horizontal = 2
 texture = SubResource("AtlasTexture_ua6yw")
 script = ExtResource("3_ua6yw")
 sheet = ExtResource("4_75u2n")
+frameTimeNormal = 1.2
+frameTimeWalk = 0.75
+frameTimeSprint = 0.35
+pulseDuration = 1.0
 
 [node name="Label" type="Label" parent="Control" unique_id=228050583]
 layout_mode = 1

@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Godot;
 
@@ -22,11 +24,20 @@ public partial class Movement : CharacterBody2D
     [Export]
     public float Friction = 8000f;
 
+    [Export]
+    float footstepSoundDelayWalk = 0.1f;
+
+    [Export]
+    float footstepSoundDelaySprint = 0.05f;
+
     public bool moveEnabled = true;
 
     [ExportGroup("Camera")]
     [Export]
-    float zoomed;
+    float zoomedMeat;
+
+    [Export]
+    float zoomHealth;
 
     [Export]
     private Camera2D camera;
@@ -73,6 +84,7 @@ public partial class Movement : CharacterBody2D
     // timers
     private double ripTimer;
     private double safetyTimer;
+    private double footstepTimer;
 
     [ExportGroup("Scenes")]
     [Export]
@@ -82,6 +94,9 @@ public partial class Movement : CharacterBody2D
     private AnimatedSprite2D sprite2D;
 
     [Export]
+    private UI ui;
+
+    [Export]
     Node2D flashlight;
 
     [Export]
@@ -89,16 +104,68 @@ public partial class Movement : CharacterBody2D
 
     Node2D exit;
 
+    [ExportGroup("Cursor")]
+    [Export]
+    private Texture2D cursorNormal;
+
+    [Export]
+    private Texture2D cursorMeat;
+
+    [Export]
+    private Vector2 cursorNormalHotspot = new Vector2(5, 0);
+
+    [Export]
+    private Vector2 cursorMeatHotspot = new Vector2(68, 42);
+
+    [Export]
+    private float cursorScale = 0.5f;
+
+    [ExportGroup("Flash")]
+    [Export]
+    private float flashScale = 1.6f;
+
+    [Export]
+    private float flashDuration = 0.4f;
+
+    [Export]
+    private Color flashTint;
+
+    private bool cursorIsMeat;
+
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
-    private double lostRip = 0;
     private float stunTimer = 0;
     private bool playedRip = false;
+    private int walkFrame;
 
     float cameraZoomDefault;
 
     public float initalCountdown;
+
+    [ExportGroup("Art")]
+    [Export]
+    private Texture2D[] damageSheets;
+    int prevId = -1;
+
+    private void SwapSheet(int id)
+    {
+        if (id == prevId)
+            return;
+        if (id < 0 || id >= damageSheets.Length)
+            return;
+        Texture2D sheet = damageSheets[id];
+        var frames = sprite2D.SpriteFrames;
+        foreach (string anim in frames.GetAnimationNames())
+        {
+            for (int i = 0; i < frames.GetFrameCount(anim); i++)
+            {
+                if (frames.GetFrameTexture(anim, i) is AtlasTexture at)
+                    at.Atlas = sheet;
+            }
+        }
+        prevId = id;
+    }
 
     public override void _Ready()
     {
@@ -106,9 +173,70 @@ public partial class Movement : CharacterBody2D
         exit = (Node2D)GetTree().GetFirstNodeInGroup("exit");
         cameraZoomDefault = camera.Zoom.X;
         initalCountdown = 50;
+        cursorNormal = ScaleCursorTexture(cursorNormal);
+        cursorMeat = ScaleCursorTexture(cursorMeat);
+        cursorNormalHotspot *= cursorScale;
+        cursorMeatHotspot *= cursorScale;
+        cursorIsMeat = true;
+        SetCursor(false);
+        cameraZoomInital = camera.Zoom.X;
     }
 
-    public void Attack(float damage, Node2D attacker)
+    private Texture2D ScaleCursorTexture(Texture2D texture)
+    {
+        Image image = texture.GetImage();
+        if (image.IsCompressed())
+        {
+            image.Decompress();
+        }
+        image.Resize(
+            Mathf.Max(1, Mathf.RoundToInt(image.GetWidth() * cursorScale)),
+            Mathf.Max(1, Mathf.RoundToInt(image.GetHeight() * cursorScale))
+        );
+        return ImageTexture.CreateFromImage(image);
+    }
+
+    private void SetCursor(bool meat)
+    {
+        if (meat == cursorIsMeat)
+        {
+            return;
+        }
+        cursorIsMeat = meat;
+        if (meat)
+        {
+            SpawnReadyFlash();
+        }
+        Input.SetCustomMouseCursor(
+            meat ? cursorMeat : cursorNormal,
+            Input.CursorShape.Arrow,
+            meat ? cursorMeatHotspot : cursorNormalHotspot
+        );
+    }
+
+    private void SpawnReadyFlash()
+    {
+        var ghost = new Sprite2D
+        {
+            Texture = sprite2D.SpriteFrames.GetFrameTexture(sprite2D.Animation, sprite2D.Frame),
+            FlipH = sprite2D.FlipH,
+            Centered = sprite2D.Centered,
+            Offset = sprite2D.Offset,
+            Modulate = flashTint,
+        };
+        GetTree().CurrentScene.AddChild(ghost);
+        ghost.GlobalTransform = sprite2D.GlobalTransform;
+
+        var tween = ghost.CreateTween().SetParallel();
+        tween
+            .TweenProperty(ghost, "scale", ghost.Scale * flashScale, flashDuration)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(ghost, "modulate:a", 0f, flashDuration);
+        tween.Chain().TweenCallback(Callable.From(ghost.QueueFree));
+    }
+
+    public void Hit(float damage, Node2D attacker)
     {
         if (safetyTimer <= 0)
         {
@@ -120,6 +248,7 @@ public partial class Movement : CharacterBody2D
             moveEnabled = false;
             stunTimer = stunTime;
             shakeTrauma = Mathf.Min(shakeTrauma + shakePerHit, 1f);
+            ui.Loss((int)damage);
         }
     }
 
@@ -161,16 +290,22 @@ public partial class Movement : CharacterBody2D
     private void PlayFootstep()
     {
         if (
-            AudioManager.instance.GetPlaying("footsteps").Count == 0
-            && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
-            && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
+            // AudioManager.instance.GetPlaying("footsteps").Count == 0
+            // && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
+            // && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
+            // &&
+            footstepTimer <= 0
         )
         {
-            if (countDown <= initalCountdown * (1f/3f))
+            footstepTimer = Input.IsActionPressed("SPRINT")
+                ? footstepSoundDelaySprint
+                : footstepSoundDelayWalk;
+            walkFrame ^= 1;
+            if (countDown <= initalCountdown * (1f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoopMore");
             }
-            else if (countDown <= initalCountdown * (2f/3f))
+            else if (countDown <= initalCountdown * (2f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoop");
             }
@@ -184,6 +319,22 @@ public partial class Movement : CharacterBody2D
     private void Play(string anim, bool flip)
     {
         sprite2D.FlipH = flip;
+        bool walking = Velocity.LengthSquared() > 25f;
+        if (walking)
+        {
+            anim += "_WALK";
+        }
+        if (cursorIsMeat)
+        {
+            anim += "_MEAT";
+        }
+        if (walking)
+        {
+            sprite2D.Animation = anim;
+            sprite2D.Frame = walkFrame % sprite2D.SpriteFrames.GetFrameCount(anim);
+            sprite2D.Pause();
+            return;
+        }
         sprite2D.Play(anim);
     }
 
@@ -195,10 +346,39 @@ public partial class Movement : CharacterBody2D
         sprite2D.Pause();
     }
 
+    private void UpdateSprite()
+    {
+        SwapSheet(Mathf.RoundToInt((initalCountdown - countDown) / initalCountdown * 4));
+    }
+
+    float cameraZoomInital;
+
+    public void Reset()
+    {
+        SwapSheet(0);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
+        UpdateSprite();
+        footstepTimer -= delta;
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
+        if (!Input.IsActionPressed("ATTACK"))
+        {
+            double z = countDown / initalCountdown;
+            float x = (float)(z * cameraZoomInital + (1 - z) * zoomHealth);
+            cameraZoomDefault = x;
+            camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
+        }
+        if (Input.IsActionJustPressed("RESET"))
+        {
+            GameManager.instance.Die(this);
+        }
+        if (countDown <= 20 && AudioManager.instance.GetPlaying("gameOver").Count == 0)
+        {
+            AudioManager.instance.PlaySFX("gameOver");
+        }
         arrow.GlobalPosition = GlobalPosition;
         arrow.Rotation = angleToExit;
         safetyTimer -= dt;
@@ -213,13 +393,17 @@ public partial class Movement : CharacterBody2D
             input = Vector2.Zero;
         }
         float maxSpeed = Input.IsActionPressed("SPRINT") ? SprintSpeed : WalkSpeed;
-        if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
+        if (input == Vector2.Zero)
         {
-            maxSpeed = 0;
+            ui.Beat(0);
         }
-        else if (Input.IsActionPressed("ATTACK"))
+        else if (!Input.IsActionPressed("SPRINT"))
         {
-            maxSpeed = BulletSpeed;
+            ui.Beat(1);
+        }
+        else
+        {
+            ui.Beat(2);
         }
         Vector2 targetVelocity = input * maxSpeed;
 
@@ -263,7 +447,7 @@ public partial class Movement : CharacterBody2D
         UpdateAnimation(mouseDir);
         if (Input.IsActionJustPressed("ATTACK"))
         {
-            lostRip = 0;
+            maxSpeed = BulletSpeed;
             playedRip = false;
             var x = AudioManager.instance.PlaySFX("ripStart");
             x.p.Finished += () =>
@@ -280,10 +464,8 @@ public partial class Movement : CharacterBody2D
             {
                 // GD.Print(ripTimer);
                 ripTimer -= delta;
-                countDown -= delta * (attackCountdownCost / ripTime);
-                lostRip += delta * (attackCountdownCost / ripTime);
                 playedRip = false;
-                float deltaZoom = ((zoomed - cameraZoomDefault) / ripTime) * dt;
+                float deltaZoom = ((zoomedMeat - cameraZoomDefault) / ripTime) * dt;
                 camera.Zoom += new Vector2(deltaZoom, deltaZoom);
             }
             else
@@ -303,18 +485,22 @@ public partial class Movement : CharacterBody2D
             {
                 Bullet b = bulletScene.Instantiate<Bullet>();
                 b.Construct(throwKnockback, throwStun, attackSpeed, mouseDir, GlobalPosition);
-                GetTree().Root.AddChild(b);
+                GetTree().CurrentScene.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
+                countDown -= attackCountdownCost;
+                ui.Loss((int)attackCountdownCost);
             }
             else
             {
-                countDown += lostRip;
                 AudioManager.instance.CancelSFX("ripStart");
                 AudioManager.instance.CancelSFX("ripLoop");
+                AudioManager.instance.CancelSFX("ripEnd");
                 playedRip = true;
             }
             ripTimer = ripTime;
         }
+
+        SetCursor(ripTimer <= 0);
     }
 }

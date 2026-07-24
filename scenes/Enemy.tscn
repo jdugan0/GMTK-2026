@@ -77,15 +77,15 @@ light_mask = 8
 script = ExtResource("1_3gvst")
 losDistance = 1000.0
 leashDistance = 1100.0
-MovementSpeed = 550.0
+MovementSpeed = 650.0
 _navigationAgent = NodePath("NavigationAgent2D")
 attackDistance = 150.0
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
-attackDamage = 20.0
+attackDamage = 10.0
 attackCooldown = 0.5
 attackDelay = 0.2
-attackStun = 0.1
+attackStun = 0.2
 attackRange = 325.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=499980153]

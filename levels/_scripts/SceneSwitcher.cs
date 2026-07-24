@@ -26,6 +26,7 @@ public partial class SceneSwitcher : Node
 
     public async Task SwitchSceneAsyncSlide(string sceneName)
     {
+        await WaitOneFrame();
         GetTree().Paused = true;
         await SlideIn(0.35);
         GetTree().ChangeSceneToPacked(sceneDict[sceneName]);
@@ -54,7 +55,7 @@ public partial class SceneSwitcher : Node
     {
         var size = GetViewport().GetVisibleRect().Size;
         fadeRect.Visible = true;
-        fadeRect.Position = new Vector2(-size.X, 0); 
+        fadeRect.Position = new Vector2(-size.X, 0);
         var t = GetTree().CreateTween().SetPauseMode(Tween.TweenPauseMode.Process);
         t.TweenProperty(fadeRect, "position:x", 0, dur)
             .SetTrans(Tween.TransitionType.Cubic)
