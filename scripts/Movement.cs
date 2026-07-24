@@ -353,6 +353,11 @@ public partial class Movement : CharacterBody2D
 
     float cameraZoomInital;
 
+    public void Reset()
+    {
+        SwapSheet(0);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
@@ -362,7 +367,7 @@ public partial class Movement : CharacterBody2D
         if (!Input.IsActionPressed("ATTACK"))
         {
             double z = countDown / initalCountdown;
-            float x = (float)(z * cameraZoomInital + (1 - z) * zoomHealth); 
+            float x = (float)(z * cameraZoomInital + (1 - z) * zoomHealth);
             cameraZoomDefault = x;
             camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
         }

@@ -19,6 +19,11 @@ public partial class UI : CanvasLayer
     ColorRect vignette;
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public void Reset()
+    {
+        ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 0);
+    }
+
     public override void _Process(double delta)
     {
         double z = player.countDown / player.initalCountdown;

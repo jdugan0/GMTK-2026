@@ -28,7 +28,8 @@ OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 layer = 1
 player = NodePath("../NavigationRegion2D/Player")
 
-[node name="GameManager" parent="." unique_id=2018085936 instance=ExtResource("5_5yd65")]
+[node name="GameManager" parent="." unique_id=2018085936 node_paths=PackedStringArray("ui") instance=ExtResource("5_5yd65")]
+ui = NodePath("../UI")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1165791422]
 y_sort_enabled = true

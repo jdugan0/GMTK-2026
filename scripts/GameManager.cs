@@ -16,6 +16,9 @@ public partial class GameManager : Node
     float time = 0;
     float randomSoundTimer;
 
+    [Export]
+    UI ui;
+
     public override void _Ready()
     {
         instance = this;
@@ -25,6 +28,8 @@ public partial class GameManager : Node
 
     public void Die(Movement player)
     {
+        ui.Reset();
+        player.Reset();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("level_test");
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;

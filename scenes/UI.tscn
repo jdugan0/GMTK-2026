@@ -10,8 +10,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]
 shader = ExtResource("3_3wlde")
 shader_parameter/vignette_color = Color(0.15686275, 0, 0, 1)
-shader_parameter/radius = 0.5190000246525
-shader_parameter/softness = 0.3190000151525
+shader_parameter/radius = 0.6090000289275
+shader_parameter/softness = 0.28400001349
 shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua6yw"]
