@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dyta7jwjwnae3"]
+
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_h4e10"]
+[ext_resource type="Texture2D" uid="uid://b7fnojsa7imli" path="res://art/UI/uiArrow.png" id="1_rnl76"]
+[ext_resource type="Script" uid="uid://c6yahme1osmjo" path="res://scripts/TutorialPopup.cs" id="1_x54k3"]
+[ext_resource type="Texture2D" uid="uid://cdts66pocav6a" path="res://art/UI/textbox.png" id="2_4glws"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smyqs"]
+content_margin_left = 53.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_4glws")
+
+[node name="TutorialPopup" type="Control" unique_id=1413253917]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x54k3")
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=1902221248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -403.0
+offset_right = 63.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_rnl76")
+
+[node name="Label" type="Label" parent="." unique_id=1703689014]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -409.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme = ExtResource("1_h4e10")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxTexture_smyqs")
+text = "dadadadsddasddsdadadadasdasdasda
+
+
+fwffwf"
+horizontal_alignment = 1
+vertical_alignment = 1
