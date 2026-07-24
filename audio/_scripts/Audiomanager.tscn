@@ -259,6 +259,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_kcgcn"]
 script = ExtResource("2_0au01")
 stream = ExtResource("59_tpk4g")
+volume = -10.0
 name = "gameOver"
 metadata/_custom_type_script = "uid://007myadtw53h"
 

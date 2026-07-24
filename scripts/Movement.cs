@@ -371,6 +371,14 @@ public partial class Movement : CharacterBody2D
             cameraZoomDefault = x;
             camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
         }
+        if (Input.IsActionJustPressed("RESET"))
+        {
+            GameManager.instance.Die(this);
+        }
+        if (countDown <= 20 && AudioManager.instance.GetPlaying("gameOver").Count == 0)
+        {
+            AudioManager.instance.PlaySFX("gameOver");
+        }
         arrow.GlobalPosition = GlobalPosition;
         arrow.Rotation = angleToExit;
         safetyTimer -= dt;
