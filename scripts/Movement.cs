@@ -22,6 +22,12 @@ public partial class Movement : CharacterBody2D
     [Export]
     public float Friction = 8000f;
 
+    [Export]
+    float footstepSoundDelayWalk = 0.1f;
+
+    [Export]
+    float footstepSoundDelaySprint = 0.05f;
+
     public bool moveEnabled = true;
 
     [ExportGroup("Camera")]
@@ -73,6 +79,7 @@ public partial class Movement : CharacterBody2D
     // timers
     private double ripTimer;
     private double safetyTimer;
+    private double footstepTimer;
 
     [ExportGroup("Scenes")]
     [Export]
@@ -216,8 +223,12 @@ public partial class Movement : CharacterBody2D
             AudioManager.instance.GetPlaying("footsteps").Count == 0
             && AudioManager.instance.GetPlaying("footstepsGoop").Count == 0
             && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
+            && footstepTimer <= 0
         )
         {
+            footstepTimer = Input.IsActionPressed("SPRINT")
+                ? footstepSoundDelaySprint
+                : footstepSoundDelayWalk;
             if (countDown <= initalCountdown * (1f / 3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoopMore");
@@ -249,6 +260,7 @@ public partial class Movement : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        footstepTimer -= delta;
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
         arrow.GlobalPosition = GlobalPosition;
