@@ -21,6 +21,7 @@ collision_layer = 257
 script = ExtResource("1_p0vlq")
 Acceleration = 3500.0
 Friction = 3000.0
+zoomed = 0.8
 camera = NodePath("Camera2D")
 mouseCameraWeight = 0.175
 shakeStrength = 60.0
@@ -68,7 +69,7 @@ collision_layer = 256
 position = Vector2(-11, -1)
 shape = SubResource("CapsuleShape2D_mdl7e")
 
-[node name="ArrowLayer" type="CanvasLayer" parent="."]
+[node name="ArrowLayer" type="CanvasLayer" parent="." unique_id=1692620227]
 follow_viewport_enabled = true
 
 [node name="Arrow" type="Sprite2D" parent="ArrowLayer" unique_id=1929614909]

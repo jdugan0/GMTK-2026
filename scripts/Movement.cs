@@ -26,6 +26,9 @@ public partial class Movement : CharacterBody2D
 
     [ExportGroup("Camera")]
     [Export]
+    float zoomed;
+
+    [Export]
     private Camera2D camera;
 
     [Export]
@@ -93,10 +96,13 @@ public partial class Movement : CharacterBody2D
     private float stunTimer = 0;
     private bool playedRip = false;
 
+    float cameraZoomDefault;
+
     public override void _Ready()
     {
         ripTimer = ripTime;
         exit = (Node2D)GetTree().GetFirstNodeInGroup("exit");
+        cameraZoomDefault = camera.Zoom.X;
     }
 
     public void Attack(float damage, Node2D attacker)
@@ -274,6 +280,8 @@ public partial class Movement : CharacterBody2D
                 countDown -= delta * (attackCountdownCost / ripTime);
                 lostRip += delta * (attackCountdownCost / ripTime);
                 playedRip = false;
+                float deltaZoom = ((zoomed - cameraZoomDefault) / ripTime) * dt;
+                camera.Zoom += new Vector2(deltaZoom, deltaZoom);
             }
             else
             {
@@ -294,6 +302,7 @@ public partial class Movement : CharacterBody2D
                 b.Construct(throwKnockback, throwStun, attackSpeed, mouseDir, GlobalPosition);
                 GetTree().Root.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
+                camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
             }
             else
             {
