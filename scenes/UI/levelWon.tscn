@@ -20,15 +20,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.36862746)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1825037380]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1623542900]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1100.0
-offset_top = 25.0
-offset_right = -90.0
-offset_bottom = -65.0
+offset_left = 67.0
+offset_top = 141.0
+offset_right = -67.0
+offset_bottom = -197.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.023529412, 0.03137255, 0.06666667, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1825037380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1086.0
+offset_right = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_nme8d")
@@ -39,10 +50,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.98800004
 anchor_bottom = 1.0
-offset_left = 170.0
-offset_top = 295.0
-offset_right = -831.9601
-offset_bottom = -220.0
+offset_left = 177.0
+offset_top = 348.0
+offset_right = -824.9601
+offset_bottom = -167.0
+pivot_offset = Vector2(-277, 91)
 theme = ExtResource("2_r72i4")
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=2030451926]
@@ -54,3 +66,18 @@ text = "NEXT LEVEL"
 layout_mode = 2
 theme = ExtResource("2_r72i4")
 text = "MAIN MENU"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1873360989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = 27.0
+offset_right = -825.0
+offset_bottom = -855.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_r72i4")
+text = "
+LEVEL CLEARED!"

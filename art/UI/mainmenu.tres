@@ -5,15 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://dgf32ndi62ppn" path="res://art/UI/lifeUI.png" id="3_l30lo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byrvo"]
-texture = ExtResource("2_l30lo")
 content_margin_top = 47.0
 content_margin_bottom = 47.0
+texture = ExtResource("2_l30lo")
 region_rect = Rect2(0, 0, 510, 185)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jeprh"]
-texture = ExtResource("2_l30lo")
 content_margin_top = 47.0
 content_margin_bottom = 47.0
+texture = ExtResource("2_l30lo")
 region_rect = Rect2(0, 185, 510, 185)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ilpo"]
@@ -38,4 +38,10 @@ HSlider/icons/grabber = ExtResource("3_l30lo")
 HSlider/icons/grabber_highlight = ExtResource("3_l30lo")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_7ilpo")
 HSlider/styles/slider = SubResource("StyleBoxFlat_e0gqf")
+RichTextLabel/colors/default_color = Color(0.78039217, 0.23529412, 0.23529412, 1)
+RichTextLabel/colors/font_outline_color = Color(0.023529412, 0.03137255, 0.06666667, 1)
+RichTextLabel/constants/outline_size = 48
+RichTextLabel/font_sizes/normal_font_size = 105
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/normal_font = ExtResource("1_jeprh")
 VBoxContainer/constants/separation = 16

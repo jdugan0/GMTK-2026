@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c4rfle13mndup"]
+
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_60520"]
+[ext_resource type="Texture2D" uid="uid://h28iri4m7ovf" path="res://art/UI/levelselect.png" id="2_61r5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byrvo"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(300, 0, 300, 468)
+
+[node name="LevelSelect" type="Control" unique_id=104066112]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button3" type="Button" parent="." unique_id=1768709924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 868.0
+offset_right = -1183.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_60520")
+text = "BACK"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=502530860]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 185.0
+offset_right = -48.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 46
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer" unique_id=571371462]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="TextureButton2" type="TextureButton" parent="HBoxContainer" unique_id=648040673]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="TextureButton3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="TextureButton4" type="TextureButton" parent="HBoxContainer" unique_id=917072]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
