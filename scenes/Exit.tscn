@@ -1,12 +1,43 @@
 [gd_scene format=3 uid="uid://bfhkk88rh74bx"]
 
 [ext_resource type="Script" uid="uid://dripdwaikuuh3" path="res://scripts/Exit.cs" id="1_c4vl1"]
+[ext_resource type="Texture2D" uid="uid://c2ls4ibeaki80" path="res://art/levelExit 869x531.png" id="2_c8tsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhnsb"]
 size = Vector2(500, 500)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy2wj"]
+atlas = ExtResource("2_c8tsr")
+region = Rect2(0, 0, 869, 531)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3htg"]
+atlas = ExtResource("2_c8tsr")
+region = Rect2(0, 531, 869, 531)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4vl1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy2wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3htg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Exit" type="Area2D" unique_id=1379763701]
+light_mask = 16
 script = ExtResource("1_c4vl1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=304772998 groups=["exit"]]
+position = Vector2(-5, -73)
 shape = SubResource("RectangleShape2D_yhnsb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1448749314]
+light_mask = 16
+sprite_frames = SubResource("SpriteFrames_c4vl1")
+autoplay = "default"
+frame_progress = 0.50741696

@@ -74,7 +74,6 @@ shape = SubResource("CapsuleShape2D_iwav8")
 y_sort_enabled = true
 position = Vector2(-6.715, 92)
 energy = 2.44
-range_item_cull_mask = 15
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 

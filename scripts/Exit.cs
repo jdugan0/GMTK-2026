@@ -12,7 +12,7 @@ public partial class Exit : Area2D
 	{
 		if (body is Movement player)
 		{
-			GameManager.instance.Die(player);
+			GameManager.instance.Win(player);
 		}
 	}
 

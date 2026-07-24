@@ -100,7 +100,7 @@ public partial class Movement : CharacterBody2D
     Node2D flashlight;
 
     [Export]
-    Sprite2D arrow;
+    public Sprite2D arrow;
 
     Node2D exit;
 

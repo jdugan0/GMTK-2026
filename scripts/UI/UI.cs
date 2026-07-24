@@ -18,6 +18,9 @@ public partial class UI : CanvasLayer
     [Export]
     ColorRect vignette;
 
+    [Export]
+    public Control levelWon;
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public void Reset()
     {

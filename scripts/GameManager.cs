@@ -37,6 +37,17 @@ public partial class GameManager : Node
         AudioManager.instance.CancelSFX("gameOver");
     }
 
+    public void Win(Movement player)
+    {
+        AudioManager.instance.CancelSFX("combat");
+        AudioManager.instance.CancelSFX("gameOver");
+        AudioManager.instance.CancelSFX("outOfCombatBackground");
+        AudioManager.instance.PlaySFX("levelWin");
+        GetTree().Paused = true;
+        ui.levelWon.Visible = true;
+        player.arrow.Visible = false;
+    }
+
     public void ReportCombat()
     {
         reported = true;
