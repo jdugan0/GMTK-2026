@@ -59,8 +59,9 @@ y_sort_origin = -47
 navigation_enabled = false
 
 [node name="TopDecor" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1792179651]
+light_mask = 32
 z_index = 1
-tile_map_data = PackedByteArray("AAAIAAMAAAAAAAQAAAAJAAMAAAABAAQAAAAHAAMAAAABAAQAAFA=")
+tile_map_data = PackedByteArray("AAAIAAMAAAAAAAQAAAAJAAMAAAABAAQAAAAHAAMAAAABAAQAAFAJAAIAAAABAAMAAAAIAAIAAAAAAAMAAAAHAAIAAAABAAMAADAHAAEAAAABAAQAADAIAAEAAAABAAMAAGAJAAEAAAABAAQAAGA=")
 tile_set = ExtResource("3_l7bfe")
 navigation_enabled = false
 

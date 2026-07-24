@@ -95,3 +95,4 @@ PAUSE={
 2d_render/layer_3="Player"
 2d_render/layer_4="Enemies"
 2d_render/layer_5="Exit"
+2d_render/layer_6="Top_Decor"
