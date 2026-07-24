@@ -133,7 +133,7 @@ public partial class Enemy : CharacterBody2D
                 if (player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
                 {
                     DebugState("ATTACK_HIT");
-                    player.Attack(attackDamage, this);
+                    player.Hit(attackDamage, this);
                     attackTimer = attackCooldown;
                     stunTimer = attackStun;
                     stunFromHit = false;

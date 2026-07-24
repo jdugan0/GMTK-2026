@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bxffaxf7j5rga" path="res://art/UI/RIKY2vamp.ttf" id="2_ro3t7"]
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://dtsauj2uslf8p" path="res://art/UI/heartUI-217x291.png" id="4_75u2n"]
+[ext_resource type="PackedScene" uid="uid://bl4qjjl7wfagm" path="res://scenes/loss_text.tscn" id="5_75u2n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua6yw"]
 atlas = ExtResource("4_75u2n")
@@ -14,6 +15,7 @@ layer = 2
 script = ExtResource("1_dj8aq")
 countDownLabel = NodePath("Control/Label")
 heartDisplay = NodePath("Control/Heart")
+lossText = ExtResource("5_75u2n")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3

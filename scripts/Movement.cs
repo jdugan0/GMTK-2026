@@ -170,7 +170,7 @@ public partial class Movement : CharacterBody2D
         );
     }
 
-    public void Attack(float damage, Node2D attacker)
+    public void Hit(float damage, Node2D attacker)
     {
         if (safetyTimer <= 0)
         {
@@ -182,6 +182,7 @@ public partial class Movement : CharacterBody2D
             moveEnabled = false;
             stunTimer = stunTime;
             shakeTrauma = Mathf.Min(shakeTrauma + shakePerHit, 1f);
+            ui.Loss((int)damage);
         }
     }
 
@@ -378,6 +379,7 @@ public partial class Movement : CharacterBody2D
                 GetTree().Root.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
+                ui.Loss((int)attackCountdownCost);
             }
             else
             {
