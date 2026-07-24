@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://xq40okbuq68y"]
+
+[ext_resource type="Texture2D" uid="uid://d1xvp3s6c3csq" path="res://art/UI/winner.png" id="1_nme8d"]
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="2_r72i4"]
+
+[node name="LevelWon" type="Control" unique_id=1918131982]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1170092804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.36862746)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1825037380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1100.0
+offset_top = 25.0
+offset_right = -90.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nme8d")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1359441361]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98800004
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = 295.0
+offset_right = -831.9601
+offset_bottom = -220.0
+theme = ExtResource("2_r72i4")
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=2030451926]
+layout_mode = 2
+theme = ExtResource("2_r72i4")
+text = "NEXT LEVEL"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=2025056828]
+layout_mode = 2
+theme = ExtResource("2_r72i4")
+text = "MAIN MENU"

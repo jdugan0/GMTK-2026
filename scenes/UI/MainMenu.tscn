@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cujpfgw721otk"]
+
+[ext_resource type="Texture2D" uid="uid://dffa7isf2xpil" path="res://art/UI/homescreenBG.png" id="1_ow34m"]
+[ext_resource type="Texture2D" uid="uid://x5bd4m3mfwak" path="res://art/UI/homescreenMA.png" id="2_l72w3"]
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="3_2wh52"]
+
+[node name="MainMenu" type="Control" unique_id=935593089]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1614989194]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ow34m")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=23870648]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_right = -53.160034
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l72w3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=496195762]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 956.0
+offset_top = 388.0
+offset_right = -113.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2wh52")
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=722990667]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=928965750]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=2053178898]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+text = "EXIT"
