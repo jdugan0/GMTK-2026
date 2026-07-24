@@ -120,7 +120,6 @@ public partial class Movement : CharacterBody2D
     [ExportGroup("Timer")]
     [Export]
     public double countDown;
-    private double lostRip = 0;
     private float stunTimer = 0;
     private bool playedRip = false;
 
@@ -336,7 +335,6 @@ public partial class Movement : CharacterBody2D
         if (Input.IsActionJustPressed("ATTACK"))
         {
             maxSpeed = BulletSpeed;
-            lostRip = 0;
             playedRip = false;
             var x = AudioManager.instance.PlaySFX("ripStart");
             x.p.Finished += () =>
@@ -353,8 +351,6 @@ public partial class Movement : CharacterBody2D
             {
                 // GD.Print(ripTimer);
                 ripTimer -= delta;
-                countDown -= delta * (attackCountdownCost / ripTime);
-                lostRip += delta * (attackCountdownCost / ripTime);
                 playedRip = false;
                 float deltaZoom = ((zoomed - cameraZoomDefault) / ripTime) * dt;
                 camera.Zoom += new Vector2(deltaZoom, deltaZoom);
@@ -379,13 +375,14 @@ public partial class Movement : CharacterBody2D
                 GetTree().Root.AddChild(b);
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
+                countDown -= attackCountdownCost;
                 ui.Loss((int)attackCountdownCost);
             }
             else
             {
-                countDown += lostRip;
                 AudioManager.instance.CancelSFX("ripStart");
                 AudioManager.instance.CancelSFX("ripLoop");
+                AudioManager.instance.CancelSFX("ripEnd");
                 playedRip = true;
             }
             ripTimer = ripTime;

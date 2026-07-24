@@ -19,7 +19,26 @@ public partial class HeartDisplay : TextureRect
     float frameTime;
 
     [Export]
-    public int mode;
+    private float pulseScale = 1.6f;
+
+    [Export]
+    private float pulseDuration = 0.4f;
+
+    private int _mode;
+
+    [Export]
+    public int mode
+    {
+        get => _mode;
+        set
+        {
+            if (_mode == value)
+                return;
+            _mode = value;
+            Refresh();
+            SpawnPulse();
+        }
+    }
 
     private readonly AtlasTexture atlas = new();
     private int frame;
@@ -57,6 +76,31 @@ public partial class HeartDisplay : TextureRect
                 frameTime = frameTimeSprint;
                 break;
         }
+    }
+
+    private void SpawnPulse()
+    {
+        if (!IsInsideTree())
+            return;
+
+        var ghost = new TextureRect
+        {
+            Texture = new AtlasTexture { Atlas = sheet, Region = atlas.Region },
+            Size = Size,
+            PivotOffset = Size / 2,
+            StretchMode = StretchMode,
+            ExpandMode = ExpandMode,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        AddChild(ghost);
+
+        var tween = ghost.CreateTween().SetParallel();
+        tween
+            .TweenProperty(ghost, "scale", Vector2.One * pulseScale, pulseDuration)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(ghost, "modulate:a", 0f, pulseDuration);
+        tween.Chain().TweenCallback(Callable.From(ghost.QueueFree));
     }
 
     private void Refresh() =>

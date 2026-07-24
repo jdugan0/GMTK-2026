@@ -40,6 +40,7 @@ sheet = ExtResource("4_75u2n")
 frameTimeNormal = 1.2
 frameTimeWalk = 0.75
 frameTimeSprint = 0.35
+pulseDuration = 1.0
 
 [node name="Label" type="Label" parent="Control" unique_id=228050583]
 layout_mode = 1
