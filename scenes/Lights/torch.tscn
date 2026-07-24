@@ -7,6 +7,7 @@ color = Color(0.95, 0.44, 0.12, 1)
 energy = 2.3
 range_item_cull_mask = 15
 shadow_enabled = true
+shadow_item_cull_mask = 13
 shadow_filter = 2
 shadow_filter_smooth = 1.0
 texture = ExtResource("1_pc417")

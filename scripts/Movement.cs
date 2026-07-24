@@ -98,11 +98,14 @@ public partial class Movement : CharacterBody2D
 
     float cameraZoomDefault;
 
+    public float initalCountdown;
+
     public override void _Ready()
     {
         ripTimer = ripTime;
         exit = (Node2D)GetTree().GetFirstNodeInGroup("exit");
         cameraZoomDefault = camera.Zoom.X;
+        initalCountdown = 50;
     }
 
     public void Attack(float damage, Node2D attacker)
@@ -163,11 +166,11 @@ public partial class Movement : CharacterBody2D
             && AudioManager.instance.GetPlaying("footstepsGoopMore").Count == 0
         )
         {
-            if (countDown <= 33)
+            if (countDown <= initalCountdown * (1f/3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoopMore");
             }
-            else if (countDown <= 66)
+            else if (countDown <= initalCountdown * (2f/3f))
             {
                 AudioManager.instance.PlaySFX("footstepsGoop");
             }

@@ -45,25 +45,25 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-100, -100, 100, -100, 
 agent_radius = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s5inv"]
-polygon = PackedVector2Array(-25.965797, -49.447914, -16.934216, -50.80265, 100, -51.787994, 100, -42.108006, -18.740532, -40.416332, -17.908012, 100, -25.652, 100)
+polygon = PackedVector2Array(-22.748001, -48.883995, 100, -54.692, 100, 55.660004, 24.683998, 56.628006, 21.779999, 100, -21.780014, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x47dy"]
-polygon = PackedVector2Array(-26.62001, -100, -17.908005, -100, -14.036011, 100, -24.683998, 100)
+polygon = PackedVector2Array(-25.652, -100, 21.779999, -100, 20.811996, 100, -23.716011, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cxckp"]
-polygon = PackedVector2Array(-24.683998, -100, -14.0359955, -100, -13.068001, 61.46801, -24.684006, 61.46801)
+polygon = PackedVector2Array(-26.619995, -100, 22.748009, -100, 19.843994, 62.435997, -22.748001, 62.435997)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h6rjb"]
-polygon = PackedVector2Array(-100, -54.692, 100, -55.660004, 100, -46.94801, -100, -45.98001)
+polygon = PackedVector2Array(-100, -52.756012, 100, -51.788002, 100, 55.660004, -100, 56.628)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kv4hr"]
-polygon = PackedVector2Array(-100, -57.576324, -29.126846, -59.38265, -27.320534, -75.18792, -26.619995, -100, 20.546844, -100, 20.095268, -92.34792, 1.5805283, -94.60582, -18.740532, -94.15424, -23.707901, -52.608963, -34.5458, -50.802647, -100, -50.351074)
+polygon = PackedVector2Array(-23.715996, -55.66001, -24.683998, -100, 22.747993, -100, 21.780014, -8.228012, -9.1959915, 54.692, -100, 52.755997, -100, -52.756012)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8482b"]
-polygon = PackedVector2Array(-100, -53.928253, 46.464127, -53.928246, 47.956947, -46.464127, -100, -49.07657)
+polygon = PackedVector2Array(-100, -51.787994, 44.044006, -50.82, 54.692, -10.164001, 35.332, 53.724007, -100, 55.659996)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rxhxk"]
-polygon = PackedVector2Array(-100, -54.692, 21.382492, -54.667557, 21.171825, -43.923645, 22.748009, 100, 14.036018, 100, 9.195999, -42.108, -100, -44.044006)
+polygon = PackedVector2Array(-100, -57.59601, 15.972008, -51.788002, 22.748009, 100, -21.780014, 100, -26.620003, 52.756004, -100, 53.724)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x47dy"]
 texture = ExtResource("1_h6rjb")

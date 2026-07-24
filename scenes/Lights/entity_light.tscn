@@ -3,5 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b0x4qvqr4evfh" path="res://art/light/circle_light.tres" id="1_pw0d1"]
 
 [node name="EntityLight" type="PointLight2D" unique_id=1084933953]
+range_item_cull_mask = 15
+shadow_enabled = true
+shadow_item_cull_mask = 13
 texture = ExtResource("1_pw0d1")
 texture_scale = 7.85

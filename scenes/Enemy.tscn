@@ -98,6 +98,7 @@ animation = &"DOWN"
 [node name="Flashlight" parent="." unique_id=445911353 instance=ExtResource("3_mpr68")]
 visible = false
 position = Vector2(12.335, 92)
+range_item_cull_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=372871662]
 position = Vector2(13, 97)

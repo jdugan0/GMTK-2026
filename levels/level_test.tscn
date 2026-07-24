@@ -41,7 +41,11 @@ tile_map_data = PackedByteArray("AAD2//j/AAABAAAAAAD2//n/AAAAAAAAAAD2//r/AAABAAA
 tile_set = ExtResource("4_5yd65")
 navigation_enabled = false
 
+[node name="Enemy" parent="NavigationRegion2D" unique_id=1156526680 instance=ExtResource("8_sop0g")]
+position = Vector2(2319, 784)
+
 [node name="Enemies" type="Node2D" parent="NavigationRegion2D" unique_id=214454458]
+y_sort_enabled = true
 
 [node name="Player" parent="NavigationRegion2D" unique_id=327615574 instance=ExtResource("1_iho50")]
 position = Vector2(729, 687)
@@ -72,6 +76,3 @@ position = Vector2(2733, 453)
 [node name="Torch3" parent="." unique_id=1543704905 instance=ExtResource("5_y0s4v")]
 visible = false
 position = Vector2(646, 852)
-
-[node name="Enemy" parent="." unique_id=1156526680 instance=ExtResource("8_sop0g")]
-position = Vector2(2319, 784)

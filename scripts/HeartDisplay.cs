@@ -2,13 +2,6 @@ using Godot;
 
 public partial class HeartDisplay : TextureRect
 {
-    public enum HeartMode
-    {
-        Healthy,
-        Wounded,
-        Rotten,
-    }
-
     private const int CellWidth = 217;
     private const int CellHeight = 291;
 
@@ -19,23 +12,11 @@ public partial class HeartDisplay : TextureRect
     private float frameTime = 0.35f;
 
     [Export]
-    private HeartMode mode;
+    public int mode;
 
     private readonly AtlasTexture atlas = new();
     private int frame;
     private double timer;
-
-    public HeartMode Mode
-    {
-        get => mode;
-        set
-        {
-            if (mode == value)
-                return;
-            mode = value;
-            Refresh();
-        }
-    }
 
     public override void _Ready()
     {
@@ -56,5 +37,5 @@ public partial class HeartDisplay : TextureRect
     }
 
     private void Refresh() =>
-        atlas.Region = new Rect2(frame * CellWidth, (int)mode * CellHeight, CellWidth, CellHeight);
+        atlas.Region = new Rect2(frame * CellWidth, mode * CellHeight, CellWidth, CellHeight);
 }
