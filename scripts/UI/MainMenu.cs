@@ -15,7 +15,7 @@ public partial class MainMenu : Node
     public override void _Ready()
     {
         MusicManager.instance.PlaySong("titleScreen");
-        playButton.Pressed += Play;
+        playButton.Pressed += Levels;
         optionsButton.Pressed += Options;
         quitButton.Pressed += Quit;
     }
@@ -25,10 +25,9 @@ public partial class MainMenu : Node
         GetTree().Quit();
     }
 
-    public void Play()
+    public void Levels()
     {
-        MusicManager.instance.CancelSong(2f);
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levelTest", 1f);
+        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levels", 1f);
     }
 
     public void Options()

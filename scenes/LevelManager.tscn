@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b1mdvwpy5y2a0"]
+
+[ext_resource type="Script" uid="uid://d24limk228xkh" path="res://scripts/LevelManager.cs" id="1_eb86q"]
+
+[node name="Levels" type="Node2D" unique_id=1816279681]
+script = ExtResource("1_eb86q")
+levels = PackedStringArray("level_1", "level_2", "level_3", "level_4")

@@ -36,6 +36,9 @@ public partial class UI : CanvasLayer
     [Export]
     Control pauseMenu;
 
+    [Export]
+    Button nextLevel;
+
     public bool IsPaused { get; private set; }
 
     public override void _Ready()
@@ -46,6 +49,7 @@ public partial class UI : CanvasLayer
         pauseMainMenu.Pressed += MainMenu;
         restart.Pressed += Restart;
         resume.Pressed += () => SetPaused(false);
+        nextLevel.Pressed += LevelManager.instance.NextLevel;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -86,7 +90,6 @@ public partial class UI : CanvasLayer
 
     public void MainMenu()
     {
-        CloseMenus();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
         MusicManager.instance.CancelSong(1f);
         AudioManager.instance.CancelAllSFX();

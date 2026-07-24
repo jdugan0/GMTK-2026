@@ -53,7 +53,7 @@ theme = ExtResource("3_2wh52")
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=722990667]
 layout_mode = 2
 theme = ExtResource("3_2wh52")
-text = "PLAY"
+text = "LEVELS"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=928965750]
 layout_mode = 2

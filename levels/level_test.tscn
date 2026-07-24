@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uw7delfm0ml" path="res://scripts/OccluderDebug.cs" id="1_tt56a"]
 [ext_resource type="PackedScene" uid="uid://bu60gj4dh7lau" path="res://scenes/level_stuff.tscn" id="2_3wh16"]
+[ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="3_4w0vo"]
 
 [node name="LevelTest" type="Node2D" unique_id=160668906 node_paths=PackedStringArray("SearchRoot")]
 script = ExtResource("1_tt56a")
@@ -10,5 +11,8 @@ FillColor = Color(1, 0.2509804, 0.4, 1)
 OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 
 [node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_3wh16")]
+
+[node name="Enemy" parent="LevelStuff/NavigationRegion2D/Enemies" parent_id_path=PackedInt32Array(230299218, 1362574246) index="0" unique_id=1156526680 instance=ExtResource("3_4w0vo")]
+position = Vector2(2554, 873)
 
 [editable path="LevelStuff"]

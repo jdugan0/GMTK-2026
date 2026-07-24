@@ -20,7 +20,7 @@ shader_parameter/intensity = 0.0
 atlas = ExtResource("4_75u2n")
 region = Rect2(0, 1, 217, 277)
 
-[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu")]
+[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu", "nextLevel")]
 process_mode = 3
 layer = 2
 script = ExtResource("1_dj8aq")
@@ -34,6 +34,7 @@ pauseMainMenu = NodePath("Control/LevelPause/VBoxContainer/Button2")
 resume = NodePath("Control/LevelPause/VBoxContainer/Button")
 restart = NodePath("Control/LevelPause/VBoxContainer/Button3")
 pauseMenu = NodePath("Control/LevelPause")
+nextLevel = NodePath("Control/LevelWon/VBoxContainer/Button")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3
