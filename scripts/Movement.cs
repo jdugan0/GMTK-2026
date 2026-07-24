@@ -89,6 +89,9 @@ public partial class Movement : CharacterBody2D
     private AnimatedSprite2D sprite2D;
 
     [Export]
+    private UI ui;
+
+    [Export]
     Node2D flashlight;
 
     [Export]
@@ -277,6 +280,18 @@ public partial class Movement : CharacterBody2D
             input = Vector2.Zero;
         }
         float maxSpeed = Input.IsActionPressed("SPRINT") ? SprintSpeed : WalkSpeed;
+        if (input == Vector2.Zero)
+        {
+            ui.Beat(0);
+        }
+        else if (!Input.IsActionPressed("SPRINT"))
+        {
+            ui.Beat(1);
+        }
+        else
+        {
+            ui.Beat(2);
+        }
         Vector2 targetVelocity = input * maxSpeed;
 
         camera.GlobalPosition =

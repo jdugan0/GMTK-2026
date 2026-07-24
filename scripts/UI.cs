@@ -30,4 +30,9 @@ public partial class UI : CanvasLayer
             heartDisplay.mode = 0;
         }
     }
+
+    public void Beat(int mode)
+    {
+        heartDisplay.Beat(mode);
+    }
 }

@@ -9,7 +9,14 @@ public partial class HeartDisplay : TextureRect
     private Texture2D sheet;
 
     [Export]
-    private float frameTime = 0.35f;
+    private float frameTimeNormal = 0.35f;
+
+    [Export]
+    private float frameTimeWalk;
+
+    [Export]
+    private float frameTimeSprint;
+    float frameTime;
 
     [Export]
     public int mode;
@@ -34,6 +41,22 @@ public partial class HeartDisplay : TextureRect
         timer = 0;
         frame ^= 1;
         Refresh();
+    }
+
+    public void Beat(int time)
+    {
+        switch (time)
+        {
+            case 0:
+                frameTime = frameTimeNormal;
+                break;
+            case 1:
+                frameTime = frameTimeWalk;
+                break;
+            case 2:
+                frameTime = frameTimeSprint;
+                break;
+        }
     }
 
     private void Refresh() =>

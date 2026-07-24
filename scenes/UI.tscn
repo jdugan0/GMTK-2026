@@ -13,7 +13,7 @@ region = Rect2(0, 1, 217, 277)
 layer = 2
 script = ExtResource("1_dj8aq")
 countDownLabel = NodePath("Control/Label")
-heartDisplay = NodePath("Control/TextureRect")
+heartDisplay = NodePath("Control/Heart")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1046527933]
+[node name="Heart" type="TextureRect" parent="Control" unique_id=1046527933]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,6 +35,9 @@ grow_horizontal = 2
 texture = SubResource("AtlasTexture_ua6yw")
 script = ExtResource("3_ua6yw")
 sheet = ExtResource("4_75u2n")
+frameTimeNormal = 1.2
+frameTimeWalk = 0.75
+frameTimeSprint = 0.35
 
 [node name="Label" type="Label" parent="Control" unique_id=228050583]
 layout_mode = 1

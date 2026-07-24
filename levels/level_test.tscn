@@ -47,8 +47,9 @@ y_sort_enabled = true
 [node name="Enemy" parent="NavigationRegion2D/Enemies" unique_id=1156526680 instance=ExtResource("8_sop0g")]
 position = Vector2(2657, 857)
 
-[node name="Player" parent="NavigationRegion2D" unique_id=327615574 instance=ExtResource("1_iho50")]
+[node name="Player" parent="NavigationRegion2D" unique_id=327615574 node_paths=PackedStringArray("ui") instance=ExtResource("1_iho50")]
 position = Vector2(729, 687)
+ui = NodePath("../../UI")
 
 [node name="Walls" type="TileMapLayer" parent="NavigationRegion2D" unique_id=908533846 groups=["destroy_bullet", "wall"]]
 light_mask = 2
