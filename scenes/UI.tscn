@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://d0y5dtcod0sa6" path="res://scripts/UI/UI.cs" id="1_dj8aq"]
 [ext_resource type="FontFile" uid="uid://bxffaxf7j5rga" path="res://art/UI/RIKY2vamp.ttf" id="2_ro3t7"]
 [ext_resource type="Shader" uid="uid://ciecfraxeg4ix" path="res://scripts/vignette.gdshader" id="3_3wlde"]
+[ext_resource type="Script" uid="uid://ck3uayxwubsuw" path="res://scripts/FogMask.cs" id="3_fogmk"]
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]
 [ext_resource type="Shader" uid="uid://b6x1p046eyov" path="res://scripts/fog.gdshader" id="3_w7enk"]
-[ext_resource type="Script" uid="uid://ck3uayxwubsuw" path="res://scripts/FogMask.cs" id="3_fogmk"]
 [ext_resource type="Texture2D" uid="uid://dtsauj2uslf8p" path="res://art/UI/heartUI-217x291.png" id="4_75u2n"]
 [ext_resource type="PackedScene" uid="uid://bl4qjjl7wfagm" path="res://scenes/loss_text.tscn" id="5_75u2n"]
 [ext_resource type="Texture2D" uid="uid://4aa4ndr7spx3" path="res://art/UI/heartattack1920x1080.png" id="6_ukj8e"]
@@ -22,13 +22,13 @@ shader = ExtResource("3_w7enk")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_aputy")
 shader_parameter/smoke_color = Color(0.8, 0.8, 0.8, 1)
 shader_parameter/distortion_speed = 0.10000000475
-shader_parameter/density = 0.4330000205675
+shader_parameter/density = 1.0
 shader_parameter/screen_to_light_uv_x = Vector3(0, 0, 0)
 shader_parameter/screen_to_light_uv_y = Vector3(0, 0, 0)
 shader_parameter/lit_min = 0.0
-shader_parameter/lit_max = 0.4
-shader_parameter/alpha_in_dark = 1.0
-shader_parameter/alpha_in_light = 0.0
+shader_parameter/lit_max = 0.0
+shader_parameter/alpha_in_dark = 0.0400000019
+shader_parameter/alpha_in_light = 0.030000001425
 shader_parameter/debug_view = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]
@@ -69,13 +69,13 @@ grow_vertical = 2
 
 [node name="Fog" type="ColorRect" parent="Control" unique_id=744930939]
 material = SubResource("ShaderMaterial_ukj8e")
-script = ExtResource("3_fogmk")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_fogmk")
 
 [node name="Vignette" type="ColorRect" parent="Control" unique_id=494082309]
 material = SubResource("ShaderMaterial_75u2n")
