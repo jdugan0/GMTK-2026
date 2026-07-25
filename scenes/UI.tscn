@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d0y5dtcod0sa6" path="res://scripts/UI/UI.cs" id="1_dj8aq"]
 [ext_resource type="FontFile" uid="uid://bxffaxf7j5rga" path="res://art/UI/RIKY2vamp.ttf" id="2_ro3t7"]
 [ext_resource type="Shader" uid="uid://ciecfraxeg4ix" path="res://scripts/vignette.gdshader" id="3_3wlde"]
+[ext_resource type="PackedScene" uid="uid://bonpaew60cm1y" path="res://scenes/gain_text.tscn" id="3_7paak"]
 [ext_resource type="Script" uid="uid://ck3uayxwubsuw" path="res://scripts/FogMask.cs" id="3_fogmk"]
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]
 [ext_resource type="Shader" uid="uid://b6x1p046eyov" path="res://scripts/fog.gdshader" id="3_w7enk"]
@@ -49,6 +50,7 @@ script = ExtResource("1_dj8aq")
 countDownLabel = NodePath("Control/Label")
 heartDisplay = NodePath("Control/Heart")
 lossText = ExtResource("5_75u2n")
+gainText = ExtResource("3_7paak")
 vignette = NodePath("Control/Vignette")
 levelWon = NodePath("Control/LevelWon")
 winMainMenu = NodePath("Control/LevelWon/VBoxContainer/Button2")

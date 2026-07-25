@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c8bymi2em3l52"]
+
+[ext_resource type="Texture2D" uid="uid://bh25q74jc2dnq" path="res://art/bloodbag.png" id="1_ggt5x"]
+[ext_resource type="Script" uid="uid://du7747e4bbtux" path="res://scripts/HealthPack.cs" id="1_oa20r"]
+[ext_resource type="PackedScene" uid="uid://b160yf82cnr8o" path="res://scenes/Lights/entity_light.tscn" id="2_0xcku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggt5x"]
+size = Vector2(109, 147)
+
+[node name="Healthpack" type="Area2D" unique_id=1948540018]
+script = ExtResource("1_oa20r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1494797111]
+texture = ExtResource("1_ggt5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=934353953]
+position = Vector2(-4.5, -2.5)
+shape = SubResource("RectangleShape2D_ggt5x")
+
+[node name="EntityLight" parent="." unique_id=1084933953 groups=["bullet"] instance=ExtResource("2_0xcku")]
+color = Color(1, 0.07058824, 0.08627451, 1)
+energy = 0.45

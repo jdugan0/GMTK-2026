@@ -16,6 +16,9 @@ public partial class UI : CanvasLayer
     PackedScene lossText;
 
     [Export]
+    PackedScene gainText;
+
+    [Export]
     ColorRect vignette;
 
     [Export]
@@ -171,6 +174,21 @@ public partial class UI : CanvasLayer
         var t = lossText.Instantiate<Label>();
         t.ZIndex = -1;
         t.Text = $"-{amount}";
+        AddChild(t);
+        t.Position = player.GetGlobalTransformWithCanvas().Origin;
+        var tween = GetTree().CreateTween();
+        tween
+            .TweenProperty(t, "position", heartDisplay.GlobalPosition, 2f)
+            .SetTrans(Tween.TransitionType.Expo)
+            .SetEase(Tween.EaseType.InOut)
+            .Finished += t.QueueFree;
+    }
+
+    public void Gain(int amount)
+    {
+        var t = gainText.Instantiate<Label>();
+        t.ZIndex = -1;
+        t.Text = $"+{amount}";
         AddChild(t);
         t.Position = player.GetGlobalTransformWithCanvas().Origin;
         var tween = GetTree().CreateTween();

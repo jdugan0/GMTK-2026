@@ -362,6 +362,11 @@ public partial class Movement : CharacterBody2D
         SwapSheet(0);
     }
 
+    public void Gain(int a)
+    {
+        ui.Gain(a);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
