@@ -403,7 +403,7 @@ public partial class Movement : CharacterBody2D
     public override void _Process(double delta)
     {   
         radialSlider.Scale = Vector2.One / camera.Zoom;
-        radialSlider.Position = GlobalPosition - radialSlider.Size * radialSlider.Scale * 0.5f;
+        radialSlider.Position = -radialSlider.Size * radialSlider.Scale * 0.5f;
     }
 
     public override void _PhysicsProcess(double delta)
