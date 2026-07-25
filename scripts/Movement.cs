@@ -160,6 +160,12 @@ public partial class Movement : CharacterBody2D
     [Export]
     RadialSlider radialSlider;
 
+    [Export]
+    Texture2D throwSheet;
+
+    [Export]
+    float throwTime;
+
     private GpuParticles2D[] footEmitters;
     private int footEmitterIndex;
 
@@ -180,6 +186,23 @@ public partial class Movement : CharacterBody2D
         {
             if (anim == "DEATH")
             {
+                continue;
+            }
+            if (anim == "THROW")
+            {
+                for (int i = 0; i < frames.GetFrameCount(anim); i++)
+                {
+                    if (frames.GetFrameTexture(anim, i) is AtlasTexture throwAt)
+                    {
+                        throwAt.Atlas = throwSheet;
+                        Rect2 region = throwAt.Region;
+                        throwAt.Region = new Rect2(
+                            region.Position.X,
+                            id * region.Size.Y,
+                            region.Size
+                        );
+                    }
+                }
                 continue;
             }
             for (int i = 0; i < frames.GetFrameCount(anim); i++)
@@ -294,10 +317,26 @@ public partial class Movement : CharacterBody2D
         }
     }
 
+    float throwTimer = 0;
+
     private void UpdateAnimation(Vector2 lookDir)
     {
         // 0 = right, 90 = down, -90 = up, +/-180 = left
         float angle = Mathf.RadToDeg(lookDir.Angle());
+
+        if (throwTimer > 0)
+        {
+            if (lookDir.X < 0)
+            {
+                sprite2D.FlipH = true;
+            }
+            else
+            {
+                sprite2D.FlipH = false;
+            }
+            sprite2D.Play("THROW");
+            return;
+        }
 
         if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
         {
@@ -417,6 +456,7 @@ public partial class Movement : CharacterBody2D
     {
         UpdateSprite();
         footstepTimer -= delta;
+        throwTimer -= (float)delta;
 
         double percentDrained = countDown / initalCountdown;
         flashlight.Energy = (float)(
@@ -567,6 +607,7 @@ public partial class Movement : CharacterBody2D
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
                 countDown -= attackCountdownCost;
+                throwTimer = throwTime;
             }
             else
             {

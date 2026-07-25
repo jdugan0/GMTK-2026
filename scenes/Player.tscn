@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c04tcu21ufafr" path="res://art/Atlas/mice_meat.tres" id="7_curm1"]
 [ext_resource type="Texture2D" uid="uid://pu2futdtrgl" path="res://art/PlayerDamage2-180x135.png" id="7_lkdrv"]
 [ext_resource type="Texture2D" uid="uid://b0r8p65l5rnbu" path="res://art/PlayerDamage3-180x135.png" id="8_p7iby"]
+[ext_resource type="Texture2D" uid="uid://bhmtiudp5cqa2" path="res://art/playerThrow323.png" id="9_0rnld"]
 [ext_resource type="PackedScene" uid="uid://dyqohvcn4itpm" path="res://scenes/UI/RadialSlider.tscn" id="9_p7iby"]
 [ext_resource type="PackedScene" uid="uid://c262kvm6gnv0o" path="res://scenes/particles/BloodParticles.tscn" id="12_o4126"]
 [ext_resource type="PackedScene" uid="uid://d1jy5jeusrfsw" path="res://scenes/particles/FootParticles.tscn" id="13_lkdrv"]
@@ -88,6 +89,8 @@ damageSheets = Array[Texture2D]([ExtResource("5_d3wef"), ExtResource("6_o4126"),
 bloodParticles = NodePath("BloodParticles")
 footParticles = NodePath("FootFx/FootParticles")
 radialSlider = NodePath("RadialSlider")
+throwSheet = ExtResource("9_0rnld")
+throwTime = 0.3
 lightEnergyFinal = 0.5
 
 [node name="BloodParticles" parent="." unique_id=174636998 instance=ExtResource("12_o4126")]
