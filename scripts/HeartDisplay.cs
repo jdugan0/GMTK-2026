@@ -16,7 +16,9 @@ public partial class HeartDisplay : TextureRect
 
     [Export]
     private float frameTimeSprint;
-    float frameTime;
+
+    [Export]
+    private float contractedTime = 0.27f;
 
     [Export]
     private float pulseScale = 1.6f;
@@ -43,39 +45,39 @@ public partial class HeartDisplay : TextureRect
     private readonly AtlasTexture atlas = new();
     private int frame;
     private double timer;
+    private float restingTime;
 
     public override void _Ready()
     {
         atlas.Atlas = sheet;
         Texture = atlas;
+        restingTime = frameTimeNormal;
         Refresh();
     }
 
     public override void _Process(double delta)
     {
         timer += delta;
-        if (timer < frameTime)
+
+        double hold = frame == 0 ? restingTime : contractedTime;
+        if (timer < hold)
             return;
 
-        timer = 0;
-        frame ^= 1;
+        timer = Mathf.Min(timer - hold, delta);
+        frame = 1 - frame;
+        if (frame == 1)
+            AudioManager.instance.PlaySFX("heartbeat");
         Refresh();
     }
 
     public void Beat(int time)
     {
-        switch (time)
+        restingTime = time switch
         {
-            case 0:
-                frameTime = frameTimeNormal;
-                break;
-            case 1:
-                frameTime = frameTimeWalk;
-                break;
-            case 2:
-                frameTime = frameTimeSprint;
-                break;
-        }
+            1 => frameTimeWalk,
+            2 => frameTimeSprint,
+            _ => frameTimeNormal,
+        };
     }
 
     private void SpawnPulse()
