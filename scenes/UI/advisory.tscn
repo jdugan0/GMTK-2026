@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bg8i4e7jh6nuv"]
+
+[ext_resource type="Texture2D" uid="uid://ca0xkxbhdi62u" path="res://art/UI/scarygame.png" id="1_5cvk0"]
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="2_hq7mq"]
+
+[node name="Advisory" type="Control" unique_id=535509257]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=411678548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1017949017]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5cvk0")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1513271025]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = 258.0
+offset_right = -655.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hq7mq")
+theme_override_constants/line_separation = 24
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 66
+bbcode_enabled = true
+text = "
+[b]Please Be Advised:[/b]
+This game contains mild gore, horror elements, and possible jumpscares."
+horizontal_alignment = 1
