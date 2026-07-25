@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_g0tyt"]
 [ext_resource type="Script" uid="uid://coubw8u3omdw6" path="res://scripts/UI/Options.cs" id="1_ydmms"]
+[ext_resource type="Texture2D" uid="uid://bacr7nh3htaid" path="res://art/UI/shadow.png" id="2_5dgb1"]
 
 [node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back")]
 layout_mode = 3
@@ -13,6 +14,42 @@ grow_vertical = 2
 script = ExtResource("1_ydmms")
 volume = NodePath("HSlider")
 back = NodePath("Button3")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2097029330]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect2" unique_id=1080350429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 174.0
+offset_right = -909.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5dgb1")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect2" unique_id=435145967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2048.0
+offset_top = 734.0
+offset_right = 1209.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = ExtResource("2_5dgb1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=940420352]
 visible = false
