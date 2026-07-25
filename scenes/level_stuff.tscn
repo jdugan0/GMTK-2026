@@ -38,6 +38,12 @@ tile_map_data = PackedByteArray("AAD2//j/AAABAAAAAAD2//n/AAAAAAAAAAD2//r/AAABAAA
 tile_set = ExtResource("3_l7bfe")
 navigation_enabled = false
 
+[node name="Decor" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1814498315]
+light_mask = 32
+z_index = 1
+tile_set = ExtResource("3_l7bfe")
+navigation_enabled = false
+
 [node name="Enemies" type="Node2D" parent="NavigationRegion2D" unique_id=1362574246]
 y_sort_enabled = true
 
