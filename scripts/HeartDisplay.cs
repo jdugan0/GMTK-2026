@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 public partial class HeartDisplay : TextureRect
@@ -5,11 +6,16 @@ public partial class HeartDisplay : TextureRect
     private const int CellWidth = 217;
     private const int CellHeight = 291;
 
+    private const int ExplodeFrames = 6;
+    private const int ExplodeCellWidth = 1920;
+    private const int ExplodeCellHeight = 1080;
+
     [Export]
     private Texture2D sheet;
 
     [Export]
     private float frameTimeNormal = 0.35f;
+    public bool beat = true;
 
     [Export]
     private float frameTimeWalk;
@@ -25,6 +31,9 @@ public partial class HeartDisplay : TextureRect
 
     [Export]
     private float pulseDuration = 0.4f;
+
+    [Export]
+    Texture2D explodeSheet;
 
     private int _mode;
 
@@ -59,6 +68,9 @@ public partial class HeartDisplay : TextureRect
     {
         timer += delta;
 
+        if (!beat)
+            return;
+
         double hold = frame == 0 ? restingTime : contractedTime;
         if (timer < hold)
             return;
@@ -80,6 +92,33 @@ public partial class HeartDisplay : TextureRect
         };
     }
 
+    public async Task PlayExplode(float frameRate)
+    {
+        SetProcess(false);
+        ExpandMode = ExpandModeEnum.IgnoreSize;
+        StretchMode = StretchModeEnum.KeepAspectCentered;
+        SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+
+        var explodeAtlas = new AtlasTexture
+        {
+            Atlas = explodeSheet,
+            Region = new Rect2(0, 0, ExplodeCellWidth, ExplodeCellHeight),
+        };
+        Texture = explodeAtlas;
+
+        double frameTime = 1.0 / frameRate;
+        for (int i = 0; i < ExplodeFrames; i++)
+        {
+            explodeAtlas.Region = new Rect2(
+                0,
+                i * ExplodeCellHeight,
+                ExplodeCellWidth,
+                ExplodeCellHeight
+            );
+            await ToSignal(GetTree().CreateTimer(frameTime), SceneTreeTimer.SignalName.Timeout);
+        }
+    }
+
     private void SpawnPulse()
     {
         if (!IsInsideTree())
@@ -95,13 +134,13 @@ public partial class HeartDisplay : TextureRect
             MouseFilter = MouseFilterEnum.Ignore,
         };
         AddChild(ghost);
-        if (mode == 2)
+        if (mode == 4)
         {
             AudioManager.instance.PlaySFX("thirdHealthRemaining");
             AudioManager.instance.PlaySFX("gameOver");
             AudioManager.instance.PlaySFX("lowHealthClock");
         }
-        else
+        if (mode == 2)
         {
             AudioManager.instance.PlaySFX("thirdHealthLost");
         }

@@ -15,6 +15,7 @@ public partial class GameManager : Node
 
     public bool InCombat { get; private set; } = false;
     bool reported = false;
+    bool dying = false;
     float combatExitTimer = 0f;
     float time = 0;
     float randomSoundTimer;
@@ -31,16 +32,21 @@ public partial class GameManager : Node
 
     public async void Die(Movement player)
     {
+        if (dying)
+            return;
+        dying = true;
         ui.Reset();
         player.Reset();
         AudioManager.instance.CancelAllSFX();
         AudioManager.instance.PlaySFX("playerDies");
         foreach (var item in GetTree().GetNodesInGroup("bullet"))
         {
-            item.Free();
+            ((Node2D)item).Visible = false;
         }
         await SceneSwitcher.instance.WaitOneFrame();
         player.sprite2D.Play("DEATH");
+        await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        ui.HeartAnim();
         GetTree().Paused = true;
         await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
         await SceneSwitcher.instance.SwitchSceneAsyncSlide(
@@ -64,6 +70,9 @@ public partial class GameManager : Node
 
     public override void _PhysicsProcess(double delta)
     {
+        if (dying)
+            return;
+
         bool rawInCombat = reported;
         reported = false;
 

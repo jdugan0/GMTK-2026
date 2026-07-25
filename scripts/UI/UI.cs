@@ -10,7 +10,7 @@ public partial class UI : CanvasLayer
     private Label countDownLabel;
 
     [Export]
-    HeartDisplay heartDisplay;
+    public HeartDisplay heartDisplay;
 
     [Export]
     PackedScene lossText;
@@ -39,7 +39,11 @@ public partial class UI : CanvasLayer
     [Export]
     Button nextLevel;
 
+    [Export]
+    Label heartLabel;
+
     public bool IsPaused { get; private set; }
+    private bool deathAnim;
 
     public override void _Ready()
     {
@@ -65,6 +69,20 @@ public partial class UI : CanvasLayer
     public void Pause()
     {
         SetPaused(true);
+    }
+
+    public async void HeartAnim()
+    {
+        deathAnim = true;
+        heartDisplay.beat = false;
+        heartLabel.Visible = false;
+        heartDisplay.ProcessMode = ProcessModeEnum.Always;
+
+        Vector2 center = (heartDisplay.GetViewportRect().Size - heartDisplay.Size) / 2f;
+        var tween = heartDisplay.CreateTween();
+        tween.TweenProperty(heartDisplay, "position", center, 0.5f);
+        await ToSignal(tween, Tween.SignalName.Finished);
+        await heartDisplay.PlayExplode(6);
     }
 
     private void SetPaused(bool value)
@@ -119,15 +137,26 @@ public partial class UI : CanvasLayer
 
     public override void _PhysicsProcess(double delta)
     {
+        if (deathAnim)
+            return;
+
         double z = player.countDown / player.initalCountdown;
         ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 1 - z);
         countDownLabel.Text = $"{Math.Round(player.countDown)}";
 
-        if (player.countDown <= player.initalCountdown * (1f / 3f))
+        if (player.countDown <= player.initalCountdown * (1f / 5f))
+        {
+            heartDisplay.mode = 4;
+        }
+        else if (player.countDown <= player.initalCountdown * (2f / 5f))
+        {
+            heartDisplay.mode = 3;
+        }
+        else if (player.countDown <= player.initalCountdown * (3f / 5f))
         {
             heartDisplay.mode = 2;
         }
-        else if (player.countDown <= player.initalCountdown * (2f / 3f))
+        else if (player.countDown <= player.initalCountdown * (4f / 5f))
         {
             heartDisplay.mode = 1;
         }

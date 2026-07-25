@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://djarehh8qjjg" path="res://scripts/HeartDisplay.cs" id="3_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://dtsauj2uslf8p" path="res://art/UI/heartUI-217x291.png" id="4_75u2n"]
 [ext_resource type="PackedScene" uid="uid://bl4qjjl7wfagm" path="res://scenes/loss_text.tscn" id="5_75u2n"]
+[ext_resource type="Texture2D" uid="uid://4aa4ndr7spx3" path="res://art/UI/heartattack1920x1080.png" id="6_ukj8e"]
 [ext_resource type="PackedScene" uid="uid://xq40okbuq68y" path="res://scenes/UI/levelWon.tscn" id="7_xpksx"]
 [ext_resource type="PackedScene" uid="uid://bsyy3fupxoxn0" path="res://scenes/UI/levelPause.tscn" id="8_24e4x"]
 
@@ -20,7 +21,7 @@ shader_parameter/intensity = 0.0
 atlas = ExtResource("4_75u2n")
 region = Rect2(0, 1, 217, 277)
 
-[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu", "nextLevel")]
+[node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu", "nextLevel", "heartLabel")]
 process_mode = 3
 layer = 2
 script = ExtResource("1_dj8aq")
@@ -35,6 +36,7 @@ resume = NodePath("Control/LevelPause/VBoxContainer/Button")
 restart = NodePath("Control/LevelPause/VBoxContainer/Button3")
 pauseMenu = NodePath("Control/LevelPause")
 nextLevel = NodePath("Control/LevelWon/VBoxContainer/Button")
+heartLabel = NodePath("Control/Label")
 
 [node name="Control" type="Control" parent="." unique_id=641039095]
 layout_mode = 3
@@ -70,6 +72,7 @@ frameTimeNormal = 1.2
 frameTimeWalk = 0.75
 frameTimeSprint = 0.35
 pulseDuration = 1.0
+explodeSheet = ExtResource("6_ukj8e")
 
 [node name="Label" type="Label" parent="Control" unique_id=228050583]
 layout_mode = 1
