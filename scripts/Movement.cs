@@ -143,6 +143,9 @@ public partial class Movement : CharacterBody2D
 
     public float initalCountdown;
 
+    [Export]
+    GpuParticles2D bloodParticles;
+
     [ExportGroup("Art")]
     [Export]
     private Texture2D[] damageSheets;
@@ -471,9 +474,21 @@ public partial class Movement : CharacterBody2D
                 playedRip = false;
                 float deltaZoom = ((zoomedMeat - cameraZoomDefault) / ripTime) * dt;
                 camera.Zoom += new Vector2(deltaZoom, deltaZoom);
+                bloodParticles.Emitting = true;
+                bloodParticles.Rotation = mouseDir.Angle();
+                float a = Mathf.RadToDeg(mouseDir.Angle());
+                if (a > 45f && a < 135f)
+                {
+                    bloodParticles.ZIndex = 1;
+                }
+                else
+                {
+                    bloodParticles.ZIndex = 0;
+                }
             }
             else
             {
+                bloodParticles.Emitting = false;
                 if (!playedRip)
                 {
                     AudioManager.instance.CancelSFX("ripStart");

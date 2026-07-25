@@ -11,6 +11,33 @@
 [ext_resource type="Texture2D" uid="uid://c04tcu21ufafr" path="res://art/Atlas/mice_meat.tres" id="7_curm1"]
 [ext_resource type="Texture2D" uid="uid://pu2futdtrgl" path="res://art/PlayerDamage2-180x135.png" id="7_lkdrv"]
 [ext_resource type="Texture2D" uid="uid://b0r8p65l5rnbu" path="res://art/PlayerDamage3-180x135.png" id="8_p7iby"]
+[ext_resource type="PackedScene" uid="uid://c262kvm6gnv0o" path="res://scenes/particles/BloodParticles.tscn" id="12_o4126"]
+
+[sub_resource type="Gradient" id="Gradient_vw7cy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vw7cy"]
+gradient = SubResource("Gradient_vw7cy")
+
+[sub_resource type="Curve" id="Curve_vw7cy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p42rx"]
+curve = SubResource("Curve_vw7cy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4126"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(31.04, 0, 0)
+spread = 50.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 14.889999
+scale_max = 14.889999
+scale_curve = SubResource("CurveTexture_p42rx")
+color = Color(0.7019608, 0.05490196, 0.03137255, 1)
+color_ramp = SubResource("GradientTexture1D_vw7cy")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwav8"]
 radius = 28.0
@@ -20,7 +47,7 @@ height = 106.0
 radius = 41.0
 height = 300.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight", "arrow") groups=["player", "player_col"]]
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight", "arrow", "bloodParticles") groups=["player", "player_col"]]
 light_mask = 4
 y_sort_enabled = true
 collision_layer = 257
@@ -53,7 +80,12 @@ flashScale = 1.1
 flashDuration = 0.6
 flashTint = Color(0.83874494, 0.5081489, 0.03855177, 1)
 countDown = 50.0
+bloodParticles = NodePath("BloodParticles")
 damageSheets = Array[Texture2D]([ExtResource("5_d3wef"), ExtResource("6_o4126"), ExtResource("7_lkdrv"), ExtResource("8_p7iby")])
+
+[node name="BloodParticles" parent="." unique_id=174636998 instance=ExtResource("12_o4126")]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_o4126")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=327144819]
 y_sort_enabled = true
@@ -65,7 +97,7 @@ position_smoothing_enabled = true
 process_mode = 3
 light_mask = 4
 sprite_frames = ExtResource("3_3li8b")
-animation = &"BACK"
+animation = &"DOWN_RIP"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
 position = Vector2(-9, 92)
