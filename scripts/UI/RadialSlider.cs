@@ -20,6 +20,8 @@ public partial class RadialSlider : Control
 
     private Color fillColor = new(1f, 0f, 0f, 1f);
     private Color trackColor = new(0f, 0f, 0f, 0f);
+    private Texture2D texture;
+    private Color textureModulate = new(1f, 1f, 1f, 1f);
     private float radius;
     private float thickness = 24f;
     private float startDegrees = -90f;
@@ -107,6 +109,28 @@ public partial class RadialSlider : Control
         set
         {
             trackColor = value;
+            QueueRedraw();
+        }
+    }
+
+    [Export]
+    public Texture2D Texture
+    {
+        get => texture;
+        set
+        {
+            texture = value;
+            QueueRedraw();
+        }
+    }
+
+    [Export]
+    public Color TextureModulate
+    {
+        get => textureModulate;
+        set
+        {
+            textureModulate = value;
             QueueRedraw();
         }
     }
@@ -207,23 +231,53 @@ public partial class RadialSlider : Control
 
     public override void _Draw()
     {
+        Vector2 center = Size * 0.5f;
+        float start = Mathf.DegToRad(startDegrees);
+        float sweep = Mathf.DegToRad(sweepDegrees) * (clockwise ? 1f : -1f);
+        float filled = sweep * (float)Ratio;
+
+        if (texture != null && !Mathf.IsZeroApprox(filled))
+            DrawTextureWedge(center, start, filled);
+
         float r = EffectiveRadius;
         if (r <= 0f)
             return;
 
-        Vector2 center = Size * 0.5f;
-        float start = Mathf.DegToRad(startDegrees);
-        float sweep = Mathf.DegToRad(sweepDegrees) * (clockwise ? 1f : -1f);
-
         if (trackColor.A > 0f)
             DrawArc(center, r, start, start + sweep, ArcPoints(sweep), trackColor, thickness, true);
 
-        float filled = sweep * (float)Ratio;
         if (!Mathf.IsZeroApprox(filled))
             DrawArc(center, r, start, start + filled, ArcPoints(filled), fillColor, thickness, true);
 
         if (showHandle && handleRadius > 0f)
             DrawCircle(center + Vector2.FromAngle(start + filled) * r, handleRadius, fillColor);
+    }
+
+    private void DrawTextureWedge(Vector2 center, float start, float filled)
+    {
+        Vector2 size = Size;
+        if (size.X <= 0f || size.Y <= 0f)
+            return;
+
+        if (Mathf.Abs(filled) >= Mathf.Tau - 0.001f)
+        {
+            DrawTextureRect(texture, new Rect2(Vector2.Zero, size), false, textureModulate);
+            return;
+        }
+
+        int segments = ArcPoints(filled);
+        float reach = center.Length();
+        var points = new Vector2[segments + 2];
+        var uvs = new Vector2[points.Length];
+
+        points[0] = center;
+        for (int i = 0; i <= segments; i++)
+            points[i + 1] = center + Vector2.FromAngle(start + filled * i / segments) * reach;
+
+        for (int i = 0; i < points.Length; i++)
+            uvs[i] = new Vector2(points[i].X / size.X, points[i].Y / size.Y);
+
+        DrawColoredPolygon(points, textureModulate, uvs, texture);
     }
 
     public override void _GuiInput(InputEvent @event)
