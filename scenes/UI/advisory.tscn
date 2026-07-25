@@ -36,9 +36,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 65.0
-offset_top = 258.0
+offset_top = 161.0
 offset_right = -655.0
-offset_bottom = -265.0
+offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_hq7mq")
@@ -48,5 +48,7 @@ theme_override_font_sizes/bold_font_size = 66
 bbcode_enabled = true
 text = "
 [b]Please Be Advised:[/b]
-This game contains mild gore, horror elements, and possible jumpscares."
+This game contains mild gore, horror elements, and possible jumpscares.
+
+Headphones are recommended."
 horizontal_alignment = 1
