@@ -92,13 +92,58 @@ theme_override_constants/separation = 46
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/1" unique_id=2056756467]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="2" type="TextureButton" parent="HBoxContainer" unique_id=648040673]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/2" unique_id=97618751]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/3" unique_id=797606138]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1050668930]
 layout_mode = 1
@@ -117,10 +162,55 @@ theme_override_constants/separation = 46
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/4" unique_id=1594143709]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="5" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/5" unique_id=792166336]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="6" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/6" unique_id=666788328]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

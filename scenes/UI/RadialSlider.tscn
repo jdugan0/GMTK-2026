@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyqohvcn4itpm"]
 
 [ext_resource type="Script" uid="uid://c6nkcwqdlukhd" path="res://scripts/UI/RadialSlider.cs" id="1_rslid"]
+[ext_resource type="Texture2D" uid="uid://djyug8w4ixj5o" path="res://art/UI/slider.png" id="2_b074a"]
 
 [node name="RadialSlider" type="Control" unique_id=1244351542]
 custom_minimum_size = Vector2(256, 256)
@@ -17,5 +18,7 @@ offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rslid")
+FillColor = Color(1, 1, 1, 1)
+Texture = ExtResource("2_b074a")
 ShowHandle = false
 Draggable = false
