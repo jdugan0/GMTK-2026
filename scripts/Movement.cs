@@ -103,6 +103,24 @@ public partial class Movement : CharacterBody2D
     [Export]
     public Sprite2D arrow;
 
+    [ExportGroup("Arrow")]
+    [Export]
+    private float arrowHideDelay = 4f;
+
+    [Export]
+    private float arrowFlickerDuration = 1.2f;
+
+    [Export]
+    private float arrowFlickerIntervalMin = 0.03f;
+
+    [Export]
+    private float arrowFlickerIntervalMax = 0.09f;
+
+    private double arrowHideTimer;
+    private double arrowFlickerTimer;
+    private double arrowFlickerStepTimer;
+    private bool arrowFlickerOff;
+
     Node2D exit;
 
     [ExportGroup("Cursor")]
@@ -231,6 +249,46 @@ public partial class Movement : CharacterBody2D
         cameraZoomInital = camera.Zoom.X;
         BuildFootEmitters();
         initalEnergy = flashlight.Energy;
+        if (LevelManager.instance.currLevel == 4)
+        {
+            arrowHideTimer = arrowHideDelay;
+        }
+    }
+
+    private void UpdateArrowFlicker(double delta)
+    {
+        if (arrowHideTimer > 0)
+        {
+            arrowHideTimer -= delta;
+            if (arrowHideTimer <= 0)
+            {
+                arrowFlickerTimer = arrowFlickerDuration;
+                arrowFlickerStepTimer = 0;
+                arrowFlickerOff = false;
+            }
+            return;
+        }
+
+        if (arrowFlickerTimer <= 0)
+            return;
+
+        arrowFlickerTimer -= delta;
+        arrowFlickerStepTimer -= delta;
+
+        if (arrowFlickerTimer <= 0)
+        {
+            arrow.Visible = false;
+            return;
+        }
+
+        if (arrowFlickerStepTimer <= 0)
+        {
+            arrowFlickerOff = !arrowFlickerOff;
+            float step = (float)GD.RandRange(arrowFlickerIntervalMin, arrowFlickerIntervalMax);
+            float progress = 1f - (float)(arrowFlickerTimer / arrowFlickerDuration);
+            arrowFlickerStepTimer = arrowFlickerOff ? step * (1f + progress * 4f) : step;
+            arrow.Visible = !arrowFlickerOff;
+        }
     }
 
     private void BuildFootEmitters()
@@ -448,6 +506,7 @@ public partial class Movement : CharacterBody2D
 
     public override void _Process(double delta)
     {
+        UpdateArrowFlicker(delta);
         radialSlider.Scale = Vector2.One / camera.Zoom;
         radialSlider.Position = -radialSlider.Size * radialSlider.Scale * 0.5f;
     }

@@ -79,6 +79,7 @@ bulletScene = ExtResource("2_v6fml")
 sprite2D = NodePath("AnimatedSprite2D")
 flashlight = NodePath("Flashlight")
 arrow = NodePath("ArrowLayer/Arrow")
+arrowHideDelay = 2.0
 cursorNormal = ExtResource("6_cur0n")
 cursorMeat = ExtResource("7_curm1")
 flashScale = 1.1
