@@ -57,8 +57,8 @@ public partial class GameManager : Node
 
     public void Win(Movement player)
     {
-        AudioManager.instance.CancelAllSFX();
-        MusicManager.instance.PlaySong("levelWin");
+        // AudioManager.instance.CancelAllSFX();
+        // MusicManager.instance.PlaySong("levelWin");
         ui.ShowWin();
         player.arrow.Visible = false;
     }
