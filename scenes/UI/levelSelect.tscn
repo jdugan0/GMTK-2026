@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://h28iri4m7ovf" path="res://art/UI/levelselect.png" id="2_61r5c"]
 [ext_resource type="Texture2D" uid="uid://bacr7nh3htaid" path="res://art/UI/shadow.png" id="2_tp6gm"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt44k"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(0, 0, 300, 468)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_byrvo"]
 atlas = ExtResource("2_61r5c")
 region = Rect2(300, 0, 300, 468)
@@ -17,7 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61r5c")
-levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3")]
+levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3"), NodePath("HBoxContainer2/4"), NodePath("HBoxContainer2/5"), NodePath("HBoxContainer2/6")]
+lockedTexture = SubResource("AtlasTexture_bt44k")
 back = NodePath("Button3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1308472257]
@@ -108,14 +113,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 46
 
-[node name="1" type="TextureButton" parent="HBoxContainer2" unique_id=1226475311]
+[node name="4" type="TextureButton" parent="HBoxContainer2" unique_id=1226475311]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
-[node name="2" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
+[node name="5" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
-[node name="3" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
+[node name="6" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
