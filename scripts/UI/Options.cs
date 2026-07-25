@@ -12,10 +12,18 @@ public partial class Options : Node
     public override void _Ready()
     {
         back.Pressed += MainMenu;
+
+        volume.MinValue = 0;
+        volume.MaxValue = 1;
+        volume.Step = 0.01;
+        volume.Value = AudioManager.instance.MasterVolume;
+        volume.ValueChanged += v => AudioManager.instance.MasterVolume = (float)v;
+        volume.DragEnded += _ => AudioManager.instance.SaveSettings();
     }
 
     public void MainMenu()
     {
+        AudioManager.instance.SaveSettings();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
     }
 }

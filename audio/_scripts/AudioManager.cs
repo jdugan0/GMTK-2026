@@ -6,6 +6,8 @@ using Godot;
 
 public partial class AudioManager : Node
 {
+    private const string SettingsPath = "user://settings.cfg";
+
     [Export]
     public Sound[] sounds;
     private Dictionary<string, Sound> dict = new();
@@ -19,6 +21,7 @@ public partial class AudioManager : Node
         if (instance == null)
         {
             instance = this;
+            LoadSettings();
         }
         else
         {
@@ -28,6 +31,37 @@ public partial class AudioManager : Node
         {
             dict.Add(s.name, s);
         }
+    }
+
+    private float masterVolume = 1f;
+
+    /// Linear 0-1, applied to the Master bus.
+    public float MasterVolume
+    {
+        get => masterVolume;
+        set
+        {
+            masterVolume = Mathf.Clamp(value, 0f, 1f);
+            int bus = AudioServer.GetBusIndex("Master");
+            AudioServer.SetBusVolumeDb(bus, Mathf.LinearToDb(masterVolume));
+            AudioServer.SetBusMute(bus, masterVolume <= 0.001f);
+        }
+    }
+
+    public void SaveSettings()
+    {
+        var config = new ConfigFile();
+        config.SetValue("audio", "master", masterVolume);
+        config.Save(SettingsPath);
+    }
+
+    private void LoadSettings()
+    {
+        var config = new ConfigFile();
+        MasterVolume =
+            config.Load(SettingsPath) == Error.Ok
+                ? (float)config.GetValue("audio", "master", 1f)
+                : 1f;
     }
 
     public (AudioStreamPlayer, Guid) PlaySFX(Node from, string sound, float time)
