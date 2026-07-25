@@ -28,6 +28,7 @@ public partial class Levels : Node
             {
                 levelButtons[i].TextureNormal = lockedTexture;
                 levelButtons[i].TextureHover = lockedTexture;
+                ((Control)levelButtons[i].GetChild(0)).Visible = false;
             }
         }
     }
