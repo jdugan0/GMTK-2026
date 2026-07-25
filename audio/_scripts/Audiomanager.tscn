@@ -298,6 +298,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_onaff"]
 script = ExtResource("2_0au01")
 stream = ExtResource("61_arbte")
+volume = 5.0
 name = "lowHealthClock"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
@@ -330,6 +331,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_kxau5"]
 script = ExtResource("2_0au01")
 stream = ExtResource("68_pu1ph")
+volume = 2.0
 name = "throwReady"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
@@ -347,6 +349,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_gmijl"]
 script = ExtResource("2_0au01")
 stream = ExtResource("71_rrol0")
+volume = 3.0
 name = "exitHum"
 metadata/_custom_type_script = "uid://007myadtw53h"
 

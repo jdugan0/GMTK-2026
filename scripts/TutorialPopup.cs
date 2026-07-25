@@ -38,6 +38,7 @@ public partial class TutorialPopup : Control
 		}
 		TutorialManager.instance.curr = this;
 		Visible = true;
+		AudioManager.instance.PlaySFX("textBox");
 	}
 
 	public void Trigger(Node2D body)

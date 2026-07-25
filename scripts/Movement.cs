@@ -375,10 +375,6 @@ public partial class Movement : CharacterBody2D
         {
             GameManager.instance.Die(this);
         }
-        if (countDown <= 20 && AudioManager.instance.GetPlaying("gameOver").Count == 0)
-        {
-            AudioManager.instance.PlaySFX("gameOver");
-        }
         arrow.GlobalPosition = GlobalPosition;
         arrow.Rotation = angleToExit;
         safetyTimer -= dt;
@@ -426,14 +422,11 @@ public partial class Movement : CharacterBody2D
         if (input != Vector2.Zero)
         {
             PlayFootstep();
+            countDown -= maxSpeed * maxSpeed * MoveCostFactor * delta;
         }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
         float speed = Velocity.Length();
-        if (speed > 0.05f)
-        {
-            countDown -= speed * speed * MoveCostFactor * delta;
-        }
         if (countDown <= 0)
         {
             GameManager.instance.Die(this);
@@ -475,6 +468,7 @@ public partial class Movement : CharacterBody2D
                     AudioManager.instance.CancelSFX("ripStart");
                     AudioManager.instance.CancelSFX("ripLoop");
                     AudioManager.instance.PlaySFX("ripEnd");
+                    AudioManager.instance.PlaySFX("throwReady");
                     playedRip = true;
                 }
             }

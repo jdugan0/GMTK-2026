@@ -93,6 +93,16 @@ public partial class HeartDisplay : TextureRect
             MouseFilter = MouseFilterEnum.Ignore,
         };
         AddChild(ghost);
+        if (mode == 2)
+        {
+            AudioManager.instance.PlaySFX("thirdHealthRemaining");
+            AudioManager.instance.PlaySFX("gameOver");
+            AudioManager.instance.PlaySFX("lowHealthClock");
+        }
+        else
+        {
+            AudioManager.instance.PlaySFX("thirdHealthLost");
+        }
 
         var tween = ghost.CreateTween().SetParallel();
         tween

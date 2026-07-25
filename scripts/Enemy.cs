@@ -169,6 +169,7 @@ public partial class Enemy : CharacterBody2D
         {
             if (attackTimer <= 0)
             {
+                AudioManager.instance.PlaySFX("enemyAttack");
                 attacking = false;
                 if (player.GlobalPosition.DistanceTo(GlobalPosition) <= attackRange)
                 {
@@ -262,6 +263,8 @@ public partial class Enemy : CharacterBody2D
             alert.Position = alertInitalPos;
             alert.Modulate = new Color(alert.Modulate, 1f);
 
+            AudioManager.instance.PlaySFX("enemySeePlayer");
+
             _alertTween = GetTree().CreateTween().SetParallel();
             _alertTween.TweenProperty(alert, "position", finalAlertPos.Position, alertDur);
             _alertTween.TweenProperty(alert, "modulate:a", 0f, alertDur);
@@ -352,6 +355,7 @@ public partial class Enemy : CharacterBody2D
         BeginStun(stunTime, true);
         attacking = false;
         spotted = false;
+        AudioManager.instance.PlaySFX("enemyHurt");
         GD.Print($"[{Name}] SHOVE knockback={knockback:F0} stun={stunTime:F2}");
     }
 }

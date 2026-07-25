@@ -30,16 +30,15 @@ public partial class GameManager : Node
     {
         ui.Reset();
         player.Reset();
+        AudioManager.instance.CancelAllSFX();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide(LevelManager.instance.GetCurrLevel(), 1f);
         AudioManager.instance.PlaySFX("playerDies");
         // player.Visible = false;
-        MusicManager.instance.CancelSong();
     }
 
     public void Win(Movement player)
     {
-        MusicManager.instance.CancelSong();
-        AudioManager.instance.CancelSFX("gameOver");
+        AudioManager.instance.CancelAllSFX();
         MusicManager.instance.PlaySong("levelWin");
         ui.ShowWin();
         player.arrow.Visible = false;
