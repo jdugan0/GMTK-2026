@@ -27,9 +27,9 @@ shader_parameter/density = 1.0
 shader_parameter/screen_to_light_uv_x = Vector3(0, 0, 0)
 shader_parameter/screen_to_light_uv_y = Vector3(0, 0, 0)
 shader_parameter/lit_min = 0.0
-shader_parameter/lit_max = 0.0
-shader_parameter/alpha_in_dark = 0.0400000019
-shader_parameter/alpha_in_light = 0.030000001425
+shader_parameter/lit_max = 0.010000000475
+shader_parameter/alpha_in_dark = 0.06000000285
+shader_parameter/alpha_in_light = 0.0400000019
 shader_parameter/debug_view = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75u2n"]

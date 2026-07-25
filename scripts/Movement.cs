@@ -143,12 +143,22 @@ public partial class Movement : CharacterBody2D
 
     public float initalCountdown;
 
-    [Export]
-    GpuParticles2D bloodParticles;
-
     [ExportGroup("Art")]
     [Export]
     private Texture2D[] damageSheets;
+
+    [Export]
+    GpuParticles2D bloodParticles;
+
+    [Export]
+    GpuParticles2D footParticles;
+
+    [Export]
+    int footEmitterCount = 3;
+
+    private GpuParticles2D[] footEmitters;
+    private int footEmitterIndex;
+
     int prevId = -1;
 
     private void SwapSheet(int id)
@@ -187,6 +197,20 @@ public partial class Movement : CharacterBody2D
         cursorIsMeat = true;
         SetCursor(false);
         cameraZoomInital = camera.Zoom.X;
+        BuildFootEmitters();
+    }
+
+    private void BuildFootEmitters()
+    {
+        footEmitters = new GpuParticles2D[Mathf.Max(1, footEmitterCount)];
+        footEmitters[0] = footParticles;
+        Node parent = footParticles.GetParent();
+        for (int i = 1; i < footEmitters.Length; i++)
+        {
+            var copy = (GpuParticles2D)footParticles.Duplicate();
+            parent.AddChild(copy);
+            footEmitters[i] = copy;
+        }
     }
 
     private Texture2D ScaleCursorTexture(Texture2D texture)
@@ -321,6 +345,8 @@ public partial class Movement : CharacterBody2D
             {
                 AudioManager.instance.PlaySFX("footsteps");
             }
+            footEmitters[footEmitterIndex].Restart();
+            footEmitterIndex = (footEmitterIndex + 1) % footEmitters.Length;
         }
     }
 
@@ -502,6 +528,7 @@ public partial class Movement : CharacterBody2D
         }
         if (Input.IsActionJustReleased("ATTACK"))
         {
+            bloodParticles.Emitting = false;
             if (ripTimer <= 0)
             {
                 Bullet b = bulletScene.Instantiate<Bullet>();

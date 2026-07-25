@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ykpdbgeyhgoi" path="res://scripts/Bullet.cs" id="1_hf8mt"]
 [ext_resource type="Texture2D" uid="uid://ct2qyp7eqt66" path="res://art/meat 100x100.png" id="2_p1sfj"]
 [ext_resource type="PackedScene" uid="uid://b160yf82cnr8o" path="res://scenes/Lights/entity_light.tscn" id="3_4utqk"]
+[ext_resource type="PackedScene" uid="uid://b3qvf56g53cic" path="res://scenes/particles/BloodSplat.tscn" id="4_51h0o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4utqk"]
 atlas = ExtResource("2_p1sfj")
@@ -38,6 +39,7 @@ radius = 30.0
 
 [node name="Bullet" type="Area2D" unique_id=93922470]
 script = ExtResource("1_hf8mt")
+bloodSplat = ExtResource("4_51h0o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1814573370]
 scale = Vector2(1.25, 1.25)

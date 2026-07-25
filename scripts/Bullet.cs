@@ -8,6 +8,9 @@ public partial class Bullet() : Area2D
         speed;
     Vector2 direction;
 
+    [Export]
+    PackedScene bloodSplat;
+
     public void Construct(
         float knockback,
         float stun,
@@ -35,6 +38,16 @@ public partial class Bullet() : Area2D
         AreaEntered += OnCollide;
     }
 
+    public void Splat()
+    {
+        var b = bloodSplat.Instantiate<GpuParticles2D>();
+        GetTree().CurrentScene.AddChild(b);
+        b.Restart();
+        b.GlobalPosition = GlobalPosition;
+        b.Emitting = true;
+        b.Finished += b.QueueFree;
+    }
+
     public void OnCollide(Node2D body)
     {
         if (body is Area2D)
@@ -44,17 +57,20 @@ public partial class Bullet() : Area2D
         }
         if (body is Enemy e)
         {
+            Splat();
             AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
             e.Shove(direction, knockback, stun);
         }
         if (body.IsInGroup("destroy_bullet"))
         {
+            Splat();
             AudioManager.instance.PlaySFX("limbHit");
             QueueFree();
         }
         if (body.IsInGroup("crate"))
         {
+            Splat();
             AudioManager.instance.PlaySFX("boxHit");
             QueueFree();
             body.QueueFree();
