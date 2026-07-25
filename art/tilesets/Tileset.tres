@@ -27,9 +27,6 @@ polygon = PackedVector2Array(-79.86, -68.24401, 66.30801, -67.27601, 78.892006, 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n2q4v"]
 polygon = PackedVector2Array(-79.86, -68.24401, 66.30801, -67.27601, 78.892006, -49.852005, 41.140007, -47.916, 53.724, 6.292, -6.292, -18.876007, -70.18001, 6.292, -55.660004, -45.01201, -100, -47.916)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w8r6t"]
-polygon = PackedVector2Array(-79.86, -68.24401, 66.30801, -67.27601, 78.892006, -49.852005, 41.140007, -47.916, 53.724, 6.292, -6.292, -18.876007, -70.18001, 6.292, -55.660004, -45.01201, -100, -47.916)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_s5inv"]
 vertices = PackedVector2Array(100, 100, -100, 100, -100, -100, 100, -100)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -47,6 +44,9 @@ vertices = PackedVector2Array(100, 100, -100, 100, -100, -100, 100, -100)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)])
 agent_radius = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w8r6t"]
+polygon = PackedVector2Array(-79.86, -68.24401, 66.30801, -67.27601, 78.892006, -49.852005, 41.140007, -47.916, 53.724, 6.292, -6.292, -18.876007, -70.18001, 6.292, -55.660004, -45.01201, -100, -47.916)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cxckp"]
 vertices = PackedVector2Array(100, 100, -100, 100, -100, -100, 100, -100)
@@ -230,6 +230,7 @@ texture_region_size = Vector2i(200, 200)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -53.724, -62.436, -46.948006, -60.500008, 79.86001, -100, 83.732)
 4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50.820004, -86.636, 45.980003, -88.572, 46.948006, 60.5, -49.852, 58.56401)
 5:2/0 = 0
 6:2/0 = 0
 7:2/0 = 0
