@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://bnbgucjcwnaxf" path="res://scripts/UI/Levels.cs" id="1_61r5c"]
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_60520"]
 [ext_resource type="Texture2D" uid="uid://h28iri4m7ovf" path="res://art/UI/levelselect.png" id="2_61r5c"]
+[ext_resource type="Texture2D" uid="uid://bacr7nh3htaid" path="res://art/UI/shadow.png" id="2_tp6gm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byrvo"]
 atlas = ExtResource("2_61r5c")
 region = Rect2(300, 0, 300, 468)
 
-[node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
+[node name="LevelSelect" type="Control" unique_id=104066112]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,8 +17,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61r5c")
-levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3")]
-back = NodePath("Button3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1308472257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=259155876]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 174.0
+offset_right = -909.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tp6gm")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect" unique_id=1880250880]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2048.0
+offset_top = 734.0
+offset_right = 1209.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = ExtResource("2_tp6gm")
 
 [node name="Button3" type="Button" parent="." unique_id=1768709924]
 layout_mode = 1
@@ -38,10 +73,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 48.0
-offset_top = 185.0
+offset_left = 234.0
+offset_top = 61.0
 offset_right = -48.0
-offset_bottom = -349.0
+offset_bottom = -551.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 46
@@ -55,5 +90,30 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
 [node name="3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1050668930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 834.0
+offset_top = 540.0
+offset_right = -48.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 46
+
+[node name="1" type="TextureButton" parent="HBoxContainer2" unique_id=1226475311]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="2" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+
+[node name="3" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
