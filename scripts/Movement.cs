@@ -156,6 +156,9 @@ public partial class Movement : CharacterBody2D
     [Export]
     int footEmitterCount = 3;
 
+    [Export]
+    RadialSlider radialSlider;
+
     private GpuParticles2D[] footEmitters;
     private int footEmitterIndex;
 
@@ -397,12 +400,26 @@ public partial class Movement : CharacterBody2D
         ui.Gain(a);
     }
 
+    public override void _Process(double delta)
+    {   
+        radialSlider.Scale = Vector2.One / camera.Zoom;
+        radialSlider.Position = GlobalPosition - radialSlider.Size * radialSlider.Scale * 0.5f;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
         footstepTimer -= delta;
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
+        if (ripTimer > 0)
+        {
+            radialSlider.Value = 1 - (ripTimer / ripTime);
+        }
+        else
+        {
+            radialSlider.Value = 0;
+        }
         if (!Input.IsActionPressed("ATTACK"))
         {
             double z = countDown / initalCountdown;
