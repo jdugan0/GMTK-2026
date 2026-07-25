@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://b3tplxsxqgq86"]
 
 [ext_resource type="Script" uid="uid://by5cy6voc6b4g" path="res://scripts/GameManager.cs" id="1_34tde"]
+[ext_resource type="Texture2D" uid="uid://bms6d2beqmhvv" path="res://art/Atlas/leaf1.tres" id="2_4dhvd"]
+[ext_resource type="Texture2D" uid="uid://bqgg00xu256de" path="res://art/Atlas/leaf2.tres" id="3_3dus2"]
+[ext_resource type="Texture2D" uid="uid://u7w62unb01u6" path="res://art/Atlas/dust.tres" id="4_3dus2"]
 
 [node name="GameManager" type="Node" unique_id=2018085936]
 process_mode = 3
 script = ExtResource("1_34tde")
 combatExitDelay = 2.0
+leafTextures = [ExtResource("2_4dhvd"), ExtResource("3_3dus2"), ExtResource("4_3dus2")]
+maxLeaves = 50
+leafSwayAmplitude = Vector2(12, 10)
