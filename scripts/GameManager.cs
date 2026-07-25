@@ -254,11 +254,8 @@ public partial class GameManager : Node
             {
                 InCombat = true;
                 GD.Print("IN COMBAT");
-                AudioStreamPlayer p = MusicManager.instance.CancelSong().p;
-                if (p != null)
-                {
-                    time = p.GetPlaybackPosition();
-                }
+                time = MusicManager.instance.SongPosition();
+                MusicManager.instance.CancelSong();
                 MusicManager.instance.PlaySong("combat");
             }
         }
@@ -271,10 +268,14 @@ public partial class GameManager : Node
                 combatExitTimer = 0f;
                 randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
                 GD.Print("OUT COMBAT");
-                AudioStreamPlayer p = MusicManager.instance.CancelSong(4.0f).p;
-                if (p != null)
-                    p.Finished += () =>
-                        MusicManager.instance.PlaySong("outOfCombatBackground", time);
+                const float fade = 4.0f;
+                MusicManager.instance.CancelSong(fade);
+                float resume = time;
+                GetTree().CreateTimer(fade).Timeout += () =>
+                {
+                    if (!InCombat)
+                        MusicManager.instance.PlaySong("outOfCombatBackground", resume);
+                };
             }
         }
     }

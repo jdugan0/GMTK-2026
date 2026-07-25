@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clduitnnr2e2u" path="res://art/PlayerDamage1-180x135.png" id="1_dkqm0"]
 [ext_resource type="Texture2D" uid="uid://dnq8es0oanw1c" path="res://art/PlayerHealthy180x135.png" id="2_dkqm0"]
 [ext_resource type="Texture2D" uid="uid://2s2bcus1glew" path="res://art/PlayerDies123.png" id="2_sdkiy"]
+[ext_resource type="Texture2D" uid="uid://bhmtiudp5cqa2" path="res://art/playerThrow323.png" id="4_uvipj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdkiy"]
 atlas = ExtResource("1_dkqm0")
@@ -147,6 +148,10 @@ region = Rect2(180, 315, 180, 315)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf05w"]
 atlas = ExtResource("2_dkqm0")
 region = Rect2(360, 315, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne5jh"]
+atlas = ExtResource("4_uvipj")
+region = Rect2(0, 0, 180, 323)
 
 [resource]
 animations = [{
@@ -371,5 +376,13 @@ animations = [{
 }],
 "loop": 1,
 "name": &"SIDE_WALK_MEAT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne5jh")
+}],
+"loop": 1,
+"name": &"THROW",
 "speed": 5.0
 }]

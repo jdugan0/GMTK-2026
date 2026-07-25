@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 
@@ -156,10 +157,22 @@ public partial class Movement : CharacterBody2D
     [Export]
     int footEmitterCount = 3;
 
+    [Export]
+    RadialSlider radialSlider;
+
+    [Export]
+    Texture2D throwSheet;
+
+    [Export]
+    float throwTime;
+
     private GpuParticles2D[] footEmitters;
     private int footEmitterIndex;
 
     int prevId = -1;
+
+    [Export]
+    float lightEnergyFinal;
 
     private void SwapSheet(int id)
     {
@@ -175,6 +188,23 @@ public partial class Movement : CharacterBody2D
             {
                 continue;
             }
+            if (anim == "THROW")
+            {
+                for (int i = 0; i < frames.GetFrameCount(anim); i++)
+                {
+                    if (frames.GetFrameTexture(anim, i) is AtlasTexture throwAt)
+                    {
+                        throwAt.Atlas = throwSheet;
+                        Rect2 region = throwAt.Region;
+                        throwAt.Region = new Rect2(
+                            region.Position.X,
+                            id * region.Size.Y,
+                            region.Size
+                        );
+                    }
+                }
+                continue;
+            }
             for (int i = 0; i < frames.GetFrameCount(anim); i++)
             {
                 if (frames.GetFrameTexture(anim, i) is AtlasTexture at)
@@ -183,6 +213,8 @@ public partial class Movement : CharacterBody2D
         }
         prevId = id;
     }
+
+    float initalEnergy = 0;
 
     public override void _Ready()
     {
@@ -198,6 +230,7 @@ public partial class Movement : CharacterBody2D
         SetCursor(false);
         cameraZoomInital = camera.Zoom.X;
         BuildFootEmitters();
+        initalEnergy = flashlight.Energy;
     }
 
     private void BuildFootEmitters()
@@ -284,10 +317,26 @@ public partial class Movement : CharacterBody2D
         }
     }
 
+    float throwTimer = 0;
+
     private void UpdateAnimation(Vector2 lookDir)
     {
         // 0 = right, 90 = down, -90 = up, +/-180 = left
         float angle = Mathf.RadToDeg(lookDir.Angle());
+
+        if (throwTimer > 0)
+        {
+            if (lookDir.X < 0)
+            {
+                sprite2D.FlipH = true;
+            }
+            else
+            {
+                sprite2D.FlipH = false;
+            }
+            sprite2D.Play("THROW");
+            return;
+        }
 
         if (Input.IsActionPressed("ATTACK") && ripTimer > 0)
         {
@@ -397,12 +446,33 @@ public partial class Movement : CharacterBody2D
         ui.Gain(a);
     }
 
+    public override void _Process(double delta)
+    {
+        radialSlider.Scale = Vector2.One / camera.Zoom;
+        radialSlider.Position = -radialSlider.Size * radialSlider.Scale * 0.5f;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
         footstepTimer -= delta;
+        throwTimer -= (float)delta;
+
+        double percentDrained = countDown / initalCountdown;
+        flashlight.Energy = (float)(
+            percentDrained * initalEnergy + (1 - percentDrained) * lightEnergyFinal
+        );
+
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
+        if (ripTimer > 0)
+        {
+            radialSlider.Value = 1 - (ripTimer / ripTime);
+        }
+        else
+        {
+            radialSlider.Value = 0;
+        }
         if (!Input.IsActionPressed("ATTACK"))
         {
             double z = countDown / initalCountdown;
@@ -537,6 +607,7 @@ public partial class Movement : CharacterBody2D
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
                 countDown -= attackCountdownCost;
+                throwTimer = throwTime;
             }
             else
             {

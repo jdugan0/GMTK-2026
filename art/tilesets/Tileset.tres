@@ -3,6 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://ba1ibncgd6s3k" path="res://art/grasstiles200x200.png" id="1_h6rjb"]
 [ext_resource type="PackedScene" uid="uid://cgn8i3o6fi7um" path="res://scenes/Crate.tscn" id="2_x47dy"]
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_x47dy"]
+tile_data = PackedInt32Array(0, 131072, 3, 65536, 131072, 4, 131072, 131072, 4, 196608, 196608, 4, 1, 196608, 3, 2, 196608, 3, 131074, 0, 5, 196610, 0, 6, 3, 196608, 3, 4, 262144, 4, 65540, 131072, 4, 131076, 131072, 4, 196612, 196608, 268435460)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_s5inv"]
+tile_data = PackedInt32Array(0, 65536, 805306372, 65536, 65536, 805306371, 131072, 65536, 1342177284, 1, 65536, 1610612739, 65537, 0, 3, 131073, 0, 4, 2, 65536, 1610612740, 65538, 65536, 3, 131074, 65536, 4)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h6rjb"]
 vertices = PackedVector2Array(100, 100, -100, 100, -100, -100, 100, -100)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -378,6 +384,10 @@ physics_layer_0/collision_layer = 257
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_x47dy")
 sources/1 = SubResource("TileSetScenesCollectionSource_s5inv")
+pattern_0 = SubResource("TileMapPattern_x47dy")
+pattern_1 = SubResource("TileMapPattern_s5inv")

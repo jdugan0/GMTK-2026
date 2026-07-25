@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c04tcu21ufafr" path="res://art/Atlas/mice_meat.tres" id="7_curm1"]
 [ext_resource type="Texture2D" uid="uid://pu2futdtrgl" path="res://art/PlayerDamage2-180x135.png" id="7_lkdrv"]
 [ext_resource type="Texture2D" uid="uid://b0r8p65l5rnbu" path="res://art/PlayerDamage3-180x135.png" id="8_p7iby"]
+[ext_resource type="Texture2D" uid="uid://bhmtiudp5cqa2" path="res://art/playerThrow323.png" id="9_0rnld"]
+[ext_resource type="PackedScene" uid="uid://dyqohvcn4itpm" path="res://scenes/UI/RadialSlider.tscn" id="9_p7iby"]
 [ext_resource type="PackedScene" uid="uid://c262kvm6gnv0o" path="res://scenes/particles/BloodParticles.tscn" id="12_o4126"]
 [ext_resource type="PackedScene" uid="uid://d1jy5jeusrfsw" path="res://scenes/particles/FootParticles.tscn" id="13_lkdrv"]
 
@@ -49,10 +51,11 @@ height = 106.0
 radius = 41.0
 height = 300.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight", "arrow", "bloodParticles", "footParticles") groups=["player", "player_col"]]
+[node name="Player" type="CharacterBody2D" unique_id=1156526680 node_paths=PackedStringArray("camera", "sprite2D", "flashlight", "arrow", "bloodParticles", "footParticles", "radialSlider") groups=["player", "player_col"]]
 light_mask = 4
 y_sort_enabled = true
 collision_layer = 257
+collision_mask = 9
 script = ExtResource("1_p0vlq")
 BulletSpeed = 400.0
 Acceleration = 3500.0
@@ -85,6 +88,10 @@ countDown = 50.0
 damageSheets = Array[Texture2D]([ExtResource("5_d3wef"), ExtResource("6_o4126"), ExtResource("7_lkdrv"), ExtResource("8_p7iby")])
 bloodParticles = NodePath("BloodParticles")
 footParticles = NodePath("FootFx/FootParticles")
+radialSlider = NodePath("RadialSlider")
+throwSheet = ExtResource("9_0rnld")
+throwTime = 0.3
+lightEnergyFinal = 0.5
 
 [node name="BloodParticles" parent="." unique_id=174636998 instance=ExtResource("12_o4126")]
 emitting = false
@@ -129,3 +136,20 @@ follow_viewport_enabled = true
 [node name="Arrow" type="Sprite2D" parent="ArrowLayer" unique_id=1929614909]
 texture = ExtResource("5_qu4a1")
 offset = Vector2(271.395, 0)
+
+[node name="RadialSlider" parent="." unique_id=1244351542 instance=ExtResource("9_p7iby")]
+light_mask = 4
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 314.0
+offset_bottom = 314.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+FillColor = Color(1, 0, 0, 0.38039216)
+Radius = 108.0

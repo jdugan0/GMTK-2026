@@ -38,6 +38,7 @@ animations = [{
 radius = 30.0
 
 [node name="Bullet" type="Area2D" unique_id=93922470]
+collision_mask = 9
 script = ExtResource("1_hf8mt")
 bloodSplat = ExtResource("4_51h0o")
 
