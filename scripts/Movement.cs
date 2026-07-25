@@ -489,7 +489,7 @@ public partial class Movement : CharacterBody2D
 
     private void UpdateSprite()
     {
-        SwapSheet(Mathf.RoundToInt((initalCountdown - countDown) / initalCountdown * 4));
+        SwapSheet(Mathf.RoundToInt((initalCountdown - countDown) / initalCountdown * 5));
     }
 
     float cameraZoomInital;
