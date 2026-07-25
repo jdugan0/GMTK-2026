@@ -9,7 +9,7 @@
 atlas = ExtResource("2_61r5c")
 region = Rect2(300, 0, 300, 468)
 
-[node name="LevelSelect" type="Control" unique_id=104066112]
+[node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61r5c")
+levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3")]
+back = NodePath("Button3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1308472257]
 layout_mode = 1
