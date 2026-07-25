@@ -57,7 +57,8 @@ public partial class GameManager : Node
 
     public void Win(Movement player)
     {
-        // AudioManager.instance.CancelAllSFX();
+        AudioManager.instance.CancelAllSFX();
+        MusicManager.instance.PlaySong("outOfCombatBackground", time);
         // MusicManager.instance.PlaySong("levelWin");
         ui.ShowWin();
         player.arrow.Visible = false;
