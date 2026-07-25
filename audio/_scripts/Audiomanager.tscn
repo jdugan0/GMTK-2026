@@ -379,7 +379,7 @@ format = 3
 [sub_resource type="Resource" id="Resource_y8cre"]
 script = ExtResource("2_0au01")
 stream = SubResource("AudioStreamWAV_y8cre")
-volume = 5.0
+volume = 2.0
 name = "heartbeat"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
