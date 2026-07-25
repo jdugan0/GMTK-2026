@@ -474,6 +474,7 @@ public partial class Movement : CharacterBody2D
                     AudioManager.instance.CancelSFX("ripLoop");
                     AudioManager.instance.PlaySFX("ripEnd");
                     AudioManager.instance.PlaySFX("throwReady");
+                    ui.Loss((int)attackCountdownCost);
                     playedRip = true;
                 }
             }
@@ -488,7 +489,6 @@ public partial class Movement : CharacterBody2D
                 AudioManager.instance.PlaySFX("throw");
                 camera.Zoom = new Vector2(cameraZoomDefault, cameraZoomDefault);
                 countDown -= attackCountdownCost;
-                ui.Loss((int)attackCountdownCost);
             }
             else
             {

@@ -55,6 +55,7 @@ public partial class Bullet() : Area2D
         }
         if (body.IsInGroup("crate"))
         {
+            AudioManager.instance.PlaySFX("boxHit");
             QueueFree();
             body.QueueFree();
         }
