@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://chwd3fk2sl1te"]
+
+[ext_resource type="Script" uid="uid://uw7delfm0ml" path="res://scripts/OccluderDebug.cs" id="1_t0qhu"]
+[ext_resource type="PackedScene" uid="uid://bu60gj4dh7lau" path="res://scenes/level_stuff.tscn" id="2_t6q73"]
+[ext_resource type="PackedScene" uid="uid://b117vcs0b2j6e" path="res://scenes/Enemy.tscn" id="3_hokjj"]
+[ext_resource type="PackedScene" uid="uid://c8bymi2em3l52" path="res://scenes/healthpack.tscn" id="4_0fd8o"]
+
+[node name="LevelTest" type="Node2D" unique_id=160668906 node_paths=PackedStringArray("SearchRoot")]
+script = ExtResource("1_t0qhu")
+SearchRoot = NodePath(".")
+FillColor = Color(1, 0.2509804, 0.4, 1)
+OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
+
+[node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_t6q73")]
+
+[node name="Enemy" parent="LevelStuff/NavigationRegion2D/Enemies" parent_id_path=PackedInt32Array(230299218, 1362574246) index="0" unique_id=1156526680 instance=ExtResource("3_hokjj")]
+position = Vector2(2554, 873)
+
+[node name="Healthpack" parent="LevelStuff/NavigationRegion2D/Enemies" parent_id_path=PackedInt32Array(230299218, 1362574246) index="1" unique_id=1948540018 instance=ExtResource("4_0fd8o")]
+position = Vector2(704, 1010)
+
+[editable path="LevelStuff"]
