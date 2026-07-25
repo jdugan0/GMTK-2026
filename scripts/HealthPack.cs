@@ -15,6 +15,7 @@ public partial class HealthPack : Area2D
             m.countDown += 10;
             m.Gain(10);
 			QueueFree();
+			AudioManager.instance.PlaySFX("healthPickup");
         }
     }
 }

@@ -376,7 +376,7 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 [sub_resource type="Resource" id="Resource_7ilec"]
 script = ExtResource("2_0au01")
 stream = ExtResource("68_kxau5")
-volume = -3.0
+volume = 5.0
 name = "healthPickup"
 metadata/_custom_type_script = "uid://007myadtw53h"
 

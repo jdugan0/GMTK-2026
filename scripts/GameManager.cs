@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading;
 using Godot;
@@ -57,8 +58,7 @@ public partial class GameManager : Node
 
     public void Win(Movement player)
     {
-        AudioManager.instance.CancelAllSFX();
-        MusicManager.instance.PlaySong("outOfCombatBackground", time);
+        AudioManager.instance.CancelAllSFX(["outOfCombatBackground", "outOfCombatRandom"], ["combat"]);
         // MusicManager.instance.PlaySong("levelWin");
         ui.ShowWin();
         player.arrow.Visible = false;

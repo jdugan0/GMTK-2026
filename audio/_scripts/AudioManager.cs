@@ -241,4 +241,19 @@ public partial class AudioManager : Node
             CancelSFX(s);
         }
     }
+
+    public void CancelAllSFX(HashSet<string> invalid, HashSet<string> fades)
+    {
+        foreach (var s in playing.Keys.ToList())
+        {
+            if (fades.Contains(names[s]))
+            {
+                CancelSFXFadeOut(s, 3f);
+            }
+            else if (!invalid.Contains(names[s]))
+            {
+                CancelSFX(s);
+            }
+        }
+    }
 }
