@@ -88,6 +88,7 @@ damageSheets = Array[Texture2D]([ExtResource("5_d3wef"), ExtResource("6_o4126"),
 bloodParticles = NodePath("BloodParticles")
 footParticles = NodePath("FootFx/FootParticles")
 radialSlider = NodePath("RadialSlider")
+lightEnergyFinal = 0.5
 
 [node name="BloodParticles" parent="." unique_id=174636998 instance=ExtResource("12_o4126")]
 emitting = false

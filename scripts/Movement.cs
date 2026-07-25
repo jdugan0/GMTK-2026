@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 
@@ -164,6 +165,9 @@ public partial class Movement : CharacterBody2D
 
     int prevId = -1;
 
+    [Export]
+    float lightEnergyFinal;
+
     private void SwapSheet(int id)
     {
         if (id == prevId)
@@ -187,6 +191,8 @@ public partial class Movement : CharacterBody2D
         prevId = id;
     }
 
+    float initalEnergy = 0;
+
     public override void _Ready()
     {
         ripTimer = ripTime;
@@ -201,6 +207,7 @@ public partial class Movement : CharacterBody2D
         SetCursor(false);
         cameraZoomInital = camera.Zoom.X;
         BuildFootEmitters();
+        initalEnergy = flashlight.Energy;
     }
 
     private void BuildFootEmitters()
@@ -401,7 +408,7 @@ public partial class Movement : CharacterBody2D
     }
 
     public override void _Process(double delta)
-    {   
+    {
         radialSlider.Scale = Vector2.One / camera.Zoom;
         radialSlider.Position = -radialSlider.Size * radialSlider.Scale * 0.5f;
     }
@@ -410,6 +417,12 @@ public partial class Movement : CharacterBody2D
     {
         UpdateSprite();
         footstepTimer -= delta;
+
+        double percentDrained = countDown / initalCountdown;
+        flashlight.Energy = (float)(
+            percentDrained * initalEnergy + (1 - percentDrained) * lightEnergyFinal
+        );
+
         float dt = (float)delta;
         float angleToExit = (exit.GlobalPosition - GlobalPosition).Angle();
         if (ripTimer > 0)
