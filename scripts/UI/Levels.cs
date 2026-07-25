@@ -5,6 +5,8 @@ public partial class Levels : Node
 {
     [Export]
     TextureButton[] levelButtons;
+    [Export]
+    Texture2D lockedTexture;
 
     [Export]
     Button back;
@@ -15,10 +17,18 @@ public partial class Levels : Node
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int index = i;
-            levelButtons[i].Pressed += () =>
+            if (i <= LevelManager.instance.unlockedLevel)
             {
-                LevelManager.instance.LoadLevel(index);
-            };
+                levelButtons[i].Pressed += () =>
+                {
+                    LevelManager.instance.LoadLevel(index);
+                };
+            }
+            else
+            {
+                levelButtons[i].TextureNormal = lockedTexture;
+                levelButtons[i].TextureHover = lockedTexture;
+            }
         }
     }
 

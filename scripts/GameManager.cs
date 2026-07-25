@@ -214,8 +214,12 @@ public partial class GameManager : Node
 
     public void Win(Movement player)
     {
-        AudioManager.instance.CancelAllSFX(["outOfCombatBackground", "outOfCombatRandom"], ["combat"]);
+        AudioManager.instance.CancelAllSFX(
+            ["outOfCombatBackground", "outOfCombatRandom"],
+            ["combat"]
+        );
         // MusicManager.instance.PlaySong("levelWin");
+        LevelManager.instance.UnlockLevel(LevelManager.instance.currLevel + 1);
         ui.ShowWin();
         player.arrow.Visible = false;
     }
