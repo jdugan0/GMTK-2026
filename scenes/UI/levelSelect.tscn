@@ -197,6 +197,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="6" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
+visible = false
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
 
@@ -211,6 +212,6 @@ offset_right = -1386.0001
 offset_bottom = -765.836
 theme = ExtResource("1_60520")
 theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
-text = "5"
+text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
