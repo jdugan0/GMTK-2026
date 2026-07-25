@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://clduitnnr2e2u" path="res://art/PlayerDamage1-180x135.png" id="1_dkqm0"]
 [ext_resource type="Texture2D" uid="uid://dnq8es0oanw1c" path="res://art/PlayerHealthy180x135.png" id="2_dkqm0"]
+[ext_resource type="Texture2D" uid="uid://2s2bcus1glew" path="res://art/PlayerDies123.png" id="2_sdkiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdkiy"]
 atlas = ExtResource("1_dkqm0")
@@ -50,6 +51,14 @@ region = Rect2(180, 0, 180, 315)
 [sub_resource type="AtlasTexture" id="AtlasTexture_backm2"]
 atlas = ExtResource("1_dkqm0")
 region = Rect2(360, 0, 180, 315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7hca"]
+atlas = ExtResource("2_sdkiy")
+region = Rect2(0, 0, 281, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eerbh"]
+atlas = ExtResource("2_sdkiy")
+region = Rect2(0, 123, 281, 123)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lorgq"]
 atlas = ExtResource("1_dkqm0")
@@ -216,6 +225,17 @@ animations = [{
 "loop": 1,
 "name": &"BACK_WALK_MEAT",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7hca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eerbh")
+}],
+"loop": 0,
+"name": &"DEATH",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,

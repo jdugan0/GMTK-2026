@@ -10,6 +10,9 @@ public partial class GameManager : Node
     [Export]
     float combatExitDelay = 5f;
 
+    [Export]
+    float deathTime;
+
     public bool InCombat { get; private set; } = false;
     bool reported = false;
     float combatExitTimer = 0f;
@@ -26,14 +29,24 @@ public partial class GameManager : Node
         randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
     }
 
-    public void Die(Movement player)
+    public async void Die(Movement player)
     {
         ui.Reset();
         player.Reset();
         AudioManager.instance.CancelAllSFX();
-        _ = SceneSwitcher.instance.SwitchSceneAsyncSlide(LevelManager.instance.GetCurrLevel(), 1f);
         AudioManager.instance.PlaySFX("playerDies");
-        // player.Visible = false;
+        foreach (var item in GetTree().GetNodesInGroup("bullet"))
+        {
+            item.Free();
+        }
+        await SceneSwitcher.instance.WaitOneFrame();
+        player.sprite2D.Play("DEATH");
+        GetTree().Paused = true;
+        await ToSignal(GetTree().CreateTimer(2f), SceneTreeTimer.SignalName.Timeout);
+        await SceneSwitcher.instance.SwitchSceneAsyncSlide(
+            LevelManager.instance.GetCurrLevel(),
+            1f
+        );
     }
 
     public void Win(Movement player)

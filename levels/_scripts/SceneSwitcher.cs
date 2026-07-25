@@ -27,7 +27,6 @@ public partial class SceneSwitcher : Node
     public async Task SwitchSceneAsyncSlide(string sceneName, float duration)
     {
         await WaitOneFrame();
-        GetTree().Paused = true;
         await SlideIn(duration / 2);
         GetTree().ChangeSceneToPacked(sceneDict[sceneName]);
         await WaitOneFrame();
@@ -46,7 +45,7 @@ public partial class SceneSwitcher : Node
         GetTree().ChangeSceneToPacked(scenes[loadOrder].scene);
     }
 
-    private async Task WaitOneFrame()
+    public async Task WaitOneFrame()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }

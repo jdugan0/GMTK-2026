@@ -91,7 +91,7 @@ public partial class Movement : CharacterBody2D
     private PackedScene bulletScene;
 
     [Export]
-    private AnimatedSprite2D sprite2D;
+    public AnimatedSprite2D sprite2D;
 
     [Export]
     private UI ui;
@@ -158,6 +158,10 @@ public partial class Movement : CharacterBody2D
         var frames = sprite2D.SpriteFrames;
         foreach (string anim in frames.GetAnimationNames())
         {
+            if (anim == "DEATH")
+            {
+                continue;
+            }
             for (int i = 0; i < frames.GetFrameCount(anim); i++)
             {
                 if (frames.GetFrameTexture(anim, i) is AtlasTexture at)
@@ -374,6 +378,7 @@ public partial class Movement : CharacterBody2D
         if (Input.IsActionJustPressed("RESET"))
         {
             GameManager.instance.Die(this);
+            return;
         }
         arrow.GlobalPosition = GlobalPosition;
         arrow.Rotation = angleToExit;
