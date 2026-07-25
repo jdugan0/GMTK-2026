@@ -21,6 +21,7 @@ animations = [{
 }]
 
 [node name="Crate" type="StaticBody2D" unique_id=1579771569 groups=["crate"]]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353436734]
 shape = SubResource("RectangleShape2D_ylpgx")

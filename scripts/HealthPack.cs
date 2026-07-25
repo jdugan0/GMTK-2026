@@ -12,7 +12,7 @@ public partial class HealthPack : Area2D
     {
         if (body is Movement m)
         {
-            m.countDown += 10;
+            m.countDown += 15;
             m.Gain(10);
 			QueueFree();
 			AudioManager.instance.PlaySFX("healthPickup");

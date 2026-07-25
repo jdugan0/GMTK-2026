@@ -53,6 +53,7 @@ height = 300.0
 light_mask = 4
 y_sort_enabled = true
 collision_layer = 257
+collision_mask = 9
 script = ExtResource("1_p0vlq")
 BulletSpeed = 400.0
 Acceleration = 3500.0
