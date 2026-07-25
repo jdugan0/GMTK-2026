@@ -94,6 +94,7 @@ public partial class HeartDisplay : TextureRect
 
     public async Task PlayExplode(float frameRate)
     {
+        AudioManager.instance.PlaySFX("heartExplode");
         SetProcess(false);
         ExpandMode = ExpandModeEnum.IgnoreSize;
         StretchMode = StretchModeEnum.KeepAspectCentered;
@@ -134,10 +135,13 @@ public partial class HeartDisplay : TextureRect
             MouseFilter = MouseFilterEnum.Ignore,
         };
         AddChild(ghost);
+        if (mode == 3)
+        {
+            AudioManager.instance.PlaySFX("gameOver");
+        }
         if (mode == 4)
         {
             AudioManager.instance.PlaySFX("thirdHealthRemaining");
-            AudioManager.instance.PlaySFX("gameOver");
             AudioManager.instance.PlaySFX("lowHealthClock");
         }
         if (mode == 2)
