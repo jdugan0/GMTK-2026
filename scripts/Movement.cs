@@ -97,7 +97,7 @@ public partial class Movement : CharacterBody2D
     private UI ui;
 
     [Export]
-    Node2D flashlight;
+    Flashlight flashlight;
 
     [Export]
     public Sprite2D arrow;
@@ -252,6 +252,7 @@ public partial class Movement : CharacterBody2D
             moveEnabled = false;
             stunTimer = stunTime;
             shakeTrauma = Mathf.Min(shakeTrauma + shakePerHit, 1f);
+            flashlight.Flicker();
             ui.Loss((int)damage);
         }
     }
