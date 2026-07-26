@@ -226,7 +226,7 @@ lines = Array[Object]([])
 triggers = Array[Object]([])
 
 [node name="Label" type="Label" parent="Control/Dialogue" unique_id=1989145498]
-custom_maximum_size = Vector2(1219, 263)
+custom_maximum_size = Vector2(1219, 267.595)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

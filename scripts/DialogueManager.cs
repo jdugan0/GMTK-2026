@@ -71,7 +71,7 @@ public partial class DialogueManager : TextureRect
 
     void OnCharacterRevealed(char c)
     {
-        AudioManager.instance.PlaySFX("textBox");
+        AudioManager.instance.PlaySFX("textBoxSpeech");
     }
 
     void StartFade()

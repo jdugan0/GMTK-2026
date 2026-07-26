@@ -522,9 +522,8 @@ public partial class Movement : CharacterBody2D
         UpdateSprite();
         footstepTimer -= delta;
         throwTimer -= (float)delta;
-        LevelManager.instance.currLevel = 5;
 
-        if (LevelManager.instance.currLevel == 5 && drainTimer <= drainTime)
+        if (LevelManager.instance.currLevel == 6 && drainTimer <= drainTime)
         {
             drainTimer += (float)delta;
             maxSpeedScale = (1 - 0.6f * (drainTimer / drainTime));

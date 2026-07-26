@@ -46,7 +46,7 @@ OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 
 [node name="Dialogue" parent="LevelStuff/UI/Control" parent_id_path=PackedInt32Array(230299218, 66284215, 641039095) index="6" unique_id=1885783672 node_paths=PackedStringArray("triggers")]
 lines = Array[Object]([SubResource("Resource_bt44k"), SubResource("Resource_kx6l7")])
-triggers = [NodePath("../../../SpeechTriggers/Area2D")]
+triggers = [NodePath("../../../SpeechTriggers/Area2D"), NodePath("../../../SpeechTriggers/Area2D2")]
 
 [node name="NavigationRegion2D" parent="LevelStuff" index="2" unique_id=1456280516]
 navigation_polygon = SubResource("NavigationPolygon_jirdo")

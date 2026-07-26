@@ -33,6 +33,13 @@ region = Rect2(600, 0, 300, 468)
 atlas = ExtResource("2_61r5c")
 region = Rect2(600, 0, 300, 468)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tp6gm"]
+load_path = "res://.godot/imported/levelselect.png-6f7f70febc598208515209520be2ebbe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xc0a"]
+atlas = SubResource("CompressedTexture2D_tp6gm")
+region = Rect2(600, 0, 300, 468)
+
 [node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
 layout_mode = 3
 anchors_preset = 15
@@ -229,6 +236,7 @@ vertical_alignment = 1
 [node name="6" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_4xc0a")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/6" unique_id=666788328]
 layout_mode = 1
@@ -249,6 +257,7 @@ vertical_alignment = 1
 [node name="7" type="TextureButton" parent="HBoxContainer2" unique_id=1012001109]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_ingdg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/7" unique_id=2068565079]
 layout_mode = 1

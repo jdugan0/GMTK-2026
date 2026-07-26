@@ -160,7 +160,7 @@ public partial class HeartDisplay : TextureRect
 
     private void UpdateModeSfx(int previous)
     {
-        if (LevelManager.instance.currLevel == 5)
+        if (LevelManager.instance.currLevel == 6)
             return;
         if (modeSfx.TryGetValue(previous, out var stopping))
             foreach (string sound in stopping)
