@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_fpvgn"]
 script = ExtResource("3_fpvgn")
-line = "I can smell my house, it reminds me of good times. I hope I make it."
+line = "Wow, it smells like home here. Reminds me of good times."
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qskt5"]
