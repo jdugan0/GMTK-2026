@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dffa7isf2xpil" path="res://art/UI/homescreenBG.png" id="1_ow34m"]
 [ext_resource type="Texture2D" uid="uid://x5bd4m3mfwak" path="res://art/UI/homescreenMA.png" id="2_l72w3"]
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="3_2wh52"]
+[ext_resource type="Texture2D" uid="uid://b2i08ovc42n23" path="res://art/logo.png" id="4_b1p1q"]
 
 [node name="MainMenu" type="Control" unique_id=935593089 node_paths=PackedStringArray("playButton", "optionsButton", "quitButton")]
 layout_mode = 3
@@ -37,15 +38,24 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_l72w3")
 
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=769635475]
+layout_mode = 0
+offset_left = 843.0
+offset_top = 26.0
+offset_right = 1920.0
+offset_bottom = 526.0
+texture = ExtResource("4_b1p1q")
+stretch_mode = 5
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=496195762]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 956.0
-offset_top = 341.0
+offset_top = 540.0
 offset_right = -113.0
-offset_bottom = -3.0
+offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_2wh52")

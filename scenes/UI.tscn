@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://4aa4ndr7spx3" path="res://art/UI/heartattack1920x1080.png" id="6_ukj8e"]
 [ext_resource type="PackedScene" uid="uid://xq40okbuq68y" path="res://scenes/UI/levelWon.tscn" id="7_xpksx"]
 [ext_resource type="PackedScene" uid="uid://bsyy3fupxoxn0" path="res://scenes/UI/levelPause.tscn" id="8_24e4x"]
+[ext_resource type="Script" uid="uid://dxiiwa2it2u03" path="res://scripts/DialogueManager.cs" id="13_5sqrc"]
+[ext_resource type="Texture2D" uid="uid://cmj54xmcjlqm6" path="res://art/UI/talking.png" id="13_flkkw"]
+[ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="14_ilk7v"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w7enk"]
 noise_type = 0
@@ -48,6 +51,52 @@ shader_parameter/intensity = 0.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua6yw"]
 atlas = ExtResource("4_75u2n")
 region = Rect2(0, 1, 217, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilk7v"]
+atlas = ExtResource("13_flkkw")
+region = Rect2(0, 0, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_flkkw"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhjpf"]
+atlas = SubResource("CompressedTexture2D_flkkw")
+region = Rect2(0, 0, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s2m3y"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dthu"]
+atlas = SubResource("CompressedTexture2D_s2m3y")
+region = Rect2(0, 341, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hu0pd"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5ifv"]
+atlas = SubResource("CompressedTexture2D_hu0pd")
+region = Rect2(0, 682, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s2vcx"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38m54"]
+atlas = SubResource("CompressedTexture2D_s2vcx")
+region = Rect2(0, 1023, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h3f0y"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yamhi"]
+atlas = SubResource("CompressedTexture2D_h3f0y")
+region = Rect2(0, 1364, 0, 341)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mudns"]
+load_path = "res://.godot/imported/talking.png-d0b7bbde21bb7af350afffd098acc40a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knc77"]
+atlas = SubResource("CompressedTexture2D_mudns")
+region = Rect2(0, 1705, 0, 341)
 
 [node name="UI" type="CanvasLayer" unique_id=66284215 node_paths=PackedStringArray("countDownLabel", "heartDisplay", "vignette", "levelWon", "winMainMenu", "pauseMainMenu", "resume", "restart", "pauseMenu", "nextLevel", "heartLabel")]
 process_mode = 3
@@ -153,6 +202,46 @@ pivot_offset = Vector2(0, 0)
 visible = false
 layout_mode = 1
 mouse_filter = 1
+
+[node name="Dialogue" type="TextureRect" parent="Control" unique_id=1885783672 node_paths=PackedStringArray("disp", "text", "triggers")]
+visible = false
+modulate = Color(1, 1, 1, 0.5254902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_ilk7v")
+script = ExtResource("13_5sqrc")
+disp = NodePath(".")
+text = NodePath("Label")
+sprites = Array[Texture2D]([SubResource("AtlasTexture_mhjpf"), SubResource("AtlasTexture_4dthu"), SubResource("AtlasTexture_o5ifv"), SubResource("AtlasTexture_38m54"), SubResource("AtlasTexture_yamhi"), SubResource("AtlasTexture_knc77")])
+lines = Array[Object]([])
+triggers = Array[Object]([])
+
+[node name="Label" type="Label" parent="Control/Dialogue" unique_id=1989145498]
+custom_maximum_size = Vector2(1219, 263)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -130.5
+offset_right = 785.0
+offset_bottom = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_ilk7v")
+theme_override_font_sizes/font_size = 63
+autowrap_mode = 2
 
 [editable path="Control/LevelWon"]
 [editable path="Control/LevelPause"]
