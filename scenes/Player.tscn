@@ -115,7 +115,7 @@ position_smoothing_enabled = true
 process_mode = 3
 light_mask = 4
 sprite_frames = ExtResource("3_3li8b")
-animation = &"OUTRO"
+animation = &"FRONT"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=493174657]
 position = Vector2(-9, 92)

@@ -71,6 +71,7 @@ public partial class UI : CanvasLayer
 
     public void Pause()
     {
+        AudioManager.instance.PlaySFX("textBox");
         SetPaused(true);
     }
 
@@ -107,12 +108,14 @@ public partial class UI : CanvasLayer
 
     public void Restart()
     {
+        AudioManager.instance.PlaySFX("textBox");
         CloseMenus();
         GameManager.instance.Die(player);
     }
 
     public void MainMenu()
     {
+        AudioManager.instance.PlaySFX("textBox");
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
         MusicManager.instance.CancelSong(1f);
         AudioManager.instance.CancelAllSFX();

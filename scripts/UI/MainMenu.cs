@@ -27,11 +27,13 @@ public partial class MainMenu : Node
 
     public void Levels()
     {
+        AudioManager.instance.PlaySFX("textBox");
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("levels", 1f);
     }
 
     public void Options()
     {
+        AudioManager.instance.PlaySFX("textBox");
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("options", 1f);
     }
 }

@@ -55,6 +55,7 @@ public partial class LevelManager : Node
 
     public void LoadLevel(int level)
     {
+        AudioManager.instance.PlaySFX("textBox");
         GD.Print(level);
         currLevel = level;
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide(levels[level], 1f);

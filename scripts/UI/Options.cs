@@ -23,6 +23,7 @@ public partial class Options : Node
 
     public void MainMenu()
     {
+        AudioManager.instance.PlaySFX("textBox");
         AudioManager.instance.SaveSettings();
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
     }
