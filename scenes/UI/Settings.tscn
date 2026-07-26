@@ -13,7 +13,7 @@ region = Rect2(0, 0, 194, 185)
 atlas = ExtResource("4_fawbi")
 region = Rect2(0, 185, 194, 185)
 
-[node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back", "hardToggle")]
+[node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back", "hardToggle", "speedRunToggle")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +24,7 @@ script = ExtResource("1_ydmms")
 volume = NodePath("HSlider")
 back = NodePath("Button3")
 hardToggle = NodePath("hardbut")
+speedRunToggle = NodePath("speedrunbutton")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=2097029330]
 layout_mode = 1

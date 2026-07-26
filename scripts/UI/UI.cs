@@ -48,6 +48,9 @@ public partial class UI : CanvasLayer
     public bool IsPaused { get; private set; }
     private bool deathAnim;
 
+    [Export]
+    Label speedrun;
+
     public override void _Ready()
     {
         pauseMenu.Visible = false;
@@ -57,6 +60,10 @@ public partial class UI : CanvasLayer
         restart.Pressed += Restart;
         resume.Pressed += () => SetPaused(false);
         nextLevel.Pressed += LevelManager.instance.NextLevel;
+        if (OptionsManager.speedrun)
+        {
+            speedrun.Visible = true;
+        }
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -115,6 +122,7 @@ public partial class UI : CanvasLayer
 
     public void MainMenu()
     {
+        LevelManager.instance.currLevel = -1;
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
         MusicManager.instance.CancelSong(1f);
         AudioManager.instance.CancelAllSFX();
@@ -143,9 +151,12 @@ public partial class UI : CanvasLayer
 
     public override void _PhysicsProcess(double delta)
     {
+        if (OptionsManager.speedrun)
+        {
+            speedrun.Text = $"{Math.Round(LevelManager.instance.spTime * 1000) / 1000}";
+        }
         if (deathAnim)
             return;
-
         double z = player.countDown / player.initalCountdown;
         ((ShaderMaterial)vignette.Material).SetShaderParameter("intensity", 1 - z);
         countDownLabel.Text = $"{Math.Round(player.countDown)}";

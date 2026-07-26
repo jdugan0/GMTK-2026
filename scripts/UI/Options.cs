@@ -12,11 +12,16 @@ public partial class Options : Node
     [Export]
     TextureButton hardToggle;
 
+    [Export]
+    TextureButton speedRunToggle;
+
     public override void _Ready()
     {
         back.Pressed += MainMenu;
         hardToggle.ButtonPressed = OptionsManager.hardMode;
+        speedRunToggle.ButtonPressed = OptionsManager.speedrun;
         hardToggle.Toggled += ToggleHard;
+        speedRunToggle.Toggled += ToggleSpeedrun;
 
         volume.MinValue = 0;
         volume.MaxValue = 1;
@@ -24,6 +29,12 @@ public partial class Options : Node
         volume.Value = AudioManager.instance.MasterVolume;
         volume.ValueChanged += v => AudioManager.instance.MasterVolume = (float)v;
         volume.DragEnded += _ => AudioManager.instance.SaveSettings();
+    }
+
+    public void ToggleSpeedrun(bool on)
+    {
+        AudioManager.instance.PlaySFX("textBox");
+        OptionsManager.speedrun = on;
     }
 
     public void ToggleHard(bool on)

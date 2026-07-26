@@ -5,7 +5,7 @@ public partial class LevelManager : Node
 {
     [Export]
     public string[] levels;
-    public int currLevel;
+    public int currLevel = -1;
 
     [Export]
     public int unlockedLevel = 0;
@@ -18,6 +18,7 @@ public partial class LevelManager : Node
     const string SaveSection = "progress";
     const string SaveKey = "unlocked_level";
     const string HardModeKey = "unlocked_level_hard";
+    public float spTime;
 
     public int UnlockedLevel
     {
@@ -54,7 +55,11 @@ public partial class LevelManager : Node
         int saved = (int)config.GetValue(SaveSection, SaveKey, unlockedLevel);
         unlockedLevel = Mathf.Clamp(Mathf.Max(saved, unlockedLevel), 0, levels.Length - 1);
         int savedHard = (int)config.GetValue(SaveSection, HardModeKey, unlockedLevelHard);
-        unlockedLevelHard = Mathf.Clamp(Mathf.Max(savedHard, unlockedLevelHard), 0, levels.Length - 1);
+        unlockedLevelHard = Mathf.Clamp(
+            Mathf.Max(savedHard, unlockedLevelHard),
+            0,
+            levels.Length - 1
+        );
     }
 
     void SaveProgress()
@@ -69,6 +74,18 @@ public partial class LevelManager : Node
     public string GetCurrLevel()
     {
         return levels[currLevel];
+    }
+
+    public override void _Process(double delta)
+    {
+        if (currLevel >= 0)
+        {
+            spTime += (float)delta;
+        }
+        else
+        {
+            spTime = 0;
+        }
     }
 
     public void LoadLevel(int level)
