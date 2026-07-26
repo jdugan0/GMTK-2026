@@ -15,8 +15,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="ISCHEMIA"
-run/main_scene="uid://cujpfgw721otk"
+run/main_scene="uid://bg8i4e7jh6nuv"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+boot_splash/image="uid://cao8hmgoeilbf"
 config/icon="uid://b2i08ovc42n23"
 
 [autoload]

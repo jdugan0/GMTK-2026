@@ -13,6 +13,33 @@ region = Rect2(0, 0, 300, 468)
 atlas = ExtResource("2_61r5c")
 region = Rect2(300, 0, 300, 468)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp6gm"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_241hc"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1x2b"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr7xk"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ingdg"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tp6gm"]
+load_path = "res://.godot/imported/levelselect.png-6f7f70febc598208515209520be2ebbe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xc0a"]
+atlas = SubResource("CompressedTexture2D_tp6gm")
+region = Rect2(600, 0, 300, 468)
+
 [node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
 layout_mode = 3
 anchors_preset = 15
@@ -21,7 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61r5c")
-levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3"), NodePath("HBoxContainer2/4"), NodePath("HBoxContainer2/5"), NodePath("HBoxContainer2/6")]
+levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3"), NodePath("HBoxContainer/4"), NodePath("HBoxContainer2/5"), NodePath("HBoxContainer2/6"), NodePath("HBoxContainer2/7")]
 lockedTexture = SubResource("AtlasTexture_bt44k")
 back = NodePath("Button3")
 
@@ -91,6 +118,7 @@ theme_override_constants/separation = 46
 [node name="1" type="TextureButton" parent="HBoxContainer" unique_id=571371462]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_tp6gm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/1" unique_id=2056756467]
 layout_mode = 1
@@ -111,6 +139,7 @@ vertical_alignment = 1
 [node name="2" type="TextureButton" parent="HBoxContainer" unique_id=648040673]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_241hc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/2" unique_id=97618751]
 layout_mode = 1
@@ -131,6 +160,7 @@ vertical_alignment = 1
 [node name="3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_c1x2b")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/3" unique_id=797606138]
 layout_mode = 1
@@ -148,24 +178,12 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1050668930]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 834.0
-offset_top = 540.0
-offset_right = -48.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 46
-
-[node name="4" type="TextureButton" parent="HBoxContainer2" unique_id=1226475311]
+[node name="4" type="TextureButton" parent="HBoxContainer" unique_id=1226475311]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_rr7xk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/4" unique_id=1594143709]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/4" unique_id=1594143709]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.78000003
@@ -181,9 +199,23 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1050668930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 834.0
+offset_top = 540.0
+offset_right = -48.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 46
+
 [node name="5" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_ingdg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/5" unique_id=792166336]
 layout_mode = 1
@@ -202,9 +234,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="6" type="TextureButton" parent="HBoxContainer2" unique_id=1752606682]
-visible = false
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_4xc0a")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/6" unique_id=666788328]
 layout_mode = 1
@@ -219,5 +251,26 @@ mouse_filter = 2
 theme = ExtResource("1_60520")
 theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
 text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="7" type="TextureButton" parent="HBoxContainer2" unique_id=1012001109]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_ingdg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/7" unique_id=2068565079]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.78000003
+anchor_right = 5.6200004
+anchor_bottom = 2.177
+offset_left = 234.00002
+offset_right = -1386.0001
+offset_bottom = -765.836
+mouse_filter = 2
+theme = ExtResource("1_60520")
+theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1)
+text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1

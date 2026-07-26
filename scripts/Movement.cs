@@ -511,11 +511,23 @@ public partial class Movement : CharacterBody2D
         radialSlider.Position = -radialSlider.Size * radialSlider.Scale * 0.5f;
     }
 
+    [Export]
+    float drainTime;
+
+    float drainTimer = 0;
+    float maxSpeedScale = 1;
+
     public override void _PhysicsProcess(double delta)
     {
         UpdateSprite();
         footstepTimer -= delta;
         throwTimer -= (float)delta;
+
+        if (LevelManager.instance.currLevel == 6 && drainTimer <= drainTime)
+        {
+            drainTimer += (float)delta;
+            maxSpeedScale = (1 - 0.6f * (drainTimer / drainTime));
+        }
 
         double percentDrained = countDown / initalCountdown;
         flashlight.Energy = (float)(
@@ -570,6 +582,7 @@ public partial class Movement : CharacterBody2D
         {
             ui.Beat(2);
         }
+        maxSpeed *= maxSpeedScale;
         Vector2 targetVelocity = input * maxSpeed;
 
         camera.GlobalPosition =
@@ -591,7 +604,7 @@ public partial class Movement : CharacterBody2D
         if (input != Vector2.Zero)
         {
             PlayFootstep();
-            countDown -= maxSpeed * maxSpeed * MoveCostFactor * delta;
+            countDown -= Math.Pow(maxSpeed / maxSpeedScale, 2) * MoveCostFactor * delta;
         }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);

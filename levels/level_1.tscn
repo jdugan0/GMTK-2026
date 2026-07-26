@@ -7,7 +7,12 @@
 
 [sub_resource type="Resource" id="Resource_bt44k"]
 script = ExtResource("3_kx6l7")
-line = "testy testy test"
+line = "I'm strong, I can take a stabbing!"
+metadata/_custom_type_script = "uid://igoeetpdrmgg"
+
+[sub_resource type="Resource" id="Resource_kx6l7"]
+script = ExtResource("3_kx6l7")
+line = "I gotta get home though. It's only a matter of time before this bleedng gets worse."
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jirdo"]
@@ -25,8 +30,11 @@ size = Vector2(1834, 287)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt44k"]
 size = Vector2(1640, 773)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n46q3"]
+size = Vector2(352, 387)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6l7"]
-size = Vector2(599, 319)
+size = Vector2(1194, 387)
 
 [node name="LevelTest" type="Node2D" unique_id=160668906 node_paths=PackedStringArray("SearchRoot")]
 script = ExtResource("1_jirdo")
@@ -37,8 +45,8 @@ OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 [node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_bt44k")]
 
 [node name="Dialogue" parent="LevelStuff/UI/Control" parent_id_path=PackedInt32Array(230299218, 66284215, 641039095) index="6" unique_id=1885783672 node_paths=PackedStringArray("triggers")]
-lines = Array[Object]([SubResource("Resource_bt44k")])
-triggers = [NodePath("../../../Line1Trigger")]
+lines = Array[Object]([SubResource("Resource_bt44k"), SubResource("Resource_kx6l7")])
+triggers = [NodePath("../../../SpeechTriggers/Area2D"), NodePath("../../../SpeechTriggers/Area2D2")]
 
 [node name="NavigationRegion2D" parent="LevelStuff" index="2" unique_id=1456280516]
 navigation_polygon = SubResource("NavigationPolygon_jirdo")
@@ -110,10 +118,16 @@ position = Vector2(3268, -1903)
 position = Vector2(-873, -167.5)
 shape = SubResource("RectangleShape2D_bt44k")
 
-[node name="Line1Trigger" type="Area2D" parent="LevelStuff" unique_id=1909987420]
+[node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=870253724]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/Line1Trigger" unique_id=919823089]
-position = Vector2(1602.5, 512.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D" unique_id=1750514005]
+position = Vector2(1457, 523.5)
+shape = SubResource("RectangleShape2D_n46q3")
+
+[node name="Area2D2" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="1" unique_id=1690753947]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D2" unique_id=1511052935]
+position = Vector2(2303, -543)
 shape = SubResource("RectangleShape2D_kx6l7")
 
 [editable path="LevelStuff"]
