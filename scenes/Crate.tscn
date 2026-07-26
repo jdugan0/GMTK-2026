@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cgn8i3o6fi7um"]
 
+[ext_resource type="Script" uid="uid://c36fd3tjnlfv5" path="res://scripts/Crate.cs" id="1_ho016"]
 [ext_resource type="Texture2D" uid="uid://c2vvg7hqw0md0" path="res://art/crate231.png" id="1_jnwe4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho016"]
+atlas = ExtResource("1_jnwe4")
+region = Rect2(0, 453, 0, 151)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylpgx"]
 size = Vector2(200, 200)
@@ -20,8 +25,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Crate" type="StaticBody2D" unique_id=1579771569 groups=["crate"]]
+[node name="Crate" type="StaticBody2D" unique_id=1579771569 node_paths=PackedStringArray("cpy") groups=["crate"]]
 collision_layer = 8
+script = ExtResource("1_ho016")
+destroy = SubResource("AtlasTexture_ho016")
+cpy = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353436734]
 shape = SubResource("RectangleShape2D_ylpgx")
