@@ -63,14 +63,15 @@ tile_map_data = PackedByteArray("AAACAAUAAAABAAMAABACAAYAAAABAAQAABADAAUAAAAAAAM
 visible = false
 layout_mode = 1
 area = NodePath("../../../TutorialAreas/Area2D")
-time = 10.0
+time = 12.0
 
 [node name="Arrow" parent="LevelStuff/TutorialManager/Control/TutorialPopup" index="0" unique_id=1902221248]
 visible = false
 
 [node name="Label" parent="LevelStuff/TutorialManager/Control/TutorialPopup" index="1" unique_id=1703689014]
-text = "Click and hold to rip a chunk off your body
-Let go to throw it
+text = "Click and hold to rip a chunk off your body. 
+Let go to throw it. 
+Use the chunks to destroy boxes and stun enemies.
 Be careful, it drains your countdown..."
 
 [node name="Area2D" type="Area2D" parent="LevelStuff/TutorialAreas" parent_id_path=PackedInt32Array(230299218, 831059950) index="0" unique_id=892566527]

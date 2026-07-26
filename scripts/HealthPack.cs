@@ -8,7 +8,7 @@ public partial class HealthPack : Area2D
 
     public override void _Ready()
     {
-        if (hardMode && !OptionsManager.hardMode)
+        if (hardMode && OptionsManager.hardMode)
         {
             QueueFree();
         }

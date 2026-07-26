@@ -13,7 +13,7 @@ region = Rect2(0, 0, 194, 185)
 atlas = ExtResource("4_fawbi")
 region = Rect2(0, 185, 194, 185)
 
-[node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back")]
+[node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back", "hardToggle")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_ydmms")
 volume = NodePath("HSlider")
 back = NodePath("Button3")
+hardToggle = NodePath("hardbut")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=2097029330]
 layout_mode = 1
@@ -159,7 +160,7 @@ texture_normal = SubResource("AtlasTexture_byrvo")
 texture_pressed = SubResource("AtlasTexture_ghuma")
 stretch_mode = 5
 
-[node name="speedrunbutton2" type="TextureButton" parent="." unique_id=1060966338]
+[node name="hardbut" type="TextureButton" parent="." unique_id=1060966338]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -10,7 +10,7 @@ public partial class Options : Node
     Button back;
 
     [Export]
-    Button hardToggle;
+    TextureButton hardToggle;
 
     public override void _Ready()
     {

@@ -84,7 +84,7 @@ visible = false
 
 [node name="Label" parent="LevelStuff/TutorialManager/Control/TutorialPopup" index="1" unique_id=1703689014]
 text = "Blood packs can be used to 
-regain health."
+regain your countdown."
 
 [node name="Area2D" type="Area2D" parent="LevelStuff/TutorialAreas" parent_id_path=PackedInt32Array(230299218, 831059950) index="0" unique_id=1095466253]
 

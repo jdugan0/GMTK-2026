@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_ldpug"]
 script = ExtResource("3_26h77")
-line = "I'm weaker than I though, I better hurry."
+line = "I'm weaker than I thought, I better hurry."
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r02ll"]

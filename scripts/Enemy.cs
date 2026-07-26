@@ -106,7 +106,7 @@ public partial class Enemy : CharacterBody2D
         _navigationAgent.VelocityComputed += OnVelocityComputed;
         homePosition = GlobalPosition;
         alertInitalPos = alert.Position;
-        if (OptionsManager.hardMode && hardMode)
+        if (!OptionsManager.hardMode && hardMode)
         {
             QueueFree();
         }
