@@ -253,6 +253,10 @@ public partial class Movement : CharacterBody2D
         {
             arrowHideTimer = arrowHideDelay;
         }
+        if (LevelManager.instance.currLevel == 6 && OptionsManager.hardMode)
+        {
+            countDown = 15;
+        }
     }
 
     private void UpdateArrowFlicker(double delta)

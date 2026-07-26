@@ -97,12 +97,19 @@ public partial class Enemy : CharacterBody2D
         );
     }
 
+    [Export]
+    public bool hardMode;
+
     public override void _Ready()
     {
         player = (Movement)GetTree().GetFirstNodeInGroup("player");
         _navigationAgent.VelocityComputed += OnVelocityComputed;
         homePosition = GlobalPosition;
         alertInitalPos = alert.Position;
+        if (OptionsManager.hardMode && hardMode)
+        {
+            QueueFree();
+        }
     }
 
     private void SetMovementTarget(Vector2 movementTarget)

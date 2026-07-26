@@ -3,8 +3,15 @@ using Godot;
 
 public partial class HealthPack : Area2D
 {
+    [Export]
+    bool hardMode;
+
     public override void _Ready()
     {
+        if (hardMode && !OptionsManager.hardMode)
+        {
+            QueueFree();
+        }
         BodyEntered += OnCollide;
     }
 
@@ -14,8 +21,8 @@ public partial class HealthPack : Area2D
         {
             m.countDown += 15;
             m.Gain(15);
-			QueueFree();
-			AudioManager.instance.PlaySFX("healthPickup");
+            QueueFree();
+            AudioManager.instance.PlaySFX("healthPickup");
         }
     }
 }

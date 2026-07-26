@@ -93,6 +93,9 @@ polygon = PackedVector2Array(-100, -100, 46.947998, -100, 47.916, -49.852005, -4
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hrb73"]
 polygon = PackedVector2Array(-100, -100, 100, -100, 100, 55.660004, 24.684006, 49.851997, 21.779999, 100, -21.780014, 100, -24.684006, 53.724007, -100, 54.692)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_idukf"]
+polygon = PackedVector2Array(-26.620003, -74.05201, 0.48400116, -84.70001, 23.716003, -72.116005, 34.15067, -57.099915, 36.336315, -31.965027, 33.77513, 33.77513, 28.923454, 47.210533, 18.100483, 56.913887, 5.784691, 59.899536, -5.0382786, 59.153122, -16.940002, 54.692, -26.620003, 42.108, -33.396004, 28.556, -35.332, -49.852013)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8482b"]
 polygon = PackedVector2Array(-100, -51.787994, 44.044006, -50.82, 54.692, -10.164001, 35.332, 53.724007, -100, 55.659996)
 
@@ -239,6 +242,7 @@ texture_region_size = Vector2i(200, 200)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -53.724, -62.436, -46.948006, -60.500008, 79.86001, -100, 83.732)
 4:2/0 = 0
+4:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_idukf")
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50.820004, -86.636, 45.980003, -88.572, 46.948006, 60.5, -49.852, 58.56401)
 5:2/0 = 0
 6:2/0 = 0

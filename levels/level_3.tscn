@@ -70,6 +70,10 @@ shape = SubResource("RectangleShape2D_gew73")
 
 [node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=668713399]
 
+[node name="Enemy" parent="." unique_id=666999568 instance=ExtResource("3_20opy")]
+position = Vector2(5518, 766)
+hardMode = true
+
 [editable path="LevelStuff"]
 [editable path="LevelStuff/UI"]
 [editable path="LevelStuff/UI/Control/LevelWon"]

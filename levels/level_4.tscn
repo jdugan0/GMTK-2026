@@ -58,9 +58,11 @@ position = Vector2(6854, 123)
 
 [node name="Healthpack2" parent="LevelStuff/NavigationRegion2D/Enemies" parent_id_path=PackedInt32Array(230299218, 1362574246) index="2" unique_id=921038195 instance=ExtResource("4_0fd8o")]
 position = Vector2(6501, 1022)
+hardMode = true
 
 [node name="Healthpack3" parent="LevelStuff/NavigationRegion2D/Enemies" parent_id_path=PackedInt32Array(230299218, 1362574246) index="3" unique_id=1750466515 instance=ExtResource("4_0fd8o")]
 position = Vector2(4127, -70)
+hardMode = true
 
 [node name="Exit" parent="LevelStuff/NavigationRegion2D" index="3" unique_id=1379763701]
 position = Vector2(9143, 70)
