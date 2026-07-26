@@ -66,7 +66,7 @@ tile_map_data = PackedByteArray("AAD2//j/AAAAAAAAAAD2//n/AAABAAAAAAD2//r/AAAAAAA
 position = Vector2(4558, -1120)
 
 [node name="Player" parent="LevelStuff/NavigationRegion2D" index="4" unique_id=1532947913]
-position = Vector2(16683, 880)
+position = Vector2(605, 567)
 countDown = 20.0
 
 [node name="Walls" parent="LevelStuff/NavigationRegion2D" index="5" unique_id=352684439]
