@@ -10,6 +10,7 @@
 [sub_resource type="Resource" id="Resource_t6q73"]
 script = ExtResource("3_0fd8o")
 line = "I need to stay on guard, those townspeople are after me."
+emotion = 3
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t0qhu"]

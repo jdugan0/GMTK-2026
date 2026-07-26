@@ -9,11 +9,13 @@
 [sub_resource type="Resource" id="Resource_bt44k"]
 script = ExtResource("3_kx6l7")
 line = "I'm strong, I can take a stabbing!"
+emotion = 3
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_kx6l7"]
 script = ExtResource("3_kx6l7")
 line = "I gotta get home though. It's only a matter of time before this bleedng gets worse."
+emotion = 4
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jirdo"]

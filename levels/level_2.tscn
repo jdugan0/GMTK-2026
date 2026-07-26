@@ -9,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_0srwa"]
 script = ExtResource("3_v5uil")
 line = "I don't have any weapons, but I have to make it through somehow."
+emotion = 5
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_v5uil"]

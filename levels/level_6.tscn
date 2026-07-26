@@ -11,11 +11,13 @@
 [sub_resource type="Resource" id="Resource_rqsg2"]
 script = ExtResource("3_fpvgn")
 line = "My chest hurts so bad, I've ripped out so much flesh."
+emotion = 3
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_fpvgn"]
 script = ExtResource("3_fpvgn")
 line = "Wow, it smells like home here. Reminds me of good times."
+emotion = 5
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qskt5"]
