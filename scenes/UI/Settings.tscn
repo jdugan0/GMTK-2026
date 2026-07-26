@@ -3,6 +3,15 @@
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_g0tyt"]
 [ext_resource type="Script" uid="uid://coubw8u3omdw6" path="res://scripts/UI/Options.cs" id="1_ydmms"]
 [ext_resource type="Texture2D" uid="uid://bacr7nh3htaid" path="res://art/UI/shadow.png" id="2_5dgb1"]
+[ext_resource type="Texture2D" uid="uid://lp2tqrobuyx0" path="res://art/UI/ynButton.png" id="4_fawbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byrvo"]
+atlas = ExtResource("4_fawbi")
+region = Rect2(0, 0, 194, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghuma"]
+atlas = ExtResource("4_fawbi")
+region = Rect2(0, 185, 194, 185)
 
 [node name="Settings" type="Control" unique_id=218620108 node_paths=PackedStringArray("volume", "back")]
 layout_mode = 3
@@ -101,3 +110,67 @@ theme = ExtResource("1_g0tyt")
 text = "
 VOLUME"
 horizontal_alignment = 1
+
+[node name="speedrunlabel" type="RichTextLabel" parent="." unique_id=1190670876]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 552.0
+offset_top = 538.0
+offset_right = -702.0
+offset_bottom = -369.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g0tyt")
+theme_override_font_sizes/normal_font_size = 77
+text = "
+SPEEDRUN TIMER"
+
+[node name="hardcorelabel" type="RichTextLabel" parent="." unique_id=32039795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 737.0
+offset_top = 692.0
+offset_right = -517.0
+offset_bottom = -215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g0tyt")
+theme_override_font_sizes/normal_font_size = 77
+text = "
+HARDCORE MODE"
+
+[node name="speedrunbutton" type="TextureButton" parent="." unique_id=1504766657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1494.0
+offset_top = 522.0
+offset_right = -232.0
+offset_bottom = -373.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_byrvo")
+texture_pressed = SubResource("AtlasTexture_ghuma")
+stretch_mode = 5
+
+[node name="speedrunbutton2" type="TextureButton" parent="." unique_id=1060966338]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1494.0
+offset_top = 711.0
+offset_right = -232.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_byrvo")
+texture_pressed = SubResource("AtlasTexture_ghuma")
+stretch_mode = 5
