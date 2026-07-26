@@ -22,12 +22,12 @@ metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_ftsag"]
 script = ExtResource("3_g60yv")
-line = "Please forgive me!"
+line = "Please forgive me, I won't be bad again."
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_3g3a4"]
 script = ExtResource("3_g60yv")
-line = "I'm scared. I don't want to go."
+line = "I'm scared. I don't want to go. It is getting so cold."
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g60yv"]
