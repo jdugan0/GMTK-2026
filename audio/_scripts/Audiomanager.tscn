@@ -437,7 +437,7 @@ stream_2/stream = SubResource("AudioStreamWAV_1glry")
 [sub_resource type="Resource" id="Resource_hq7mq"]
 script = ExtResource("2_0au01")
 stream = SubResource("AudioStreamRandomizer_rxsmk")
-volume = -25.0
+volume = -22.0
 name = "textBoxSpeech"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
