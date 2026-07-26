@@ -118,6 +118,7 @@ public partial class GameManager : Node
         ui.heartDisplay.Visible = false;
         ui.countDownLabel.Visible = false;
         outroTriggered = true;
+        m.outroStarted = true;
         var tw = GetTree().CreateTween();
         tw.TweenProperty(m.camera, "zoom", new Vector2(1, 1), 10);
         await AudioManager.instance.FadeInto(

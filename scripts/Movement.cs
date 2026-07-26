@@ -516,6 +516,8 @@ public partial class Movement : CharacterBody2D
 
     float drainTimer = 0;
     float maxSpeedScale = 1;
+
+    public bool outroStarted;
     public bool outro;
 
     public override void _PhysicsProcess(double delta)
@@ -532,6 +534,7 @@ public partial class Movement : CharacterBody2D
         {
             drainTimer += (float)delta;
             maxSpeedScale = (1 - 0.6f * (drainTimer / drainTime));
+            arrow.Visible = false;
         }
 
         double percentDrained = countDown / initalCountdown;
@@ -609,12 +612,13 @@ public partial class Movement : CharacterBody2D
         if (input != Vector2.Zero)
         {
             PlayFootstep();
-            countDown -= Math.Pow(maxSpeed / maxSpeedScale, 2) * MoveCostFactor * delta;
+            if (!outroStarted)
+                countDown -= Math.Pow(maxSpeed / maxSpeedScale, 2) * MoveCostFactor * delta;
         }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
         float speed = Velocity.Length();
-        if (countDown <= 0)
+        if (countDown <= 0 && !outroStarted)
         {
             GameManager.instance.Die(this);
             return;
