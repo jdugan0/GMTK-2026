@@ -15,7 +15,7 @@ public partial class Options : Node
     public override void _Ready()
     {
         back.Pressed += MainMenu;
-
+        hardToggle.ButtonPressed = OptionsManager.hardMode;
         hardToggle.Toggled += ToggleHard;
 
         volume.MinValue = 0;
