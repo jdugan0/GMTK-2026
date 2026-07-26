@@ -259,7 +259,7 @@ public partial class Movement : CharacterBody2D
         }
         if (OptionsManager.hardMode)
         {
-            SprintSpeed *= 0.6f;
+            SprintSpeed *= 0.75f;
         }
     }
 
@@ -621,7 +621,10 @@ public partial class Movement : CharacterBody2D
         {
             PlayFootstep();
             if (!outroStarted)
-                countDown -= Math.Pow(maxSpeed / maxSpeedScale, 2) * MoveCostFactor * delta;
+                countDown -=
+                    Math.Pow(maxSpeed / maxSpeedScale / (OptionsManager.hardMode ? 0.75 : 1), 2)
+                    * MoveCostFactor
+                    * delta;
         }
         float rate = input == Vector2.Zero ? Friction : Acceleration;
         Velocity = Velocity.MoveToward(targetVelocity, rate * dt);
