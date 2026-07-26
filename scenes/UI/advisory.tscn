@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bg8i4e7jh6nuv"]
 
 [ext_resource type="Texture2D" uid="uid://ca0xkxbhdi62u" path="res://art/UI/scarygame.png" id="1_5cvk0"]
+[ext_resource type="Script" uid="uid://dcd7nkv3781ho" path="res://scripts/UI/Advisory.cs" id="1_hq7mq"]
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="2_hq7mq"]
 
 [node name="Advisory" type="Control" unique_id=535509257]
@@ -10,6 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hq7mq")
+warnTime = 5.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=411678548]
 layout_mode = 1
