@@ -50,7 +50,7 @@ agent_radius = 135.0
 size = Vector2(8740, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26h77"]
-size = Vector2(1124.5, 1143)
+size = Vector2(7534, 518.5)
 
 [node name="LevelTest" type="Node2D" unique_id=160668906 node_paths=PackedStringArray("SearchRoot")]
 script = ExtResource("1_r02ll")
@@ -86,28 +86,28 @@ tile_set = ExtResource("3_dhnqt")
 [node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=656243356]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D" unique_id=1526118269]
-position = Vector2(3947, -2153)
+position = Vector2(3879, -4180)
 shape = SubResource("RectangleShape2D_r02ll")
 
 [node name="Area2D2" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="1" unique_id=1759836434]
 position = Vector2(-78, -1734)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D2" unique_id=1976650738]
-position = Vector2(3928, -2439)
+position = Vector2(5476, -5167)
 shape = SubResource("RectangleShape2D_r02ll")
 
 [node name="Area2D4" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="2" unique_id=1506429948]
 position = Vector2(494, -4438)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D4" unique_id=1431273012]
-position = Vector2(4310, -3259)
+position = Vector2(2368, -6203)
 shape = SubResource("RectangleShape2D_r02ll")
 
 [node name="Area2D5" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="3" unique_id=1669605760]
 position = Vector2(1231, -6735)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D5" unique_id=1459018654]
-position = Vector2(1698, -4346)
+position = Vector2(11178, -5958)
 shape = SubResource("RectangleShape2D_r02ll")
 
 [node name="Area2D6" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="4" unique_id=1468733031]
@@ -121,7 +121,7 @@ shape = SubResource("RectangleShape2D_r02ll")
 position = Vector2(-307, 2032)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D3" unique_id=1916750973]
-position = Vector2(2273.25, -1231)
+position = Vector2(3844, -2801.25)
 shape = SubResource("RectangleShape2D_26h77")
 
 [node name="Healthpack" parent="." unique_id=1948540018 instance=ExtResource("4_g5mgy")]
