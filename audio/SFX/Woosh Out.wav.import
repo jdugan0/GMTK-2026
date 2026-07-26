@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbo771wr0seww"
+path="res://.godot/imported/Woosh Out.wav-42b0421ab507261899ab35c4aade8e5b.sample"
+
+[deps]
+
+source_file="res://audio/SFX/Woosh Out.wav"
+dest_files=["res://.godot/imported/Woosh Out.wav-42b0421ab507261899ab35c4aade8e5b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -64,6 +64,7 @@ public partial class LevelManager : Node
 
     public void NextLevel()
     {
+        AudioManager.instance.PlaySFX("textBox");
         LoadLevel(currLevel + 1);
     }
 }

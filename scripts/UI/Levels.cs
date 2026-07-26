@@ -35,6 +35,7 @@ public partial class Levels : Node
 
     public void MainMenu()
     {
+        AudioManager.instance.PlaySFX("textBox");
         _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
     }
 }
