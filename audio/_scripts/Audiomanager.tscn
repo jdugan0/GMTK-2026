@@ -61,8 +61,12 @@
 [ext_resource type="AudioStream" uid="uid://b4yyb4va1c043" path="res://audio/SFX/Drink Blood.wav" id="68_kxau5"]
 [ext_resource type="AudioStream" uid="uid://2jicw38h0lgx" path="res://audio/SFX/Ready To Throw.wav" id="68_pu1ph"]
 [ext_resource type="AudioStream" uid="uid://bwv4vk8krjslw" path="res://audio/SFX/Enemy Swing 1.wav" id="69_1glry"]
+[ext_resource type="AudioStream" uid="uid://dwe4vbmi0qtj3" path="res://audio/SFX/Birds.mp3" id="69_rrol0"]
 [ext_resource type="AudioStream" uid="uid://dyjqcdudq6j4y" path="res://audio/SFX/Enemy Swing 2.wav" id="70_rrol0"]
+[ext_resource type="AudioStream" uid="uid://d3pxk211kk2db" path="res://audio/SFX/Wind Generic.mp3" id="70_rxsmk"]
+[ext_resource type="AudioStream" uid="uid://bn5atw73fgbj3" path="res://audio/SFX/Wind LowHealth.mp3" id="71_c1o87"]
 [ext_resource type="AudioStream" uid="uid://bn6hboop64ahy" path="res://audio/SFX/Exit Hum.wav" id="71_rrol0"]
+[ext_resource type="AudioStream" uid="uid://ds66tl7k6oo2p" path="res://audio/SFX/Drone1.wav" id="72_c1o87"]
 [ext_resource type="AudioStream" uid="uid://cs03ja737ue0j" path="res://audio/SFX/Gore/Heart Explode.wav" id="72_rxsmk"]
 [ext_resource type="AudioStream" uid="uid://k2gg3h2hsypw" path="res://audio/SFX/Enemy Hurt 1.wav" id="73_y8cre"]
 [ext_resource type="AudioStream" uid="uid://0md0tnrml6gc" path="res://audio/SFX/Enemy Hurt 2.wav" id="74_o73ty"]
@@ -380,7 +384,31 @@ volume = 5.0
 name = "healthPickup"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
+[sub_resource type="Resource" id="Resource_pu1ph"]
+script = ExtResource("2_0au01")
+stream = ExtResource("69_rrol0")
+name = "birds"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_cf8oo"]
+script = ExtResource("2_0au01")
+stream = ExtResource("70_rxsmk")
+name = "wind"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_v7shn"]
+script = ExtResource("2_0au01")
+stream = ExtResource("71_c1o87")
+name = "windLowHealth"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_jmksb"]
+script = ExtResource("2_0au01")
+stream = ExtResource("72_c1o87")
+name = "drone1"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
 [node name="Audiomanager" type="Node" unique_id=2066337262]
 process_mode = 3
 script = ExtResource("1_ulbmk")
-sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec")])
+sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec"), SubResource("Resource_pu1ph"), SubResource("Resource_cf8oo"), SubResource("Resource_v7shn"), SubResource("Resource_jmksb")])
