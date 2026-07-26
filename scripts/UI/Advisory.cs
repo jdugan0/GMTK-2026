@@ -15,6 +15,12 @@ public partial class Advisory : Node
 
     public override void _Process(double delta)
     {
+        if (Input.IsActionJustPressed("ATTACK"))
+        {
+            switchTime = true;
+            _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
+            return;
+        }
         warnTimer -= (float)delta;
         if (warnTimer <= 0 && !switchTime)
         {
