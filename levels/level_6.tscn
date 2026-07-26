@@ -63,3 +63,6 @@ tile_map_data = PackedByteArray("AAAUAPT/AAAAAAQAAAAPAPf/AAABAAMAAGAPAPX/AAABAAQ
 tile_set = ExtResource("4_8tsbn")
 
 [editable path="LevelStuff"]
+[editable path="LevelStuff/UI"]
+[editable path="LevelStuff/UI/Control/LevelWon"]
+[editable path="LevelStuff/UI/Control/LevelPause"]
