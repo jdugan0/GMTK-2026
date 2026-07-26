@@ -17,7 +17,7 @@ public partial class Levels : Node
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int index = i;
-            if (i <= LevelManager.instance.unlockedLevel)
+            if (i <= LevelManager.instance.UnlockedLevel)
             {
                 levelButtons[i].Pressed += () =>
                 {

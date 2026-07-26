@@ -70,8 +70,10 @@ public partial class Bullet() : Area2D
         }
         if (body.IsInGroup("crate"))
         {
+            Crate c = (Crate)body;
             Splat();
             AudioManager.instance.PlaySFX("boxHit");
+            c.Destroy();
             QueueFree();
             body.QueueFree();
         }

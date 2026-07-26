@@ -9,9 +9,14 @@ public partial class Options : Node
     [Export]
     Button back;
 
+    [Export]
+    Button hardToggle;
+
     public override void _Ready()
     {
         back.Pressed += MainMenu;
+
+        hardToggle.Toggled += ToggleHard;
 
         volume.MinValue = 0;
         volume.MaxValue = 1;
@@ -19,6 +24,12 @@ public partial class Options : Node
         volume.Value = AudioManager.instance.MasterVolume;
         volume.ValueChanged += v => AudioManager.instance.MasterVolume = (float)v;
         volume.DragEnded += _ => AudioManager.instance.SaveSettings();
+    }
+
+    public void ToggleHard(bool on)
+    {
+        AudioManager.instance.PlaySFX("textBox");
+        OptionsManager.hardMode = on;
     }
 
     public void MainMenu()
