@@ -13,6 +13,26 @@ region = Rect2(0, 0, 300, 468)
 atlas = ExtResource("2_61r5c")
 region = Rect2(300, 0, 300, 468)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp6gm"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_241hc"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1x2b"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr7xk"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ingdg"]
+atlas = ExtResource("2_61r5c")
+region = Rect2(600, 0, 300, 468)
+
 [node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
 layout_mode = 3
 anchors_preset = 15
@@ -91,6 +111,7 @@ theme_override_constants/separation = 46
 [node name="1" type="TextureButton" parent="HBoxContainer" unique_id=571371462]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_tp6gm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/1" unique_id=2056756467]
 layout_mode = 1
@@ -111,6 +132,7 @@ vertical_alignment = 1
 [node name="2" type="TextureButton" parent="HBoxContainer" unique_id=648040673]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_241hc")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/2" unique_id=97618751]
 layout_mode = 1
@@ -131,6 +153,7 @@ vertical_alignment = 1
 [node name="3" type="TextureButton" parent="HBoxContainer" unique_id=2126370039]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_c1x2b")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/3" unique_id=797606138]
 layout_mode = 1
@@ -164,6 +187,7 @@ theme_override_constants/separation = 46
 [node name="4" type="TextureButton" parent="HBoxContainer2" unique_id=1226475311]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_rr7xk")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/4" unique_id=1594143709]
 layout_mode = 1
@@ -184,6 +208,7 @@ vertical_alignment = 1
 [node name="5" type="TextureButton" parent="HBoxContainer2" unique_id=709858565]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_byrvo")
+texture_hover = SubResource("AtlasTexture_ingdg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/5" unique_id=792166336]
 layout_mode = 1
