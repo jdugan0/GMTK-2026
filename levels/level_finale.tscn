@@ -8,26 +8,31 @@
 [sub_resource type="Resource" id="Resource_bbf1y"]
 script = ExtResource("3_g60yv")
 line = "Gotta walk... Conserve energy... I can see my house!"
+emotion = 2
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_sb6rb"]
 script = ExtResource("3_g60yv")
 line = "Its getting harder to move."
+emotion = 2
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_g60yv"]
 script = ExtResource("3_g60yv")
-line = "I can see it!"
+line = "Not much further now."
+emotion = 2
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_ftsag"]
 script = ExtResource("3_g60yv")
 line = "Is what I did so bad? I'm a vampire!"
+emotion = 2
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_3g3a4"]
 script = ExtResource("3_g60yv")
 line = "Its so cold. Vampires aren't supposed to die. I don't know what to do..."
+emotion = 2
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g60yv"]

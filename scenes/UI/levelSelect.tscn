@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://dk8mm763hoowy" path="res://art/UI/mainmenu.tres" id="1_60520"]
 [ext_resource type="Texture2D" uid="uid://h28iri4m7ovf" path="res://art/UI/levelselect.png" id="2_61r5c"]
 [ext_resource type="Texture2D" uid="uid://bacr7nh3htaid" path="res://art/UI/shadow.png" id="2_tp6gm"]
+[ext_resource type="Texture2D" uid="uid://cpc7n1ilt84m8" path="res://art/UI/hardcoreMode.png" id="5_241hc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt44k"]
 atlas = ExtResource("2_61r5c")
@@ -40,7 +41,7 @@ load_path = "res://.godot/imported/levelselect.png-6f7f70febc598208515209520be2e
 atlas = SubResource("CompressedTexture2D_tp6gm")
 region = Rect2(600, 0, 300, 468)
 
-[node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back")]
+[node name="LevelSelect" type="Control" unique_id=104066112 node_paths=PackedStringArray("levelButtons", "back", "hardcore")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +52,7 @@ script = ExtResource("1_61r5c")
 levelButtons = [NodePath("HBoxContainer/1"), NodePath("HBoxContainer/2"), NodePath("HBoxContainer/3"), NodePath("HBoxContainer/4"), NodePath("HBoxContainer2/5"), NodePath("HBoxContainer2/6"), NodePath("HBoxContainer2/7")]
 lockedTexture = SubResource("AtlasTexture_bt44k")
 back = NodePath("Button3")
+hardcore = NodePath("TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1308472257]
 layout_mode = 1
@@ -274,3 +276,14 @@ theme_override_colors/default_color = Color(0.70980394, 0.7411765, 0.47843137, 1
 text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=672564513]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -258.5
+offset_right = 258.5
+offset_bottom = 78.0
+grow_horizontal = 2
+texture = ExtResource("5_241hc")

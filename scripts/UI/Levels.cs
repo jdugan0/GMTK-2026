@@ -5,14 +5,22 @@ public partial class Levels : Node
 {
     [Export]
     TextureButton[] levelButtons;
+
     [Export]
     Texture2D lockedTexture;
 
     [Export]
     Button back;
 
+    [Export]
+    Control hardcore;
+
     public override void _Ready()
     {
+        if (OptionsManager.hardMode)
+        {
+            hardcore.Visible = true;
+        }
         back.Pressed += MainMenu;
         for (int i = 0; i < levelButtons.Length; i++)
         {
