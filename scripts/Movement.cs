@@ -257,6 +257,10 @@ public partial class Movement : CharacterBody2D
         {
             countDown = 15;
         }
+        if (OptionsManager.hardMode)
+        {
+            SprintSpeed *= 0.6f;
+        }
     }
 
     private void UpdateArrowFlicker(double delta)

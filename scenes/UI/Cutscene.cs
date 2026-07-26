@@ -32,18 +32,25 @@ public partial class Cutscene : TextureRect
     [Export]
     Label finaltime;
 
+    [Export]
+    string[] sounds;
+
     public override void _Ready()
     {
-        // if (!OptionsManager.speedrun)
-        // {
-        //     speed = false;
-        // }
+        if (!OptionsManager.speedrun)
+        {
+            speed = false;
+        }
         if (soundToPlay != null)
         {
             AudioManager.instance.PlaySFX(soundToPlay);
         }
         frameTimer = startDelay;
-        finaltime.Text = $"FINAL TIME: {Math.Round(LevelManager.instance.spTime * 1000) / 1000}";
+        if (speed)
+        {
+            finaltime.Text =
+                $"FINAL TIME: {Math.Round(LevelManager.instance.spTime * 1000) / 1000}";
+        }
     }
 
     public override void _Process(double delta)
@@ -68,6 +75,13 @@ public partial class Cutscene : TextureRect
         {
             initalFrame.Visible = false;
             frame++;
+            if (sounds.Length != 0)
+            {
+                if (frame < sounds.Length && sounds[frame] != null && sounds[frame] != "")
+                {
+                    AudioManager.instance.PlaySFX(sounds[frame]);
+                }
+            }
             if (frame == frames.Length)
             {
                 switching = true;

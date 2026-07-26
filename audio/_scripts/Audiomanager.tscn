@@ -78,6 +78,10 @@
 [ext_resource type="AudioStream" uid="uid://pmajlk1hipap" path="res://audio/SFX/Enemy Hurt 4.wav" id="76_lsl45"]
 [ext_resource type="AudioStream" uid="uid://cctq7uo42imem" path="res://audio/SFX/Woosh In.wav" id="77_o73ty"]
 [ext_resource type="AudioStream" uid="uid://bbo771wr0seww" path="res://audio/SFX/Woosh Out.wav" id="78_7nbdl"]
+[ext_resource type="AudioStream" uid="uid://6m7qphgq2qmy" path="res://art/cutscenes/1.mp3" id="79_os4ua"]
+[ext_resource type="AudioStream" uid="uid://c307h051i48nt" path="res://art/cutscenes/3.mp3" id="80_hrbin"]
+[ext_resource type="AudioStream" uid="uid://d1bv4c878ukeg" path="res://art/cutscenes/4.mp3" id="81_hlkw0"]
+[ext_resource type="AudioStream" uid="uid://o8wt8gpssyx6" path="res://art/cutscenes/6.mp3" id="82_m0p7y"]
 
 [sub_resource type="Resource" id="Resource_oh4ff"]
 script = ExtResource("2_0au01")
@@ -481,7 +485,35 @@ stream = ExtResource("78_7nbdl")
 name = "woosh_out"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
+[sub_resource type="Resource" id="Resource_s7yn2"]
+script = ExtResource("2_0au01")
+stream = ExtResource("79_os4ua")
+volume = 10.0
+name = "1"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_5r3px"]
+script = ExtResource("2_0au01")
+stream = ExtResource("80_hrbin")
+volume = 10.0
+name = "3"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_kgeya"]
+script = ExtResource("2_0au01")
+stream = ExtResource("81_hlkw0")
+volume = 10.0
+name = "4"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_qa57o"]
+script = ExtResource("2_0au01")
+stream = ExtResource("82_m0p7y")
+volume = 10.0
+name = "6"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
 [node name="Audiomanager" type="Node" unique_id=2066337262]
 process_mode = 3
 script = ExtResource("1_ulbmk")
-sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec"), SubResource("Resource_pu1ph"), SubResource("Resource_cf8oo"), SubResource("Resource_v7shn"), SubResource("Resource_jmksb"), SubResource("Resource_hq7mq"), SubResource("Resource_rqsg2"), SubResource("Resource_fpvgn"), SubResource("Resource_xn6mk"), SubResource("Resource_3t5n2"), SubResource("Resource_btoec"), SubResource("Resource_gwceb")])
+sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec"), SubResource("Resource_pu1ph"), SubResource("Resource_cf8oo"), SubResource("Resource_v7shn"), SubResource("Resource_jmksb"), SubResource("Resource_hq7mq"), SubResource("Resource_rqsg2"), SubResource("Resource_fpvgn"), SubResource("Resource_xn6mk"), SubResource("Resource_3t5n2"), SubResource("Resource_btoec"), SubResource("Resource_gwceb"), SubResource("Resource_s7yn2"), SubResource("Resource_5r3px"), SubResource("Resource_kgeya"), SubResource("Resource_qa57o")])
