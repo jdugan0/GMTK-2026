@@ -259,7 +259,7 @@ public partial class Movement : CharacterBody2D
         }
         if (OptionsManager.hardMode)
         {
-            SprintSpeed *= 0.75f;
+            SprintSpeed *= 0.85f;
         }
     }
 
@@ -622,7 +622,7 @@ public partial class Movement : CharacterBody2D
             PlayFootstep();
             if (!outroStarted)
                 countDown -=
-                    Math.Pow(maxSpeed / maxSpeedScale / (OptionsManager.hardMode ? 0.75 : 1), 2)
+                    Math.Pow(maxSpeed / maxSpeedScale / (OptionsManager.hardMode ? 0.85 : 1), 2)
                     * MoveCostFactor
                     * delta;
         }
