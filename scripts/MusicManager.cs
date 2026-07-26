@@ -11,14 +11,14 @@ public partial class MusicManager : Node
         instance = this;
     }
 
-    public void PlaySong(string song, float time)
+    public AudioStreamPlayer PlaySong(string song, float time)
     {
         if (song == currentSong)
-            return;
+            return null;
         CancelSong();
         AudioManager.instance.CancelSFX(song);
         currentSong = song;
-        AudioManager.instance.PlaySFX(song, time);
+        return AudioManager.instance.PlaySFX(song, time).Item1;
     }
 
     public void PlaySong(string song)
@@ -43,10 +43,10 @@ public partial class MusicManager : Node
         return result;
     }
 
-    public (bool, AudioStreamPlayer p) CancelSong(float dur)
+    public (bool cancelled, AudioStreamPlayer p, Tween fade) CancelSong(float dur)
     {
         if (currentSong == null)
-            return (false, null);
+            return (false, null, null);
         var result = AudioManager.instance.CancelSFXFadeOut(currentSong, dur);
         currentSong = null;
         return result;

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://be1ra5rcil2js"]
+
+[ext_resource type="Script" uid="uid://bhx64vef8m16p" path="res://scenes/UI/Cutscene.cs" id="1_qxid6"]
+[ext_resource type="Texture2D" uid="uid://bu55cysq4k1wx" path="res://art/cutscenes/1.png" id="2_tyyvh"]
+[ext_resource type="Texture2D" uid="uid://p8867dodggi0" path="res://art/cutscenes/2.png" id="3_2g2le"]
+[ext_resource type="Texture2D" uid="uid://cum07u5vvlw4s" path="res://art/cutscenes/3.png" id="4_m3q1m"]
+[ext_resource type="Texture2D" uid="uid://d05ouy0ou2mqk" path="res://art/cutscenes/4.png" id="5_yqf73"]
+[ext_resource type="Texture2D" uid="uid://cg1hj6344qs1d" path="res://art/cutscenes/5.png" id="6_mr4vi"]
+[ext_resource type="Texture2D" uid="uid://dpjvw11gfb2w1" path="res://art/cutscenes/6.png" id="7_wbiq1"]
+[ext_resource type="Texture2D" uid="uid://j5udsiaohj28" path="res://art/cutscenes/7.png" id="8_jvqyh"]
+
+[node name="IntroCutscene" type="Control" unique_id=489740862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=291826002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1110070425 node_paths=PackedStringArray("initalFrame")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxid6")
+frames = Array[Texture2D]([ExtResource("2_tyyvh"), ExtResource("3_2g2le"), ExtResource("4_m3q1m"), ExtResource("5_yqf73"), ExtResource("6_mr4vi"), ExtResource("7_wbiq1"), ExtResource("8_jvqyh")])
+frameDelay = 4.546
+soundToPlay = "introMusic"
+nextScene = "level_1"
+startDelay = 2.3
+initalFrame = NodePath("../ColorRect")

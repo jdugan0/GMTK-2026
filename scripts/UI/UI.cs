@@ -7,7 +7,7 @@ public partial class UI : CanvasLayer
     private Movement player;
 
     [Export]
-    private Label countDownLabel;
+    public Label countDownLabel;
 
     [Export]
     public HeartDisplay heartDisplay;

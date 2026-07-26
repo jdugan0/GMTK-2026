@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://c12lfpo3bpy76" path="res://levels/level_5.tscn" id="12_efeoh"]
 [ext_resource type="PackedScene" uid="uid://b8yt4c0fmntxs" path="res://levels/level_6.tscn" id="13_23sn3"]
 [ext_resource type="PackedScene" uid="uid://c8q57c7mhsai6" path="res://levels/level_finale.tscn" id="14_55rfm"]
+[ext_resource type="PackedScene" uid="uid://be1ra5rcil2js" path="res://levels/intro_cutscene.tscn" id="15_ef1sc"]
+[ext_resource type="PackedScene" uid="uid://slyytt2bsiw3" path="res://levels/outro_cutscene.tscn" id="16_a0wga"]
 
 [sub_resource type="Resource" id="Resource_dare8"]
 script = ExtResource("2_dare8")
@@ -87,13 +89,25 @@ sceneName = "level_finale"
 scene = ExtResource("14_55rfm")
 metadata/_custom_type_script = "uid://b75h7i7133wue"
 
+[sub_resource type="Resource" id="Resource_y8cre"]
+script = ExtResource("2_dare8")
+sceneName = "intro"
+scene = ExtResource("15_ef1sc")
+metadata/_custom_type_script = "uid://b75h7i7133wue"
+
+[sub_resource type="Resource" id="Resource_p2gl7"]
+script = ExtResource("2_dare8")
+sceneName = "outro"
+scene = ExtResource("16_a0wga")
+metadata/_custom_type_script = "uid://b75h7i7133wue"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i3um"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Sceneswitcher" type="Node" unique_id=611205476 node_paths=PackedStringArray("fadeRect")]
 process_mode = 3
 script = ExtResource("1_388wc")
-scenes = Array[Object]([SubResource("Resource_dare8"), SubResource("Resource_mr0v7"), SubResource("Resource_0fxli"), SubResource("Resource_4vh8y"), SubResource("Resource_eb86q"), SubResource("Resource_0srwa"), SubResource("Resource_1l8fq"), SubResource("Resource_emhyx"), SubResource("Resource_fqe5a"), SubResource("Resource_r02ll"), SubResource("Resource_tp6gm"), SubResource("Resource_pu1ph")])
+scenes = Array[Object]([SubResource("Resource_dare8"), SubResource("Resource_mr0v7"), SubResource("Resource_0fxli"), SubResource("Resource_4vh8y"), SubResource("Resource_eb86q"), SubResource("Resource_0srwa"), SubResource("Resource_1l8fq"), SubResource("Resource_emhyx"), SubResource("Resource_fqe5a"), SubResource("Resource_r02ll"), SubResource("Resource_tp6gm"), SubResource("Resource_pu1ph"), SubResource("Resource_y8cre"), SubResource("Resource_p2gl7")])
 fadeRect = NodePath("CanvasLayer/Panel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=615114498]

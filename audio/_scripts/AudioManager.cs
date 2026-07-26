@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Godot;
 
 public partial class AudioManager : Node
@@ -108,7 +109,7 @@ public partial class AudioManager : Node
         return PlaySFX(this, sound, time);
     }
 
-    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(
+    public (AudioStreamPlayer p, Guid id, Tween fade) PlaySFXFadeIn(
         Node from,
         string sound,
         float fadeDuration,
@@ -120,24 +121,34 @@ public partial class AudioManager : Node
         player.VolumeDb = -80f;
         Tween tween = player.CreateTween();
         tween.TweenProperty(player, "volume_db", targetDb, fadeDuration);
-        return (player, id);
+        return (player, id, tween);
     }
 
-    public (AudioStreamPlayer, Guid) PlaySFXFadeIn(Node from, string sound, float fadeDuration)
+    public (AudioStreamPlayer p, Guid id, Tween fade) PlaySFXFadeIn(
+        Node from,
+        string sound,
+        float fadeDuration
+    )
     {
         return PlaySFXFadeIn(from, sound, fadeDuration, 0);
     }
 
-    public (AudioStreamPlayer p, Guid id) PlaySFXFadeIn(string sound, float fadeDuration)
+    public (AudioStreamPlayer p, Guid id, Tween fade) PlaySFXFadeIn(
+        string sound,
+        float fadeDuration
+    )
     {
         return PlaySFXFadeIn(this, sound, fadeDuration, 0);
     }
 
-    public (bool, AudioStreamPlayer) CancelSFXFadeOut(Guid id, float fadeDuration)
+    public (bool cancelled, AudioStreamPlayer p, Tween fade) CancelSFXFadeOut(
+        Guid id,
+        float fadeDuration
+    )
     {
         if (!IsPlaying(id))
         {
-            return (false, null);
+            return (false, null, null);
         }
         var p = playing[id];
         Tween tween = p.CreateTween();
@@ -148,7 +159,7 @@ public partial class AudioManager : Node
             p.Stop();
             p.QueueFree();
         };
-        return (true, p);
+        return (true, p, tween);
     }
 
     private (bool, AudioStreamPlayer p) CancelSFXNoFree(Guid id)
@@ -164,18 +175,51 @@ public partial class AudioManager : Node
         return (false, null);
     }
 
-    public (bool, AudioStreamPlayer p) CancelSFXFadeOut(string sound, float fadeDuration)
+    public (bool cancelled, AudioStreamPlayer p, Tween fade) CancelSFXFadeOut(
+        string sound,
+        float fadeDuration
+    )
     {
         AudioStreamPlayer last = null;
+        Tween lastFade = null;
         foreach (var s in GetPlaying(sound).ToList())
         {
-            var (cancelled, p) = CancelSFXFadeOut(s.id, fadeDuration);
+            var (cancelled, p, fade) = CancelSFXFadeOut(s.id, fadeDuration);
             if (cancelled)
             {
                 last = p;
+                lastFade = fade;
             }
         }
-        return (last != null, last);
+        return (last != null, last, lastFade);
+    }
+
+    public async Task<(AudioStreamPlayer p, Guid id)> FadeInto(
+        string sound,
+        float fadeOut,
+        string next,
+        float gap = 0f,
+        float fadeIn = 0f
+    )
+    {
+        var (cancelled, _, fade) = CancelSFXFadeOut(sound, fadeOut);
+        if (cancelled)
+            await ToSignal(fade, Tween.SignalName.Finished);
+
+        if (gap > 0f)
+            await ToSignal(GetTree().CreateTimer(gap), SceneTreeTimer.SignalName.Timeout);
+
+        if (fadeIn <= 0f)
+            return PlaySFX(next);
+
+        var (p, id, rise) = PlaySFXFadeIn(next, fadeIn);
+        await ToSignal(rise, Tween.SignalName.Finished);
+        return (p, id);
+    }
+
+    public void PlaySFXThen(string sound, string next)
+    {
+        PlaySFX(sound).p.Finished += () => PlaySFX(next);
     }
 
     public (bool, AudioStreamPlayer) CancelSFX(Guid id)

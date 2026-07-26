@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://slyytt2bsiw3"]
+
+[ext_resource type="Script" uid="uid://bhx64vef8m16p" path="res://scenes/UI/Cutscene.cs" id="1_d8jea"]
+[ext_resource type="Texture2D" uid="uid://cgv37qefupvsc" path="res://art/cutscenes/outro1.png" id="2_4u7ry"]
+[ext_resource type="Texture2D" uid="uid://8ukx46886oen" path="res://art/cutscenes/outro2.png" id="3_r5mth"]
+
+[node name="Outro" type="Control" unique_id=489740862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=291826002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1110070425 node_paths=PackedStringArray("initalFrame")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d8jea")
+frames = Array[Texture2D]([ExtResource("2_4u7ry"), ExtResource("3_r5mth")])
+frameDelay = 5.0
+nextScene = "mainMenu"
+initalFrame = NodePath("../ColorRect")

@@ -41,7 +41,7 @@ public partial class Movement : CharacterBody2D
     float zoomHealth;
 
     [Export]
-    private Camera2D camera;
+    public Camera2D camera;
 
     [Export]
     private float mouseCameraWeight;
@@ -202,7 +202,7 @@ public partial class Movement : CharacterBody2D
         var frames = sprite2D.SpriteFrames;
         foreach (string anim in frames.GetAnimationNames())
         {
-            if (anim == "DEATH")
+            if (anim == "DEATH" || anim == "OUTRO")
             {
                 continue;
             }
@@ -516,9 +516,14 @@ public partial class Movement : CharacterBody2D
 
     float drainTimer = 0;
     float maxSpeedScale = 1;
+    public bool outro;
 
     public override void _PhysicsProcess(double delta)
     {
+        if (outro)
+        {
+            return;
+        }
         UpdateSprite();
         footstepTimer -= delta;
         throwTimer -= (float)delta;

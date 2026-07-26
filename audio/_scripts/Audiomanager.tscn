@@ -70,8 +70,8 @@
 [ext_resource type="AudioStream" uid="uid://cs03ja737ue0j" path="res://audio/SFX/Gore/Heart Explode.wav" id="72_rxsmk"]
 [ext_resource type="AudioStream" uid="uid://c2u6ah6xw7nbw" path="res://audio/Music/Intro Music.wav" id="73_o73ty"]
 [ext_resource type="AudioStream" uid="uid://k2gg3h2hsypw" path="res://audio/SFX/Enemy Hurt 1.wav" id="73_y8cre"]
-[ext_resource type="AudioStream" uid="uid://1rja1fx8jp06" path="res://audio/Music/Outro Intro.mp3" id="74_7nbdl"]
 [ext_resource type="AudioStream" uid="uid://0md0tnrml6gc" path="res://audio/SFX/Enemy Hurt 2.wav" id="74_o73ty"]
+[ext_resource type="AudioStream" uid="uid://dugcsqb7x1kra" path="res://audio/Music/Outro Intro.wav" id="74_y8cre"]
 [ext_resource type="AudioStream" uid="uid://6ycbllp1twrj" path="res://audio/SFX/Enemy Hurt 3.wav" id="75_7nbdl"]
 [ext_resource type="AudioStream" uid="uid://iyag6dy50x5k" path="res://audio/Music/Outro Middle.mp3" id="75_lsl45"]
 [ext_resource type="AudioStream" uid="uid://bkebpfhpw4e8g" path="res://audio/Music/Outro Ending.mp3" id="76_4vxsy"]
@@ -449,13 +449,15 @@ metadata/_custom_type_script = "uid://007myadtw53h"
 
 [sub_resource type="Resource" id="Resource_fpvgn"]
 script = ExtResource("2_0au01")
-stream = ExtResource("74_7nbdl")
+stream = ExtResource("74_y8cre")
+volume = -5.0
 name = "outroIntro"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
 [sub_resource type="Resource" id="Resource_xn6mk"]
 script = ExtResource("2_0au01")
 stream = ExtResource("75_lsl45")
+volume = -5.0
 name = "outroMiddle"
 metadata/_custom_type_script = "uid://007myadtw53h"
 

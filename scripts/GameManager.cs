@@ -17,12 +17,23 @@ public partial class GameManager : Node
     public bool InCombat { get; private set; } = false;
     bool reported = false;
     bool dying = false;
+    public bool outroTriggered = false;
     float combatExitTimer = 0f;
     float time = 0;
     float randomSoundTimer;
 
     [Export]
     UI ui;
+
+    [ExportGroup("Outro")]
+    [Export]
+    float outroFadeOut = 6f;
+
+    [Export]
+    float outroGap = 2f;
+
+    [Export]
+    float outroFadeIn = 2f;
 
     [ExportGroup("Leaves")]
     [Export]
@@ -61,6 +72,13 @@ public partial class GameManager : Node
     [Export]
     int leafZIndex = 1;
 
+    [ExportGroup("Outro")]
+    [Export]
+    Texture2D dieSprite1;
+
+    [Export]
+    Texture2D dieSprite2;
+
     class Leaf
     {
         public Sprite2D sprite;
@@ -80,9 +98,40 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         instance = this;
-        MusicManager.instance.PlaySong("outOfCombatBackground");
+        if (LevelManager.instance.currLevel != 6)
+        {
+            MusicManager.instance.PlaySong("outOfCombatBackground");
+        }
+        else
+        {
+            AudioManager.instance.PlaySFXThen("outroIntro", "outroMiddle");
+        }
         randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
         SetupLeaves();
+    }
+
+    public async void TriggerOutro(Node2D body)
+    {
+        if (outroTriggered || body is not Movement)
+            return;
+        Movement m = ((Movement)body);
+        ui.heartDisplay.Visible = false;
+        ui.countDownLabel.Visible = false;
+        outroTriggered = true;
+        var tw = GetTree().CreateTween();
+        tw.TweenProperty(m.camera, "zoom", new Vector2(1, 1), 10);
+        await AudioManager.instance.FadeInto(
+            "outroMiddle",
+            outroFadeOut,
+            "outroEnding",
+            outroGap,
+            outroFadeIn
+        );
+        m.outro = true;
+        m.sprite2D.Play("OUTRO");
+        AudioManager.instance.PlaySFX("heartExplode");
+        await ToSignal(m.sprite2D, AnimatedSprite2D.SignalName.AnimationFinished);
+        await SceneSwitcher.instance.SwitchSceneAsyncSlide("outro", 1f);
     }
 
     void SetupLeaves()
@@ -189,7 +238,7 @@ public partial class GameManager : Node
 
     public async void Die(Movement player)
     {
-        if (dying)
+        if (dying || outroTriggered)
             return;
         dying = true;
         ui.Reset();
@@ -244,7 +293,8 @@ public partial class GameManager : Node
         if (randomSoundTimer <= 0)
         {
             randomSoundTimer = (float)GD.RandRange(5.0, 8.0);
-            AudioManager.instance.PlaySFX("outOfCombatRandom");
+            if (LevelManager.instance.currLevel != 6)
+                AudioManager.instance.PlaySFX("outOfCombatRandom");
         }
 
         if (rawInCombat)
