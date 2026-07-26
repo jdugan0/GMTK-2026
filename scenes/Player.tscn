@@ -71,7 +71,7 @@ shakeStrength = 60.0
 ripTime = 0.4
 attackSpeed = 1500.0
 throwKnockback = 1400.0
-throwStun = 0.8
+throwStun = 1.5
 attackCountdownCost = 10.0
 safetyTime = 0.1
 enemyKnockback = 1000.0
@@ -94,6 +94,7 @@ radialSlider = NodePath("RadialSlider")
 throwSheet = ExtResource("9_0rnld")
 throwTime = 0.3
 lightEnergyFinal = 0.5
+drainTime = 80.0
 
 [node name="BloodParticles" parent="." unique_id=174636998 instance=ExtResource("12_o4126")]
 emitting = false
