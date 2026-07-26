@@ -61,12 +61,20 @@
 [ext_resource type="AudioStream" uid="uid://b4yyb4va1c043" path="res://audio/SFX/Drink Blood.wav" id="68_kxau5"]
 [ext_resource type="AudioStream" uid="uid://2jicw38h0lgx" path="res://audio/SFX/Ready To Throw.wav" id="68_pu1ph"]
 [ext_resource type="AudioStream" uid="uid://bwv4vk8krjslw" path="res://audio/SFX/Enemy Swing 1.wav" id="69_1glry"]
+[ext_resource type="AudioStream" uid="uid://dwe4vbmi0qtj3" path="res://audio/SFX/Birds.mp3" id="69_rrol0"]
 [ext_resource type="AudioStream" uid="uid://dyjqcdudq6j4y" path="res://audio/SFX/Enemy Swing 2.wav" id="70_rrol0"]
+[ext_resource type="AudioStream" uid="uid://d3pxk211kk2db" path="res://audio/SFX/Wind Generic.mp3" id="70_rxsmk"]
+[ext_resource type="AudioStream" uid="uid://bn5atw73fgbj3" path="res://audio/SFX/Wind LowHealth.mp3" id="71_c1o87"]
 [ext_resource type="AudioStream" uid="uid://bn6hboop64ahy" path="res://audio/SFX/Exit Hum.wav" id="71_rrol0"]
+[ext_resource type="AudioStream" uid="uid://ds66tl7k6oo2p" path="res://audio/SFX/Drone1.wav" id="72_c1o87"]
 [ext_resource type="AudioStream" uid="uid://cs03ja737ue0j" path="res://audio/SFX/Gore/Heart Explode.wav" id="72_rxsmk"]
+[ext_resource type="AudioStream" uid="uid://c2u6ah6xw7nbw" path="res://audio/Music/Intro Music.wav" id="73_o73ty"]
 [ext_resource type="AudioStream" uid="uid://k2gg3h2hsypw" path="res://audio/SFX/Enemy Hurt 1.wav" id="73_y8cre"]
+[ext_resource type="AudioStream" uid="uid://1rja1fx8jp06" path="res://audio/Music/Outro Intro.mp3" id="74_7nbdl"]
 [ext_resource type="AudioStream" uid="uid://0md0tnrml6gc" path="res://audio/SFX/Enemy Hurt 2.wav" id="74_o73ty"]
 [ext_resource type="AudioStream" uid="uid://6ycbllp1twrj" path="res://audio/SFX/Enemy Hurt 3.wav" id="75_7nbdl"]
+[ext_resource type="AudioStream" uid="uid://iyag6dy50x5k" path="res://audio/Music/Outro Middle.mp3" id="75_lsl45"]
+[ext_resource type="AudioStream" uid="uid://bkebpfhpw4e8g" path="res://audio/Music/Outro Ending.mp3" id="76_4vxsy"]
 [ext_resource type="AudioStream" uid="uid://pmajlk1hipap" path="res://audio/SFX/Enemy Hurt 4.wav" id="76_lsl45"]
 
 [sub_resource type="Resource" id="Resource_oh4ff"]
@@ -380,6 +388,30 @@ volume = 5.0
 name = "healthPickup"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
+[sub_resource type="Resource" id="Resource_pu1ph"]
+script = ExtResource("2_0au01")
+stream = ExtResource("69_rrol0")
+name = "birds"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_cf8oo"]
+script = ExtResource("2_0au01")
+stream = ExtResource("70_rxsmk")
+name = "wind"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_v7shn"]
+script = ExtResource("2_0au01")
+stream = ExtResource("71_c1o87")
+name = "windLowHealth"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_jmksb"]
+script = ExtResource("2_0au01")
+stream = ExtResource("72_c1o87")
+name = "drone1"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_pu1ph"]
 data = PackedByteArray("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")
 format = 3
@@ -409,7 +441,31 @@ volume = -25.0
 name = "textBoxSpeech"
 metadata/_custom_type_script = "uid://007myadtw53h"
 
+[sub_resource type="Resource" id="Resource_rqsg2"]
+script = ExtResource("2_0au01")
+stream = ExtResource("73_o73ty")
+name = "introMusic"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_fpvgn"]
+script = ExtResource("2_0au01")
+stream = ExtResource("74_7nbdl")
+name = "outroIntro"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_xn6mk"]
+script = ExtResource("2_0au01")
+stream = ExtResource("75_lsl45")
+name = "outroMiddle"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
+[sub_resource type="Resource" id="Resource_3t5n2"]
+script = ExtResource("2_0au01")
+stream = ExtResource("76_4vxsy")
+name = "outroEnding"
+metadata/_custom_type_script = "uid://007myadtw53h"
+
 [node name="Audiomanager" type="Node" unique_id=2066337262]
 process_mode = 3
 script = ExtResource("1_ulbmk")
-sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec"), SubResource("Resource_hq7mq")])
+sounds = Array[Object]([SubResource("Resource_oh4ff"), SubResource("Resource_ffa7b"), SubResource("Resource_b5w0e"), SubResource("Resource_l6xtm"), SubResource("Resource_druqg"), SubResource("Resource_fvdno"), SubResource("Resource_1w7ep"), SubResource("Resource_7cxqh"), SubResource("Resource_1ka3n"), SubResource("Resource_e0i5k"), SubResource("Resource_g6nxw"), SubResource("Resource_sobix"), SubResource("Resource_wmpjh"), SubResource("Resource_np5g1"), SubResource("Resource_agd7y"), SubResource("Resource_4m0oc"), SubResource("Resource_uqlt6"), SubResource("Resource_ye7iy"), SubResource("Resource_urwjj"), SubResource("Resource_kcgcn"), SubResource("Resource_e83ie"), SubResource("Resource_tpk4g"), SubResource("Resource_onaff"), SubResource("Resource_04hbw"), SubResource("Resource_dn6md"), SubResource("Resource_kxau5"), SubResource("Resource_1glry"), SubResource("Resource_gmijl"), SubResource("Resource_apoj4"), SubResource("Resource_c1o87"), SubResource("Resource_y8cre"), SubResource("Resource_7ilec"), SubResource("Resource_pu1ph"), SubResource("Resource_cf8oo"), SubResource("Resource_v7shn"), SubResource("Resource_jmksb"), SubResource("Resource_hq7mq"), SubResource("Resource_rqsg2"), SubResource("Resource_fpvgn"), SubResource("Resource_xn6mk"), SubResource("Resource_3t5n2")])
