@@ -93,3 +93,9 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TutorialAreas" type="Node2D" parent="." unique_id=831059950]
+
+[node name="SpeechTriggers" type="Node2D" parent="." unique_id=182951198]
+
+[editable path="UI"]
+[editable path="UI/Control/LevelWon"]
+[editable path="UI/Control/LevelPause"]

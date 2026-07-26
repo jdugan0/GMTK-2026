@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 
@@ -35,6 +36,16 @@ public partial class HeartDisplay : TextureRect
     [Export]
     Texture2D explodeSheet;
 
+    [Export]
+    private float modeSfxFadeOut = 0.25f;
+
+    private static readonly Dictionary<int, string[]> modeSfx = new()
+    {
+        [2] = new[] { "thirdHealthLost" },
+        [3] = new[] { "gameOver" },
+        [4] = new[] { "thirdHealthRemaining", "lowHealthClock" },
+    };
+
     private int _mode;
 
     [Export]
@@ -45,9 +56,11 @@ public partial class HeartDisplay : TextureRect
         {
             if (_mode == value)
                 return;
+            int previous = _mode;
             _mode = value;
             Refresh();
             SpawnPulse();
+            UpdateModeSfx(previous);
         }
     }
 
@@ -135,19 +148,6 @@ public partial class HeartDisplay : TextureRect
             MouseFilter = MouseFilterEnum.Ignore,
         };
         AddChild(ghost);
-        if (mode == 3)
-        {
-            AudioManager.instance.PlaySFX("gameOver");
-        }
-        if (mode == 4)
-        {
-            AudioManager.instance.PlaySFX("thirdHealthRemaining");
-            AudioManager.instance.PlaySFX("lowHealthClock");
-        }
-        if (mode == 2)
-        {
-            AudioManager.instance.PlaySFX("thirdHealthLost");
-        }
 
         var tween = ghost.CreateTween().SetParallel();
         tween
@@ -156,6 +156,19 @@ public partial class HeartDisplay : TextureRect
             .SetEase(Tween.EaseType.Out);
         tween.TweenProperty(ghost, "modulate:a", 0f, pulseDuration);
         tween.Chain().TweenCallback(Callable.From(ghost.QueueFree));
+    }
+
+    private void UpdateModeSfx(int previous)
+    {
+        if (LevelManager.instance.currLevel == 5)
+            return;
+        if (modeSfx.TryGetValue(previous, out var stopping))
+            foreach (string sound in stopping)
+                AudioManager.instance.CancelSFXFadeOut(sound, modeSfxFadeOut);
+
+        if (modeSfx.TryGetValue(_mode, out var starting))
+            foreach (string sound in starting)
+                AudioManager.instance.PlaySFX(sound);
     }
 
     private void Refresh() =>
