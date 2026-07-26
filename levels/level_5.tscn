@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_26h77"]
 script = ExtResource("3_26h77")
-line = "I was hungry! What did they expect me to do! It's isn't my fault!"
+line = "I was hungry! What did they expect me to do! It isn't my fault!"
 metadata/_custom_type_script = "uid://igoeetpdrmgg"
 
 [sub_resource type="Resource" id="Resource_g5mgy"]
@@ -58,31 +58,11 @@ SearchRoot = NodePath(".")
 FillColor = Color(1, 0.2509804, 0.4, 1)
 OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 
-[node name="LevelStuff_SpeechTriggers#Area2D" type="Area2D" parent="." unique_id=656243356]
-
-[node name="LevelStuff_SpeechTriggers#Area2D2" type="Area2D" parent="." unique_id=1759836434]
-position = Vector2(-78, -1734)
-
-[node name="LevelStuff_SpeechTriggers#Area2D4" type="Area2D" parent="." unique_id=1506429948]
-position = Vector2(494, -4438)
-
-[node name="LevelStuff_SpeechTriggers#Area2D5" type="Area2D" parent="." unique_id=1669605760]
-position = Vector2(1231, -6735)
-
-[node name="LevelStuff_SpeechTriggers#Area2D6" type="Area2D" parent="." unique_id=1468733031]
-position = Vector2(-915, -13092)
-
-[node name="LevelStuff_SpeechTriggers#Area2D3" type="Area2D" parent="." unique_id=1885442391]
-position = Vector2(-307, 2032)
-
 [node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_26h77")]
-
-[node name="UI" parent="LevelStuff" index="0" unique_id=66284215]
-visible = false
 
 [node name="Dialogue" parent="LevelStuff/UI/Control" parent_id_path=PackedInt32Array(230299218, 66284215, 641039095) index="6" unique_id=1885783672 node_paths=PackedStringArray("triggers")]
 lines = Array[Object]([SubResource("Resource_r02ll"), SubResource("Resource_1y5xd"), SubResource("Resource_26h77"), SubResource("Resource_g5mgy"), SubResource("Resource_v5ho1"), SubResource("Resource_ldpug")])
-triggers = [null, null, null, null, null, null]
+triggers = [NodePath("../../../SpeechTriggers/Area2D3"), NodePath("../../../SpeechTriggers/Area2D"), NodePath("../../../SpeechTriggers/Area2D2"), NodePath("../../../SpeechTriggers/Area2D4"), NodePath("../../../SpeechTriggers/Area2D5"), NodePath("../../../SpeechTriggers/Area2D6")]
 
 [node name="NavigationRegion2D" parent="LevelStuff" index="2" unique_id=1456280516]
 navigation_polygon = SubResource("NavigationPolygon_r02ll")
@@ -106,27 +86,44 @@ tile_map_data = PackedByteArray("AAAcAOb/AAABAAMAAGAcAOf/AAAAAAMAAAAcAOj/AAAAAAQ
 tile_map_data = PackedByteArray("AAAdAOb/AAABAAMAAGAeAOb/AAABAAMAAGAfAOf/AAABAAMAAAAeAOf/AAAAAAMAAAAfAOb/AAABAAQAAGAfAOj/AAABAAQAAAAKAMH/AAAJAAMAADALAMH/AAAIAAMAADAdAMz/AAAIAAMAAGAdAMv/AAAJAAMAAGANAOj/AAAIAAMAAAAXAMn/AAAIAAMAAAAWAMn/AAAIAAMAAAAfALb/AAAJAAQAAFAfALX/AAAJAAMAADAbALz/AAAJAAQAAFAMAML/AAAJAAQAAAAMAMD/AAAJAAQAAGAKAMD/AAAJAAQAADAKAML/AAAJAAQAAFA=")
 tile_set = ExtResource("3_dhnqt")
 
-[node name="LevelStuff_SpeechTriggers_Area2D#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526118269]
+[node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=656243356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D" unique_id=1526118269]
 position = Vector2(3879, -4180)
 shape = SubResource("RectangleShape2D_r02ll")
 
-[node name="LevelStuff_SpeechTriggers_Area2D2#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1976650738]
+[node name="Area2D2" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="1" unique_id=1759836434]
+position = Vector2(-78, -1734)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D2" unique_id=1976650738]
 position = Vector2(5476, -5167)
 shape = SubResource("RectangleShape2D_r02ll")
 
-[node name="LevelStuff_SpeechTriggers_Area2D4#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1431273012]
+[node name="Area2D4" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="2" unique_id=1506429948]
+position = Vector2(494, -4438)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D4" unique_id=1431273012]
 position = Vector2(2368, -6203)
 shape = SubResource("RectangleShape2D_r02ll")
 
-[node name="LevelStuff_SpeechTriggers_Area2D5#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1459018654]
+[node name="Area2D5" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="3" unique_id=1669605760]
+position = Vector2(1231, -6735)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D5" unique_id=1459018654]
 position = Vector2(11178, -5958)
 shape = SubResource("RectangleShape2D_r02ll")
 
-[node name="LevelStuff_SpeechTriggers_Area2D6#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=418705725]
+[node name="Area2D6" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="4" unique_id=1468733031]
+position = Vector2(-915, -13092)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D6" unique_id=418705725]
 position = Vector2(3820, -2513)
 shape = SubResource("RectangleShape2D_r02ll")
 
-[node name="LevelStuff_SpeechTriggers_Area2D3#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916750973]
+[node name="Area2D3" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="5" unique_id=1885442391]
+position = Vector2(-307, 2032)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D3" unique_id=1916750973]
 position = Vector2(3844, -2801.25)
 shape = SubResource("RectangleShape2D_26h77")
 

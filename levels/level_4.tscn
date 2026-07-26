@@ -34,13 +34,11 @@ SearchRoot = NodePath(".")
 FillColor = Color(1, 0.2509804, 0.4, 1)
 OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 
-[node name="LevelStuff_SpeechTriggers#Area2D" type="Area2D" parent="." unique_id=716296111]
-
 [node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_t6q73")]
 
 [node name="Dialogue" parent="LevelStuff/UI/Control" parent_id_path=PackedInt32Array(230299218, 66284215, 641039095) index="6" unique_id=1885783672 node_paths=PackedStringArray("triggers")]
 lines = Array[Object]([SubResource("Resource_t6q73")])
-triggers = [null]
+triggers = [NodePath("../../../SpeechTriggers/Area2D")]
 
 [node name="NavigationRegion2D" parent="LevelStuff" index="2" unique_id=1456280516]
 navigation_polygon = SubResource("NavigationPolygon_t0qhu")
@@ -92,7 +90,9 @@ regain health."
 position = Vector2(3294.5, 891)
 shape = SubResource("RectangleShape2D_6ke0t")
 
-[node name="LevelStuff_SpeechTriggers_Area2D#CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2082714828]
+[node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=716296111]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/SpeechTriggers/Area2D" unique_id=2082714828]
 position = Vector2(1568.25, 612)
 shape = SubResource("RectangleShape2D_t6q73")
 

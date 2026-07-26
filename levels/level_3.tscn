@@ -23,8 +23,6 @@ SearchRoot = NodePath(".")
 FillColor = Color(1, 0.2509804, 0.4, 1)
 OutlineColor = Color(1, 0.34901962, 0.5019608, 1)
 
-[node name="LevelStuff_SpeechTriggers#Area2D" type="Area2D" parent="." unique_id=668713399]
-
 [node name="LevelStuff" parent="." unique_id=230299218 instance=ExtResource("2_bmgug")]
 
 [node name="NavigationRegion2D" parent="LevelStuff" index="2" unique_id=1456280516]
@@ -69,6 +67,8 @@ position = Vector2(614, 948)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStuff/TutorialAreas/Area2D" unique_id=115962834]
 position = Vector2(278.5, -60)
 shape = SubResource("RectangleShape2D_gew73")
+
+[node name="Area2D" type="Area2D" parent="LevelStuff/SpeechTriggers" parent_id_path=PackedInt32Array(230299218, 182951198) index="0" unique_id=668713399]
 
 [editable path="LevelStuff"]
 [editable path="LevelStuff/UI"]
