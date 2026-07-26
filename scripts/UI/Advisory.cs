@@ -15,7 +15,7 @@ public partial class Advisory : Node
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("ATTACK"))
+        if (Input.IsActionJustPressed("ATTACK") && !switchTime)
         {
             switchTime = true;
             _ = SceneSwitcher.instance.SwitchSceneAsyncSlide("mainMenu", 1f);
