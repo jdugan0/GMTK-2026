@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1rja1fx8jp06"
+path="res://.godot/imported/Outro Intro.mp3-030d1225261b1496b0033b32cd601b25.mp3str"
+
+[deps]
+
+source_file="res://audio/Music/Outro Intro.mp3"
+dest_files=["res://.godot/imported/Outro Intro.mp3-030d1225261b1496b0033b32cd601b25.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

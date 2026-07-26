@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://iyag6dy50x5k"
+path="res://.godot/imported/Outro Middle.mp3-a2efcedff08124677f8d750f847f84fa.mp3str"
+
+[deps]
+
+source_file="res://audio/Music/Outro Middle.mp3"
+dest_files=["res://.godot/imported/Outro Middle.mp3-a2efcedff08124677f8d750f847f84fa.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
