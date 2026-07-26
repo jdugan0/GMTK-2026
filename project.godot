@@ -14,10 +14,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="GMTK-2026"
+config/name="ISCHEMIA"
 run/main_scene="uid://cujpfgw721otk"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b2i08ovc42n23"
 
 [autoload]
 
